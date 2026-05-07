@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0F] text-white">
+    <main className="min-h-screen bg-transparent text-white">
       {/* HERO */}
       <section className="pt-28 pb-20 px-6 text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
@@ -47,19 +47,19 @@ export default function ContactPage() {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg bg-[#111118] border border-white/10 text-white focus:border-[#8A3AFF] outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[#0D0F2A] border border-white/10 text-white focus:border-[#8A3AFF] outline-none"
               />
 
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full px-4 py-3 rounded-lg bg-[#111118] border border-white/10 text-white focus:border-[#8A3AFF] outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[#0D0F2A] border border-white/10 text-white focus:border-[#8A3AFF] outline-none"
               />
 
               <textarea
                 placeholder="Your Message"
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-[#111118] border border-white/10 text-white focus:border-[#8A3AFF] outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[#0D0F2A] border border-white/10 text-white focus:border-[#8A3AFF] outline-none"
               ></textarea>
 
               <button

@@ -92,7 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <script async src="https://tally.so/widgets/embed.js"></script>
       </head>
 
-      <body className={`${inter.className} bg-[#0A0A0F] text-white`}>
+      <body className={`${inter.className} bg-[#07091A] text-white`}>
         {/* Premium Semi‑Transparent Header */}
         <Header />
 
@@ -102,7 +102,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </main>
 
         {/* Premium Multi‑Column Footer */}
-        <footer className="border-t border-white/10 mt-0 py-12 bg-[#050509] text-sm text-white/70">
+        <footer className="border-t border-white/10 mt-0 py-12 bg-[#04060F] text-sm text-white/70">
           <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
             
             {/* Brand */}

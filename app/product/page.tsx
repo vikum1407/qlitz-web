@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ProductPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0F] text-white">
+    <main className="min-h-screen bg-transparent text-white">
       {/* HERO */}
       <section className="pt-28 pb-20 px-6 text-center fade-in-up">
         <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/40 mb-4">

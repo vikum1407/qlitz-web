@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ApproachPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0F] text-white">
+    <main className="min-h-screen bg-transparent text-white">
       {/* HERO */}
       <section className="pt-28 pb-20 px-6 text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">

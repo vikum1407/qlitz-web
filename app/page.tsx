@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-white flex items-center justify-center px-6">
+    <div className="min-h-screen bg-transparent text-white flex items-center justify-center px-6">
       <div className="text-center max-w-4xl space-y-6">
         <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/40 fade-in-up">
           AI‑POWERED QUALITY AUTOMATION

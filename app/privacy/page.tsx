@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#0A0A0F] text-white px-6 py-20 flex justify-center">
+    <main className="min-h-screen bg-transparent text-white px-6 py-20 flex justify-center">
       <div className="max-w-3xl w-full">
         <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-10 text-center">
           <span className="bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] bg-clip-text text-transparent">
