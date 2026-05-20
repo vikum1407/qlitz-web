@@ -1,0 +1,77 @@
+export const metadata = {
+  title: 'Data Layers — Qlitz Docs',
+  description: 'Qlitz organises QA data across seven structured layers, from requirements through to release.',
+}
+
+# Data Layers
+
+Qlitz organises all QA data across seven structured layers. Each layer builds on the one below it, forming a complete picture of your project's quality state — from raw requirements through to a shipped release.
+
+## The seven layers
+
+### Layer 1 — Requirements
+
+The foundation. Requirements live in the RTM and represent what the application must do. Every piece of data in Qlitz is ultimately anchored to a requirement.
+
+**Key artifacts:** requirement records, acceptance criteria, priority, status
+
+### Layer 2 — Design
+
+How tests are specified and frameworks are configured. The Canvas operates at this layer — translating requirements into framework configuration and test structure.
+
+**Key artifacts:** Canvas configuration, framework selection, language, page object definitions, test stubs
+
+### Layer 3 — Execution
+
+The test run layer. This is where tests are triggered, monitored, and recorded. Each execution captures the full context of a run — environment, timing, test-by-test status.
+
+**Key artifacts:** test runs, test case results, execution metadata, environment variables
+
+### Layer 4 — Results
+
+The raw output of execution, stored and indexed for analysis. Results include pass/fail status, error messages, screenshots, and timing data per test case.
+
+**Key artifacts:** result records, failure logs, screenshots, duration data
+
+### Layer 5 — Analysis
+
+The intelligence layer. Qlitz processes raw results into actionable signals — coverage gaps, flaky test patterns, heatmaps, and trends over time.
+
+**Key artifacts:** coverage metrics, heatmap data, flakiness scores, trend history
+
+### Layer 6 — Healing
+
+The resilience layer. Auto-Heal monitors for selector drift and test breakage caused by application changes rather than genuine failures. When detected, it proposes and applies repairs automatically.
+
+**Key artifacts:** heal events, selector diffs, repair proposals, heal history
+
+### Layer 7 — Release
+
+The delivery layer. Releases aggregate data from all lower layers into a scoped readiness assessment for a specific delivery window — a sprint, a milestone, or a production deployment.
+
+**Key artifacts:** release records, readiness scores, metrics deltas vs previous release, linked runs and insights, status transitions
+
+## How the layers connect
+
+Data flows upward through the layers:
+
+```
+Requirements → Design → Execution → Results → Analysis → Healing → Release
+```
+
+A change at any layer propagates upward. Adding a new requirement (Layer 1) creates a coverage gap (Layer 5) and affects release readiness (Layer 7). A healed test (Layer 6) updates result history (Layer 4) and recalculates coverage (Layer 5).
+
+This connected model is what makes Qlitz different from a collection of separate tools — every part of the platform shares the same data graph.
+
+## Storage model
+
+Layers 1–2 (Requirements, Design) and Layer 7 (Release) are stored in PostgreSQL for structured querying.
+
+Layers 3–6 (Execution, Results, Analysis, Healing) are stored as scoped JSON files per project, keeping large execution artifacts lightweight and portable without database overhead.
+
+## Next steps
+
+- [RTM](/docs/v1/core-concepts/rtm) — Layer 1 in depth
+- [Qlitz Canvas](/docs/v1/core-concepts/canvas) — Layer 2 in depth
+- [Auto-Heal](/docs/v1/features/auto-heal) — Layer 6 in depth
+- [Release Management](/docs/v1/features/releases) — Layer 7 in depth

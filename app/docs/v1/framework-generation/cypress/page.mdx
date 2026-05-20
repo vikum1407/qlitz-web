@@ -1,0 +1,112 @@
+export const metadata = {
+  title: 'Cypress — Qlitz Docs',
+  description: 'Generate a complete, production-ready Cypress automation framework from the Qlitz Canvas.',
+}
+
+# Cypress
+
+Qlitz generates a complete Cypress automation framework — page objects, test files, configuration, and reporter setup — linked to your RTM requirements and ready to run immediately.
+
+## Supported languages
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TypeScript</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+TypeScript is recommended for new projects. It provides type safety across page objects and test files and aligns with Cypress's own documentation examples.
+
+## Generated project structure
+
+```
+cypress/
+  e2e/
+    *.cy.ts                 ← test files, one per RTM requirement group
+  support/
+    commands.ts             ← custom Cypress commands
+    e2e.ts                  ← global setup and imports
+  fixtures/
+    example.json            ← sample fixture data
+  page-objects/
+    base/
+      BasePage.ts           ← shared page object base class
+    *.page.ts               ← one page object per application area
+cypress.config.ts           ← Cypress configuration with Qlitz reporter
+package.json
+tsconfig.json
+.env.example                ← environment variable template
+```
+
+## Page objects
+
+Each generated page object extends `BasePage` and exposes typed selectors and action methods for a specific area of your application. The base class provides shared utilities — waiting for elements, navigation, and assertion helpers — so individual page objects stay focused on their own surface.
+
+```typescript
+// Example: LoginPage.ts (generated)
+import { BasePage } from './base/BasePage';
+
+export class LoginPage extends BasePage {
+  private emailInput = '[data-testid="email-input"]';
+  private passwordInput = '[data-testid="password-input"]';
+  private submitButton = '[data-testid="login-submit"]';
+
+  login(email: string, password: string) {
+    cy.get(this.emailInput).type(email);
+    cy.get(this.passwordInput).type(password);
+    cy.get(this.submitButton).click();
+  }
+}
+```
+
+## Test files
+
+Each `.cy.ts` file is linked to one or more RTM requirements. The requirement ID is included as a comment at the top of each test for traceability, and the test names are derived from the requirement titles.
+
+## Configuration
+
+The generated `cypress.config.ts` includes:
+
+- Base URL from your Canvas configuration
+- Qlitz results reporter (pushes run data back to the platform after each run)
+- Default timeouts and retry configuration
+- Environment variable references from `.env`
+
+## Running the generated framework
+
+```bash
+# Install dependencies
+npm install
+
+# Run all tests (headless)
+npx cypress run
+
+# Run with browser UI
+npx cypress open
+
+# Run against a specific environment
+BASE_URL=https://staging.yourapp.com npx cypress run
+```
+
+## Results reporting
+
+The generated framework includes the Qlitz reporter, which automatically pushes results back to your project after each run. Coverage, History, Replay recordings, and Insights are all updated without any manual steps.
+
+## Next steps
+
+- [Playwright](/docs/v1/framework-generation/playwright) — cross-browser alternative with multi-language support
+- [Auto-Heal](/docs/v1/features/auto-heal) — automatically repair broken selectors in generated tests
+- [Qlitz Canvas](/docs/v1/core-concepts/canvas) — re-generate after adding new RTM requirements

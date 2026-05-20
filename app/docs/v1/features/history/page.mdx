@@ -1,0 +1,97 @@
+export const metadata = {
+  title: 'History — Qlitz Docs',
+  description: 'History gives you the full run log for your project — every execution, its results, and how your suite health has changed over time.',
+}
+
+# History
+
+History gives you the complete run log for your project. Every test execution is recorded here with its full results, making it possible to track trends, compare runs, and understand how your suite health has changed over time.
+
+## The run list
+
+The History tab displays a chronological list of all runs for the project. Each row shows:
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Run ID</strong></td>
+      <td>Unique identifier for the run</td>
+    </tr>
+    <tr>
+      <td><strong>Triggered</strong></td>
+      <td>Timestamp and trigger source (manual, CI, scheduled)</td>
+    </tr>
+    <tr>
+      <td><strong>Duration</strong></td>
+      <td>Total execution time</td>
+    </tr>
+    <tr>
+      <td><strong>Tests</strong></td>
+      <td>Total test count for the run</td>
+    </tr>
+    <tr>
+      <td><strong>Passed / Failed / Skipped</strong></td>
+      <td>Breakdown of results</td>
+    </tr>
+    <tr>
+      <td><strong>Pass Rate</strong></td>
+      <td>Percentage of tests that passed</td>
+    </tr>
+    <tr>
+      <td><strong>Coverage Impact</strong></td>
+      <td>How the run changed the requirement coverage score</td>
+    </tr>
+    <tr>
+      <td><strong>Health Score</strong></td>
+      <td>The AI-calculated health score for the run</td>
+    </tr>
+  </tbody>
+</table>
+
+## Viewing a run in detail
+
+Click any run to open its detail view, which shows:
+
+- Full test-by-test results with expandable error output
+- Coverage changes relative to the previous run — requirements that gained or lost coverage
+- Insights generated for this run
+- Links to any releases this run is associated with
+
+From the detail view, you can open the **Replay** viewer for any recorded test case in the run.
+
+## Comparing runs
+
+Select two runs in the History list and click **Compare** to see a side-by-side diff:
+
+- Tests that changed status (passing → failing or failing → passing)
+- Requirements whose coverage status changed
+- Pass rate and health score delta
+
+Run comparison is especially useful after a deployment — select the run before and after the deploy to isolate the tests that the deployment affected.
+
+## Filtering and searching
+
+The run list can be filtered by:
+
+- Date range
+- Trigger source (manual, CI)
+- Minimum pass rate
+- Environment
+
+Individual test results within a run can be searched by test case name, requirement ID, or error message.
+
+## Retention
+
+Run data is retained indefinitely by default. You can configure a retention window in project Settings to automatically archive runs older than a specified number of days, keeping the History list manageable for high-frequency projects.
+
+## Next steps
+
+- [Replay](/docs/v1/features/replay) — watch any run's test execution step by step
+- [Insights](/docs/v1/features/insights) — AI analysis generated per run
+- [Release Management](/docs/v1/features/releases) — link runs to a release for scoped readiness

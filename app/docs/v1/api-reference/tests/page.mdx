@@ -1,0 +1,270 @@
+export const metadata = {
+  title: 'Tests API — Qlitz Docs',
+  description: 'Trigger test runs, retrieve results, and manage test cases via the Qlitz REST API.',
+}
+
+# Tests API
+
+## List test cases
+
+```http
+GET /projects/:projectId/tests
+```
+
+Returns all test cases defined in the project.
+
+**Query parameters**
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>status</code></td>
+      <td>string</td>
+      <td>Filter by status: <code>active</code>, <code>inactive</code></td>
+    </tr>
+    <tr>
+      <td><code>requirementId</code></td>
+      <td>string</td>
+      <td>Filter by linked RTM requirement ID</td>
+    </tr>
+    <tr>
+      <td><code>page</code></td>
+      <td>number</td>
+      <td>Page number</td>
+    </tr>
+    <tr>
+      <td><code>limit</code></td>
+      <td>number</td>
+      <td>Results per page</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "tc_abc123",
+      "name": "Login with valid credentials",
+      "status": "active",
+      "linkedRequirementId": "REQ-001",
+      "lastRunStatus": "passed",
+      "lastRunAt": "2026-05-19T14:22:00.000Z"
+    }
+  ],
+  "meta": {
+    "total": 48,
+    "page": 1,
+    "limit": 20,
+    "totalPages": 3
+  }
+}
+```
+
+---
+
+## Trigger a test run
+
+```http
+POST /projects/:projectId/tests/run
+```
+
+Triggers a new test run for the project.
+
+**Request body**
+
+```json
+{
+  "environment": "staging",
+  "testCaseIds": ["tc_abc123", "tc_def456"],
+  "enableRecording": true
+}
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>environment</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>Target environment (default: project's default environment)</td>
+    </tr>
+    <tr>
+      <td><code>testCaseIds</code></td>
+      <td>string[]</td>
+      <td>No</td>
+      <td>Specific test case IDs to run. Omit to run all active tests</td>
+    </tr>
+    <tr>
+      <td><code>enableRecording</code></td>
+      <td>boolean</td>
+      <td>No</td>
+      <td>Enable Replay recording for this run (default: false)</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response** — `201 Created`
+
+```json
+{
+  "runId": "run_xyz789",
+  "status": "queued",
+  "testCount": 48,
+  "environment": "staging",
+  "triggeredAt": "2026-05-20T09:00:00.000Z"
+}
+```
+
+---
+
+## List test runs
+
+```http
+GET /projects/:projectId/tests/runs
+```
+
+Returns the run history for the project.
+
+**Query parameters**
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>page</code></td>
+      <td>number</td>
+      <td>Page number</td>
+    </tr>
+    <tr>
+      <td><code>limit</code></td>
+      <td>number</td>
+      <td>Results per page</td>
+    </tr>
+    <tr>
+      <td><code>environment</code></td>
+      <td>string</td>
+      <td>Filter by environment</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "run_xyz789",
+      "status": "completed",
+      "environment": "staging",
+      "total": 48,
+      "passed": 44,
+      "failed": 3,
+      "skipped": 1,
+      "passRate": 91.7,
+      "healthScore": 87,
+      "duration": 142,
+      "triggeredAt": "2026-05-20T09:00:00.000Z",
+      "completedAt": "2026-05-20T09:02:22.000Z"
+    }
+  ]
+}
+```
+
+---
+
+## Get a test run
+
+```http
+GET /projects/:projectId/tests/runs/:runId
+```
+
+Returns full detail for a single run including per-test-case results.
+
+**Response**
+
+```json
+{
+  "id": "run_xyz789",
+  "status": "completed",
+  "passRate": 91.7,
+  "healthScore": 87,
+  "results": [
+    {
+      "testCaseId": "tc_abc123",
+      "name": "Login with valid credentials",
+      "status": "passed",
+      "duration": 2840,
+      "linkedRequirementId": "REQ-001"
+    },
+    {
+      "testCaseId": "tc_def456",
+      "name": "Export report as PDF",
+      "status": "failed",
+      "duration": 5100,
+      "errorMessage": "Element [data-testid='export-btn'] not found",
+      "linkedRequirementId": "REQ-042"
+    }
+  ]
+}
+```
+
+---
+
+## Push external run results
+
+```http
+POST /projects/:projectId/tests/runs/import
+```
+
+Push results from an externally executed test run (e.g. from your CI pipeline) into Qlitz. This triggers coverage recalculation, Insights analysis, and Readiness scoring exactly as an internally triggered run would.
+
+**Request body**
+
+```json
+{
+  "environment": "staging",
+  "triggeredBy": "github-actions",
+  "results": [
+    {
+      "testCaseId": "tc_abc123",
+      "status": "passed",
+      "duration": 2840
+    },
+    {
+      "testCaseId": "tc_def456",
+      "status": "failed",
+      "duration": 5100,
+      "errorMessage": "Element not found"
+    }
+  ]
+}
+```
+
+**Response** — `201 Created`
+
+Returns the created run object with calculated `passRate` and `healthScore`.

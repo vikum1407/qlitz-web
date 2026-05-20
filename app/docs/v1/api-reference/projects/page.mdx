@@ -1,0 +1,220 @@
+export const metadata = {
+  title: 'Projects API — Qlitz Docs',
+  description: 'Create, read, update, and delete Qlitz projects via the REST API.',
+}
+
+# Projects API
+
+## List projects
+
+```http
+GET /projects
+```
+
+Returns all projects accessible to the authenticated token.
+
+**Query parameters**
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>page</code></td>
+      <td>number</td>
+      <td>Page number (default: 1)</td>
+    </tr>
+    <tr>
+      <td><code>limit</code></td>
+      <td>number</td>
+      <td>Results per page (default: 20, max: 100)</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "clx123abc",
+      "name": "Customer Portal",
+      "description": "End-to-end tests for the customer-facing portal",
+      "baseUrl": "https://portal.yourapp.com",
+      "createdAt": "2026-01-15T10:30:00.000Z",
+      "updatedAt": "2026-03-22T14:10:00.000Z"
+    }
+  ],
+  "meta": {
+    "total": 12,
+    "page": 1,
+    "limit": 20,
+    "totalPages": 1
+  }
+}
+```
+
+---
+
+## Create a project
+
+```http
+POST /projects
+```
+
+**Request body**
+
+```json
+{
+  "name": "Customer Portal",
+  "description": "End-to-end tests for the customer-facing portal",
+  "baseUrl": "https://portal.yourapp.com"
+}
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>name</code></td>
+      <td>string</td>
+      <td>Yes</td>
+      <td>Project name</td>
+    </tr>
+    <tr>
+      <td><code>description</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>Optional description</td>
+    </tr>
+    <tr>
+      <td><code>baseUrl</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>Base URL of the application under test</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response** — `201 Created`
+
+```json
+{
+  "id": "clx123abc",
+  "name": "Customer Portal",
+  "description": "End-to-end tests for the customer-facing portal",
+  "baseUrl": "https://portal.yourapp.com",
+  "createdAt": "2026-05-20T09:00:00.000Z",
+  "updatedAt": "2026-05-20T09:00:00.000Z"
+}
+```
+
+---
+
+## Get a project
+
+```http
+GET /projects/:projectId
+```
+
+**Path parameters**
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>projectId</code></td>
+      <td>The project ID</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response**
+
+Returns the project object. Same shape as a single item in the list response.
+
+---
+
+## Update a project
+
+```http
+PATCH /projects/:projectId
+```
+
+**Request body**
+
+All fields are optional. Only provided fields are updated.
+
+```json
+{
+  "name": "Customer Portal v2",
+  "baseUrl": "https://portal-v2.yourapp.com"
+}
+```
+
+**Response**
+
+Returns the updated project object.
+
+---
+
+## Delete a project
+
+```http
+DELETE /projects/:projectId
+```
+
+Permanently deletes the project and all associated data — requirements, test runs, releases, and generated frameworks. This action is irreversible.
+
+**Response** — `200 OK`
+
+```json
+{
+  "message": "Project deleted successfully"
+}
+```
+
+---
+
+## Get project RTM requirements
+
+```http
+GET /projects/:projectId/requirements
+```
+
+Returns all RTM requirements for the project with their current coverage status.
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "REQ-001",
+      "title": "User can log in with valid credentials",
+      "priority": "Critical",
+      "status": "Active",
+      "coverageStatus": "Covered",
+      "linkedTestCount": 3
+    }
+  ]
+}
+```

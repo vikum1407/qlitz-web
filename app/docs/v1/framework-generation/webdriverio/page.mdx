@@ -1,0 +1,153 @@
+export const metadata = {
+  title: 'WebdriverIO — Qlitz Docs',
+  description: 'Generate a complete WebdriverIO automation framework from the Qlitz Canvas in TypeScript or JavaScript.',
+}
+
+# WebdriverIO
+
+Qlitz generates a complete WebdriverIO automation framework for teams that want Node.js-native browser automation with a synchronous-style API. WebdriverIO supports both the WebDriver protocol and Chrome DevTools, making it flexible across standard and Electron-based applications.
+
+## Supported languages
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TypeScript</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+## Generated project structure
+
+```
+test/
+  specs/
+    *.spec.ts               ← test files linked to RTM requirements
+  pageobjects/
+    page.ts                 ← shared page object base class
+    *.page.ts               ← one page object per application area
+  data/
+    *.data.ts               ← test data files
+wdio.conf.ts                ← WebdriverIO configuration with Qlitz reporter
+package.json
+tsconfig.json
+.env.example
+```
+
+## Page objects
+
+WebdriverIO page objects in Qlitz extend a shared `Page` base class that wraps common browser interactions and provides utility methods for waiting, navigation, and element assertion.
+
+```typescript
+// Example: LoginPage.ts (generated)
+import Page from './page';
+
+class LoginPage extends Page {
+  get emailInput() { return $('[data-testid="email-input"]'); }
+  get passwordInput() { return $('[data-testid="password-input"]'); }
+  get submitButton() { return $('[data-testid="login-submit"]'); }
+
+  async login(email: string, password: string) {
+    await this.emailInput.setValue(email);
+    await this.passwordInput.setValue(password);
+    await this.submitButton.click();
+  }
+
+  open() {
+    return super.open('/login');
+  }
+}
+
+export default new LoginPage();
+```
+
+## Configuration
+
+The generated `wdio.conf.ts` includes:
+
+- Browser configuration (Chrome by default, configurable)
+- Base URL from your Canvas configuration
+- Qlitz results reporter
+- Spec file pattern matched to the generated test structure
+- Screenshot capture on failure
+- Retry configuration for flaky environments
+
+## Running the generated framework
+
+```bash
+# Install dependencies
+npm install
+
+# Run all tests
+npx wdio run wdio.conf.ts
+
+# Run a specific spec file
+npx wdio run wdio.conf.ts --spec test/specs/login.spec.ts
+
+# Run against a specific environment
+BASE_URL=https://staging.yourapp.com npx wdio run wdio.conf.ts
+```
+
+## WebdriverIO vs Cypress and Playwright
+
+<table>
+  <thead>
+    <tr>
+      <th>Consideration</th>
+      <th>WebdriverIO</th>
+      <th>Cypress</th>
+      <th>Playwright</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Protocol</td>
+      <td>WebDriver / CDP</td>
+      <td>CDP</td>
+      <td>CDP</td>
+    </tr>
+    <tr>
+      <td>Multi-browser</td>
+      <td>✓</td>
+      <td>Partial</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Multi-language</td>
+      <td>No (Node.js)</td>
+      <td>No (Node.js)</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Electron support</td>
+      <td>✓</td>
+      <td>✗</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Mobile (Appium)</td>
+      <td>✓</td>
+      <td>✗</td>
+      <td>✗</td>
+    </tr>
+  </tbody>
+</table>
+
+Choose WebdriverIO if your team needs Appium integration for mobile testing alongside web automation, or if you are testing an Electron desktop application.
+
+## Next steps
+
+- [Cypress](/docs/v1/framework-generation/cypress) — simpler configuration for web-only projects
+- [Playwright](/docs/v1/framework-generation/playwright) — broader language support
+- [Auto-Heal](/docs/v1/features/auto-heal) — repair broken selectors in generated tests

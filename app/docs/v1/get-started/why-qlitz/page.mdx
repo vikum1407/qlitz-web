@@ -1,0 +1,50 @@
+export const metadata = {
+  title: 'Why Qlitz — Qlitz Docs',
+  description: 'Understand the problems Qlitz solves and how it differs from traditional QA tooling.',
+}
+
+# Why Qlitz
+
+QA automation is broken in most teams — not because engineers are not capable, but because the tools force them into a fragmented, high-maintenance workflow.
+
+## The problem with the current landscape
+
+### Fragmented tooling
+
+A typical QA stack involves four or more separate tools: a test management tool, a CI-linked automation framework, a reporting dashboard, and a release tracker. Each has its own data model. None of them communicate properly. The result is manual synchronisation, stale reports, and a team that spends more time maintaining the process than testing the product.
+
+### Tests that break silently
+
+UI automation is brittle by nature. When a selector changes, tests fail. Teams spend significant time triaging failures that have nothing to do with product regressions — they are just automation drift. There is no standard tooling to detect and fix this automatically.
+
+### No traceability
+
+Most automation frameworks have no concept of a requirement. Tests exist as isolated scripts. When a product manager asks "are we testing requirement X?", the honest answer is "we're not sure."
+
+### Release readiness is guesswork
+
+Before a release, someone manually checks dashboards, counts passing tests, and makes a judgement call. There is no objective readiness score, no historical comparison, and no AI layer to surface risks.
+
+## How Qlitz is different
+
+### One platform, full lifecycle
+
+Qlitz is not a test runner with extras bolted on. It is designed from the ground up as a full-lifecycle platform. Every feature — from the canvas to the release state machine — is part of the same data model and shares the same project context.
+
+### AI-native, not AI-added
+
+Auto-Heal, Insights, Story, and Suggestions are not third-party integrations. They are first-class features built into the platform, operating on live project data — your test results, your requirements, your release history.
+
+### Traceability by design
+
+The RTM is not optional. Every test case in Qlitz exists in relation to a requirement. Coverage is always calculable, gaps are always visible, and release readiness is always grounded in real data.
+
+### Framework generation, not just test generation
+
+Qlitz does not generate test scripts and leave you to wire them up. The Canvas produces a complete, runnable automation framework — folder structure, page objects, configuration files, and test cases — ready to drop into your CI pipeline.
+
+## What Qlitz is not
+
+- It is not a replacement for your CI system — it integrates with it
+- It is not a manual testing tool — it is built for automated test lifecycle management
+- It is not opinionated about your test framework — you choose Cypress, Playwright, Selenium, WebdriverIO, or RestAssured

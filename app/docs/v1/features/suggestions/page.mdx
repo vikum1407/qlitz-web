@@ -1,0 +1,52 @@
+export const metadata = {
+  title: 'Suggestions — Qlitz Docs',
+  description: 'Suggestions provides AI-generated, actionable recommendations to improve your test coverage and suite health.',
+}
+
+# Suggestions
+
+Suggestions provides AI-generated recommendations for improving your test coverage, reducing flakiness, and closing gaps before they affect a release. Each suggestion is specific, actionable, and grounded in your project's actual data.
+
+## Where suggestions come from
+
+Suggestions are generated from the combined output of Insights, Coverage, Heatmap, and RTM data. Qlitz runs an analysis pass after each test run and after any significant change to the RTM, producing a prioritised list of recommendations.
+
+Sources include:
+
+- **Coverage gaps** — requirements with no linked tests, or where coverage has regressed
+- **Heatmap cold spots** — application areas with no test activity and linked RTM requirements
+- **Flaky patterns** — tests identified as flaky, with suggestions for stabilisation approaches
+- **Stale test cases** — test cases that have not been executed in a configurable number of runs
+- **Failure clusters** — groups of related failures that suggest a common fix
+
+## Types of suggestions
+
+### Add coverage
+
+*"Requirement REQ-042 (User can export report as PDF) has no linked test cases. Recommended action: add test cases to the Canvas and regenerate your framework."*
+
+These suggestions are sorted by requirement priority — Critical and High requirements with no coverage appear first.
+
+### Stabilise flaky tests
+
+*"Test `login_with_sso` has failed and passed alternately across the last 6 runs without application changes. Recommended action: review selector stability and add explicit wait conditions."*
+
+### Investigate failure clusters
+
+*"14 failing tests share the selector `.checkout-submit-btn`. This may indicate a UI change on the checkout page. Recommended action: check for a recent change to the checkout component and run Auto-Heal."*
+
+### Review stale tests
+
+*"8 test cases have not been executed in the last 15 runs. Recommended action: confirm these tests are still in scope or remove them from the active suite."*
+
+## Acting on suggestions
+
+Each suggestion card has a **Dismiss** option (if the suggestion is not relevant) and a direct link to the relevant RTM requirement, test case, or Canvas action. Dismissed suggestions are hidden from the default view but remain accessible via the **Dismissed** filter.
+
+Suggestions are not persistent — they are recalculated after each run and after RTM changes. A suggestion that is addressed will disappear from the list automatically on the next analysis pass.
+
+## Next steps
+
+- [Insights](/docs/v1/features/insights) — the analysis layer that generates suggestion inputs
+- [Auto-Heal](/docs/v1/features/auto-heal) — the automated fix for selector-based failure clusters
+- [Coverage](/docs/v1/features/coverage) — close coverage gaps suggested by the system

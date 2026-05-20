@@ -1,0 +1,48 @@
+export const metadata = {
+  title: 'Insights — Qlitz Docs',
+  description: 'Insights surfaces AI-driven analysis of your test suite — flakiness, coverage gaps, trends, and risk signals.',
+}
+
+# Insights
+
+Insights is the AI analysis layer of Qlitz. After each test run, Qlitz processes your results, coverage data, and history to surface patterns and signals that would take hours to identify manually.
+
+## What Insights analyses
+
+### Flaky tests
+
+A flaky test is one that passes and fails on the same code without changes to the application. Qlitz identifies flakiness by comparing results across multiple runs and flagging tests with inconsistent outcomes. Flaky tests are ranked by their flakiness score — the ratio of inconsistent results over the last 10 runs.
+
+### Coverage gaps
+
+Insights highlights requirements with no automated coverage, or where coverage has declined since the previous run. Unlike the Coverage tab (which shows current state), the Insights panel flags *changes* — requirements that were covered last run and are not covered now, or requirements that have never been linked to a test.
+
+### Failure clustering
+
+When multiple tests fail, they often share a root cause — a broken page object, a changed API endpoint, or a deployment issue. Insights clusters related failures by shared selectors, modules, and error messages to help you identify whether you have one problem or many.
+
+### Run health score
+
+Each run is assigned a health score (0–100) based on pass rate, coverage impact, and flakiness contribution. The score gives you a single-number summary of run quality that can be tracked over time.
+
+### Trend signals
+
+Qlitz identifies significant trend changes — for example, if your pass rate has declined by more than 10% over the last five runs, or if a previously stable area of the suite has started failing consistently. Trend signals appear as alerts in the Insights panel.
+
+## Reading the Insights panel
+
+The Insights tab is organised into cards:
+
+- **Alerts** — signals that require immediate attention (coverage drops, new flaky tests, clustered failures)
+- **Trends** — charts showing pass rate, coverage, and health score over time
+- **Recommendations** — actionable suggestions generated from the analysis (see [Suggestions](/docs/v1/features/suggestions) for details)
+
+## Insights and releases
+
+When you link a test run to a release, Insights are scoped to that run and appear in the release detail view. This gives you a per-release analysis alongside the release readiness score.
+
+## Next steps
+
+- [Suggestions](/docs/v1/features/suggestions) — AI recommendations generated from Insights data
+- [Heatmap](/docs/v1/features/heatmap) — visual complement to Insights
+- [Release Management](/docs/v1/features/releases) — attach Insights to a release

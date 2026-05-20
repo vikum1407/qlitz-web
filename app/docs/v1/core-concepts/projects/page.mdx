@@ -1,0 +1,110 @@
+export const metadata = {
+  title: 'Projects — Qlitz Docs',
+  description: 'Projects are the fundamental unit of organisation in Qlitz.',
+}
+
+# Projects
+
+A Project is the top-level container in Qlitz. Every artifact — requirements, test cases, generated frameworks, execution results, and releases — belongs to a project.
+
+## What a project represents
+
+A project maps one-to-one with an **application under test**. If your organisation has a customer portal, an admin dashboard, and a mobile API, each gets its own Qlitz project. This separation keeps requirements, coverage, and release history clean and scoped.
+
+## Project tabs
+
+Each project is a workspace with dedicated tabs for every phase of the QA lifecycle:
+
+<table>
+  <thead>
+    <tr>
+      <th>Tab</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Overview</strong></td>
+      <td>Health summary, recent activity, quick stats</td>
+    </tr>
+    <tr>
+      <td><strong>Flows</strong></td>
+      <td>User journey and test flow management</td>
+    </tr>
+    <tr>
+      <td><strong>RTM</strong></td>
+      <td>Requirements Traceability Matrix</td>
+    </tr>
+    <tr>
+      <td><strong>Coverage</strong></td>
+      <td>Test coverage visualisation by requirement</td>
+    </tr>
+    <tr>
+      <td><strong>Insights</strong></td>
+      <td>AI-driven analysis of test patterns and gaps</td>
+    </tr>
+    <tr>
+      <td><strong>Readiness</strong></td>
+      <td>Release readiness score and breakdown</td>
+    </tr>
+    <tr>
+      <td><strong>Heatmap</strong></td>
+      <td>Visual heatmap of test activity across the application</td>
+    </tr>
+    <tr>
+      <td><strong>Suggestions</strong></td>
+      <td>AI-generated recommendations to improve coverage</td>
+    </tr>
+    <tr>
+      <td><strong>Tests</strong></td>
+      <td>Test runner — execute and monitor test runs</td>
+    </tr>
+    <tr>
+      <td><strong>Auto-Heal</strong></td>
+      <td>Automatic test repair events and history</td>
+    </tr>
+    <tr>
+      <td><strong>Replay</strong></td>
+      <td>Visual replay of any recorded test execution</td>
+    </tr>
+    <tr>
+      <td><strong>History</strong></td>
+      <td>Full run history with pass/fail trends</td>
+    </tr>
+    <tr>
+      <td><strong>Story</strong></td>
+      <td>AI-generated narrative of QA status for stakeholders</td>
+    </tr>
+    <tr>
+      <td><strong>Releases</strong></td>
+      <td>Versioned releases with readiness scoring</td>
+    </tr>
+    <tr>
+      <td><strong>Settings</strong></td>
+      <td>Project configuration, integrations, and environment variables</td>
+    </tr>
+  </tbody>
+</table>
+
+## Creating a project
+
+1. Click **New Project** in the global left sidebar
+2. Enter a project name (required) and description (optional)
+3. Set the base URL of the application under test
+4. Click **Create**
+
+The project is immediately available. Start with the RTM tab to define your requirements before moving to the Canvas to generate your first framework.
+
+## Project data model
+
+Behind the scenes, each project stores data across two layers:
+
+- **Database** — project metadata, release records, RTM requirements, and test case definitions are stored in PostgreSQL via Prisma
+- **File store** — execution results, auto-heal events, replay recordings, and generated framework archives are stored as JSON files scoped to the project ID
+
+This hybrid model keeps structured data queryable while keeping large execution artifacts lightweight and portable.
+
+## Next steps
+
+- [Qlitz Canvas](/docs/v1/core-concepts/canvas) — generate your first automation framework
+- [RTM](/docs/v1/core-concepts/rtm) — define and trace your requirements

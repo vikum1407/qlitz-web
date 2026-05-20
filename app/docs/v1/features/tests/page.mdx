@@ -1,0 +1,89 @@
+export const metadata = {
+  title: 'Tests — Qlitz Docs',
+  description: 'The Tests tab is the test runner inside Qlitz — trigger runs, monitor execution, and view results without leaving the platform.',
+}
+
+# Tests
+
+The Tests tab is the integrated test runner inside Qlitz. You can trigger runs, monitor execution in real time, and view results — without leaving the platform or switching to a separate CI dashboard.
+
+## Running tests
+
+To start a test run:
+
+1. Navigate to the **Tests** tab in your project
+2. Select the test suite or individual test cases to run
+3. Choose the target environment (configured in project Settings)
+4. Click **Run**
+
+Qlitz dispatches the run to the configured execution environment and begins streaming results back as tests complete.
+
+## Monitoring a live run
+
+While a run is in progress, the Tests tab shows a live view of each test case with its current status:
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Queued</strong></td>
+      <td>Waiting to execute</td>
+    </tr>
+    <tr>
+      <td><strong>Running</strong></td>
+      <td>Currently executing</td>
+    </tr>
+    <tr>
+      <td><strong>Passed</strong></td>
+      <td>Completed successfully</td>
+    </tr>
+    <tr>
+      <td><strong>Failed</strong></td>
+      <td>Completed with one or more assertion failures</td>
+    </tr>
+    <tr>
+      <td><strong>Skipped</strong></td>
+      <td>Bypassed due to a condition or dependency</td>
+    </tr>
+    <tr>
+      <td><strong>Error</strong></td>
+      <td>Execution error — could not run the test</td>
+    </tr>
+  </tbody>
+</table>
+
+You can expand any in-progress or completed test case to see its steps, assertions, and any error output in real time.
+
+## After a run completes
+
+When a run finishes, Qlitz immediately:
+
+- Updates the **Coverage** tab with new requirement coverage data
+- Recalculates the **Readiness** score
+- Runs the **Insights** analysis pass and updates the Insights panel
+- Stores the run in **History**
+- Makes the run available in **Replay** if recording was enabled
+
+## Test case management
+
+The Tests tab also provides a list view of all test cases in your project. From here you can:
+
+- Filter by status, linked requirement, or tag
+- Mark test cases as active or inactive
+- View the requirement each test case is linked to in the RTM
+- Manually trigger a single test case in isolation
+
+## Environment configuration
+
+Test environments (base URLs, credentials, environment variables) are managed in the project **Settings** tab. Multiple environments (e.g. staging, production) can be configured and selected at run time.
+
+## Next steps
+
+- [History](/docs/v1/features/history) — view and compare past runs
+- [Replay](/docs/v1/features/replay) — replay any recorded execution visually
+- [Auto-Heal](/docs/v1/features/auto-heal) — automatically repair tests that fail due to UI changes

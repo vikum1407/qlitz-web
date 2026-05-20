@@ -1,0 +1,107 @@
+export const metadata = {
+  title: 'Qlitz Canvas — Qlitz Docs',
+  description: 'The Qlitz Canvas is the visual framework designer that generates complete, runnable automation projects.',
+}
+
+# Qlitz Canvas
+
+The Qlitz Canvas is the framework generation engine at the core of Qlitz. It produces a complete, runnable automation project — not just test scripts — from a visual configuration interface.
+
+## What the Canvas generates
+
+Most code generators produce test files and leave the rest to you. The Canvas generates a full project:
+
+- **Configuration files** — framework config, environment setup, reporter configuration
+- **Folder structure** — organised according to the chosen framework's best practices
+- **Page objects** — base classes and example implementations
+- **Test stubs** — linked to your RTM requirements, ready to implement
+- **CI-ready setup** — scripts and configuration compatible with standard pipelines
+
+The generated output is a zip archive you can extract directly into your repository.
+
+## Supported frameworks and languages
+
+<table>
+  <thead>
+    <tr>
+      <th>Framework</th>
+      <th>TypeScript</th>
+      <th>JavaScript</th>
+      <th>Java</th>
+      <th>Python</th>
+      <th>C#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Cypress</strong></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Playwright</strong></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td><strong>Selenium</strong></td>
+      <td>—</td>
+      <td>—</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td><strong>WebdriverIO</strong></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>RestAssured</strong></td>
+      <td>—</td>
+      <td>—</td>
+      <td>✓</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+## Using the Canvas
+
+### 1. Select your framework
+
+Choose the framework that matches your team's skills and your project's requirements. If you are starting fresh, Cypress or Playwright are recommended for UI automation. RestAssured is the choice for Java-based API testing.
+
+### 2. Select your language
+
+Available languages depend on the chosen framework. For most teams, TypeScript is recommended for Cypress, Playwright, and WebdriverIO projects.
+
+### 3. Configure your project
+
+- **Base URL** — the root URL of the application under test
+- **Environment variables** — any secrets or config values your tests need
+- **Test scope** — select which RTM requirements to include as test stubs in the generated output
+
+### 4. Generate
+
+Click **Generate Framework**. Qlitz builds the project server-side and makes the archive available for download. Generation typically completes in a few seconds.
+
+## Framework persistence
+
+Generated frameworks are saved against your project. You can re-generate at any time — for example, after adding new RTM requirements or changing your framework configuration. Previous generations are retained in project history.
+
+## Next steps
+
+- [Quick Start](/docs/v1/get-started/quick-start) — walk through a full generation end to end
+- [Cypress](/docs/v1/framework-generation/cypress) — Cypress-specific generation details
+- [Playwright](/docs/v1/framework-generation/playwright) — Playwright-specific generation details

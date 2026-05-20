@@ -1,0 +1,295 @@
+export const metadata = {
+  title: 'Releases API — Qlitz Docs',
+  description: 'Manage releases, trigger readiness assessments, and link artifacts via the Qlitz REST API.',
+}
+
+# Releases API
+
+## List releases
+
+```http
+GET /projects/:projectId/releases
+```
+
+Returns all releases for the project with a summary readiness score per release.
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "id": "rel_abc123",
+      "name": "v2.4.0",
+      "status": "validating",
+      "environment": "staging",
+      "targetDate": "2026-05-30T00:00:00.000Z",
+      "readinessSummary": {
+        "score": 78,
+        "coveragePercent": 84,
+        "passRate": 91
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Create a release
+
+```http
+POST /projects/:projectId/releases
+```
+
+**Request body**
+
+```json
+{
+  "name": "v2.4.0",
+  "environment": "production",
+  "startDate": "2026-05-15T00:00:00.000Z",
+  "targetDate": "2026-05-30T00:00:00.000Z",
+  "requirementIds": ["REQ-001", "REQ-002", "REQ-042"]
+}
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>name</code></td>
+      <td>string</td>
+      <td>Yes</td>
+      <td>Release name or version</td>
+    </tr>
+    <tr>
+      <td><code>environment</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>Target environment</td>
+    </tr>
+    <tr>
+      <td><code>startDate</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>ISO 8601 start date</td>
+    </tr>
+    <tr>
+      <td><code>targetDate</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>ISO 8601 target delivery date</td>
+    </tr>
+    <tr>
+      <td><code>requirementIds</code></td>
+      <td>string[]</td>
+      <td>No</td>
+      <td>RTM requirement IDs in scope for this release</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response** — `201 Created`
+
+Returns the created release. Initial status is `planned`.
+
+---
+
+## Get a release
+
+```http
+GET /projects/:projectId/releases/:releaseId
+```
+
+Returns full release detail including linked artifacts and current readiness breakdown.
+
+**Response**
+
+```json
+{
+  "id": "rel_abc123",
+  "name": "v2.4.0",
+  "status": "validating",
+  "readiness": {
+    "score": 78,
+    "coveragePercent": 84,
+    "passRate": 91,
+    "criticalCoveragePercent": 100,
+    "flakinessPenalty": 6
+  },
+  "linkedRuns": ["run_xyz789"],
+  "linkedInsights": [],
+  "links": []
+}
+```
+
+---
+
+## Update a release
+
+```http
+PATCH /projects/:projectId/releases/:releaseId
+```
+
+Updates release fields. All fields optional.
+
+```json
+{
+  "targetDate": "2026-06-05T00:00:00.000Z",
+  "requirementIds": ["REQ-001", "REQ-002", "REQ-042", "REQ-050"]
+}
+```
+
+---
+
+## Delete a release
+
+```http
+DELETE /projects/:projectId/releases/:releaseId
+```
+
+Deletes the release and all linked artifact associations. Does not delete the linked runs or requirements themselves.
+
+---
+
+## Transition release status
+
+```http
+POST /projects/:projectId/releases/:releaseId/status
+```
+
+Advances or updates the release status. Transitions are enforced — invalid transitions return `422`.
+
+**Request body**
+
+```json
+{
+  "status": "ready_for_validation"
+}
+```
+
+**Valid transitions**
+
+```
+planned → in_progress → ready_for_validation → validating → ready_to_ship → shipped
+shipped → rolled_back
+```
+
+---
+
+## Run a readiness assessment
+
+```http
+POST /projects/:projectId/releases/:releaseId/assess
+```
+
+Triggers a readiness assessment scoped to the release's requirements. If the calculated score meets the configured threshold, the release automatically advances to `ready_to_ship`.
+
+**Response**
+
+```json
+{
+  "score": 91,
+  "threshold": 80,
+  "passed": true,
+  "newStatus": "ready_to_ship",
+  "breakdown": {
+    "coveragePercent": 96,
+    "passRate": 94,
+    "criticalCoveragePercent": 100,
+    "flakinessPenalty": 3
+  }
+}
+```
+
+---
+
+## Get release readiness
+
+```http
+GET /projects/:projectId/releases/:releaseId/readiness
+```
+
+Returns the current readiness score and breakdown without triggering a new assessment.
+
+---
+
+## Get release metrics delta
+
+```http
+GET /projects/:projectId/releases/:releaseId/metrics
+```
+
+Returns a delta comparison between this release and the previous release for the same project.
+
+**Response**
+
+```json
+{
+  "coverageDelta": 4.2,
+  "passRateDelta": -1.8,
+  "readinessDelta": 6,
+  "requirementsAdded": 3,
+  "requirementsRemoved": 0
+}
+```
+
+---
+
+## Link an artifact to a release
+
+```http
+POST /projects/:projectId/releases/:releaseId/links
+```
+
+**Request body**
+
+```json
+{
+  "type": "run",
+  "targetId": "run_xyz789"
+}
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>run</code></td>
+      <td>A test run from the Tests API</td>
+    </tr>
+    <tr>
+      <td><code>insight</code></td>
+      <td>An Insights report</td>
+    </tr>
+    <tr>
+      <td><code>story</code></td>
+      <td>A generated Story narrative</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response** — `201 Created` — returns the created link object with an ID.
+
+---
+
+## Remove a linked artifact
+
+```http
+DELETE /projects/:projectId/releases/:releaseId/links/:linkId
+```
+
+Removes the artifact association. The artifact itself is not deleted.

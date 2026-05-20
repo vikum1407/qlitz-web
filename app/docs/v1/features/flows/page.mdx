@@ -1,0 +1,65 @@
+export const metadata = {
+  title: 'Flows — Qlitz Docs',
+  description: 'Flows represent user journeys across your application, connecting individual test cases into meaningful end-to-end paths.',
+}
+
+# Flows
+
+Flows represent end-to-end user journeys across your application. Where individual test cases verify isolated behaviours, flows connect those cases into meaningful paths that reflect how real users interact with the system.
+
+## What a flow is
+
+A flow is a named sequence of steps that maps to a user journey — for example, *checkout as a guest user* or *reset password and log back in*. Each step in a flow corresponds to a test case or a group of assertions, and each flow can be linked to one or more RTM requirements.
+
+Flows give you a higher-level view of coverage. A requirement might be covered by five individual test cases, but a flow tells you whether those cases form a coherent journey — or whether there are gaps between them.
+
+## Creating a flow
+
+1. Navigate to the **Flows** tab in your project
+2. Click **New Flow**
+3. Give the flow a name that describes the user journey
+4. Add steps by selecting existing test cases or defining new ones
+5. Link the flow to the relevant RTM requirements
+6. Save
+
+Flows are visualised as a graph — each step is a node, and edges represent the transition from one step to the next. Conditional paths (e.g. login success vs login failure) can be modelled as branches within the same flow.
+
+## Flow status
+
+A flow's status is derived from the status of its constituent steps in the most recent test run:
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Passing</strong></td>
+      <td>All steps passed</td>
+    </tr>
+    <tr>
+      <td><strong>Failing</strong></td>
+      <td>One or more steps failed</td>
+    </tr>
+    <tr>
+      <td><strong>Partial</strong></td>
+      <td>Some steps have not been executed</td>
+    </tr>
+    <tr>
+      <td><strong>Not Run</strong></td>
+      <td>No execution data for this flow</td>
+    </tr>
+  </tbody>
+</table>
+
+## Flows and coverage
+
+Flows contribute to coverage independently of individual test cases. The Coverage tab shows both requirement-level coverage (from test cases) and journey-level coverage (from flows), giving you two complementary views of the same test suite.
+
+## Next steps
+
+- [Coverage](/docs/v1/features/coverage) — see how flows contribute to coverage metrics
+- [RTM](/docs/v1/core-concepts/rtm) — link flows to requirements

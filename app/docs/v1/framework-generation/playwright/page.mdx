@@ -1,0 +1,143 @@
+export const metadata = {
+  title: 'Playwright — Qlitz Docs',
+  description: 'Generate a complete Playwright automation framework from the Qlitz Canvas, in TypeScript, JavaScript, Java, Python, or C#.',
+}
+
+# Playwright
+
+Qlitz generates a complete Playwright automation framework with cross-browser support across Chromium, Firefox, and WebKit. Playwright is the only framework in Qlitz with full multi-language support — covering TypeScript, JavaScript, Java, Python, and C#.
+
+## Supported languages
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TypeScript</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>C#</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+## Generated project structure (TypeScript)
+
+```
+tests/
+  *.spec.ts               ← test files linked to RTM requirements
+pages/
+  base/
+    BasePage.ts           ← shared page object base class
+  *.page.ts               ← one page object per application area
+fixtures/
+  fixtures.ts             ← Playwright test fixtures
+playwright.config.ts      ← Playwright configuration with Qlitz reporter
+package.json
+tsconfig.json
+.env.example
+```
+
+## Generated project structure (Java)
+
+```
+src/
+  test/
+    java/
+      pages/
+        BasePage.java
+        *.java
+      tests/
+        *.java
+      fixtures/
+        TestFixtures.java
+  main/
+    resources/
+      playwright.properties
+pom.xml
+.env.example
+```
+
+## Page objects
+
+Playwright page objects in Qlitz use the Locator API rather than raw selectors, which provides built-in auto-waiting and retry-ability. Each generated page object extends a typed `BasePage` that wraps common Playwright interactions.
+
+```typescript
+// Example: DashboardPage.ts (generated)
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base/BasePage';
+
+export class DashboardPage extends BasePage {
+  private readonly newProjectButton: Locator;
+
+  constructor(page: Page) {
+    super(page);
+    this.newProjectButton = page.getByTestId('new-project-btn');
+  }
+
+  async createProject(name: string) {
+    await this.newProjectButton.click();
+    await this.page.getByLabel('Project name').fill(name);
+    await this.page.getByRole('button', { name: 'Create' }).click();
+  }
+}
+```
+
+## Configuration
+
+The generated `playwright.config.ts` includes:
+
+- Multi-browser project configuration (Chromium, Firefox, WebKit)
+- Base URL from your Canvas configuration
+- Qlitz results reporter
+- Parallel execution settings
+- Screenshot and video capture on failure (feeds Replay)
+
+## Running the generated framework
+
+```bash
+# Install dependencies and browsers
+npm install
+npx playwright install
+
+# Run all tests
+npx playwright test
+
+# Run in a specific browser
+npx playwright test --project=firefox
+
+# Run with trace viewer
+npx playwright test --trace on
+
+# Run against a specific environment
+BASE_URL=https://staging.yourapp.com npx playwright test
+```
+
+## API testing with Playwright
+
+Qlitz also supports Playwright for API automation. When you select Playwright (API) in the Canvas, the generated framework uses Playwright's `APIRequestContext` rather than a browser, producing a lightweight API test suite without browser overhead.
+
+## Next steps
+
+- [Cypress](/docs/v1/framework-generation/cypress) — simpler setup for teams focused on a single browser
+- [Selenium](/docs/v1/framework-generation/selenium) — Java-native browser automation
+- [Auto-Heal](/docs/v1/features/auto-heal) — repair broken locators in generated tests

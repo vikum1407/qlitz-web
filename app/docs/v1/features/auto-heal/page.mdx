@@ -1,0 +1,87 @@
+export const metadata = {
+  title: 'Auto-Heal — Qlitz Docs',
+  description: 'Auto-Heal detects when tests break due to UI changes rather than genuine failures, and repairs them automatically.',
+}
+
+# Auto-Heal
+
+Auto-Heal detects when tests break due to changes in your application — shifted selectors, renamed elements, restructured pages — and repairs them automatically, without manual intervention.
+
+## The problem Auto-Heal solves
+
+A significant proportion of test failures in any UI automation suite are not genuine regressions. They are automation drift — tests that fail because a class name changed, a button moved, or a data attribute was renamed during a routine frontend update.
+
+Without Auto-Heal, an engineer must triage each failure, identify that it is not a real bug, locate the broken selector, fix it, and re-run. In a suite of hundreds of tests, this is a recurring maintenance burden that diverts QA effort away from real quality work.
+
+Auto-Heal eliminates this category of failure entirely.
+
+## How Auto-Heal works
+
+After a test run completes, Qlitz analyses each failure:
+
+1. **Drift detection** — Qlitz compares the selector used in the failing test against the current DOM of the application. If the element exists but the selector no longer matches, the failure is classified as drift rather than a genuine regression.
+
+2. **Selector candidate generation** — Qlitz generates a ranked list of alternative selectors that would match the target element in the current DOM, using stable attributes (data-testid, aria labels, accessible roles) where available.
+
+3. **Heal proposal** — A heal proposal is created with the original selector, the proposed replacement, and a confidence score.
+
+4. **Application** — Depending on your configuration, proposals can be applied automatically (auto-apply) or require manual approval in the Auto-Heal tab.
+
+## The Auto-Heal tab
+
+The Auto-Heal tab shows a log of all heal events for your project:
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Test Case</strong></td>
+      <td>The test that triggered the heal</td>
+    </tr>
+    <tr>
+      <td><strong>Original Selector</strong></td>
+      <td>The selector that stopped matching</td>
+    </tr>
+    <tr>
+      <td><strong>Proposed Selector</strong></td>
+      <td>The replacement selector</td>
+    </tr>
+    <tr>
+      <td><strong>Confidence</strong></td>
+      <td>How certain Qlitz is that the replacement is correct</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>Pending, Applied, Rejected</td>
+    </tr>
+    <tr>
+      <td><strong>Run</strong></td>
+      <td>The run that triggered the heal event</td>
+    </tr>
+  </tbody>
+</table>
+
+You can approve or reject individual proposals from this view. Approved proposals are written back into the test case definition and take effect on the next run.
+
+## Configuration
+
+Auto-Heal behaviour is configured per project in **Settings**:
+
+- **Auto-apply threshold** — confidence score above which proposals are applied without approval (default: 90%). Set to 0 to require manual approval for all proposals.
+- **Selector preference** — prioritise `data-testid`, `aria-label`, CSS selectors, or XPath in that order
+- **Heal notifications** — get notified when a heal event occurs and when proposals are applied
+
+## Heal history
+
+All heal events are retained in the Auto-Heal log indefinitely. This gives you an audit trail of every selector change Qlitz has made to your test suite and the run that triggered each one.
+
+## Next steps
+
+- [Tests](/docs/v1/features/tests) — run tests and see heal events in context
+- [Insights](/docs/v1/features/insights) — failure clusters that suggest a heal opportunity
+- [Suggestions](/docs/v1/features/suggestions) — Qlitz may suggest running Auto-Heal on failure clusters

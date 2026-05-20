@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function WaitlistPage() {
   return (
-    <main className="min-h-screen bg-transparent text-white">
+    <main className="min-h-screen">
       {/* HERO */}
       <section className="pt-28 pb-20 px-6 text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
@@ -16,20 +16,20 @@ export default function WaitlistPage() {
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
           Get early access to the Qlitz platform and experience the future of autonomous software quality.
         </p>
       </section>
 
       {/* FORM SECTION */}
-      <section className="py-24 px-6 border-t border-white/10">
+      <section className="py-24 px-6 border-t border-slate-200">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
             Be First to Try Qlitz
           </h2>
 
-          <p className="text-white/60 mb-10">
-            Sign up below and you’ll be notified as soon as early access opens.
+          <p className="text-slate-600 mb-10">
+            Sign up below and you'll be notified as soon as early access opens.
           </p>
 
           {/* Tally Form Embed */}
@@ -47,19 +47,19 @@ export default function WaitlistPage() {
       </section>
 
       {/* CTA BACK TO HOME */}
-      <section className="py-24 px-6 border-t border-white/10 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="py-24 px-6 border-t border-slate-200 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
           Want to Learn More?
         </h2>
 
-        <p className="text-white/60 max-w-xl mx-auto mb-10">
+        <p className="text-slate-600 max-w-xl mx-auto mb-10">
           Explore our vision, approach, and product to see how Qlitz is redefining software quality.
         </p>
 
         <Link
           href="/"
           prefetch
-          className="px-10 py-4 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] font-semibold hover:opacity-90 transition"
+          className="px-10 py-4 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white font-semibold hover:opacity-90 transition shadow-[0_0_22px_rgba(138,58,255,0.3)]"
         >
           Back to Home
         </Link>

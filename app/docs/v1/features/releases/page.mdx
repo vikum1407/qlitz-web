@@ -1,0 +1,128 @@
+export const metadata = {
+  title: 'Release Management — Qlitz Docs',
+  description: 'Release Management gives every delivery a versioned QA record — with scoped readiness, metrics history, and a structured status workflow.',
+}
+
+# Release Management
+
+Release Management gives every delivery a versioned QA record. Each release in Qlitz is a container for a specific delivery window — a sprint, a milestone, or a production deployment — with its own scoped readiness score, linked test runs, and status workflow.
+
+## What a release is
+
+A release is a named, versioned record that represents a delivery checkpoint. It is not a code tag or a deployment record — it is a QA artifact that answers: *"What was the quality state of the application when we shipped version X?"*
+
+Each release contains:
+
+- A name and version identifier
+- A delivery window (start date and target date)
+- A target environment (staging, production, etc.)
+- A set of in-scope requirements scoped from the RTM
+- Linked test runs, Insights, and Story reports
+- A readiness score calculated against the scoped requirements
+- A status in the release workflow
+
+## The release status machine
+
+Every release moves through a defined sequence of statuses:
+
+```
+planned → in_progress → ready_for_validation → validating → ready_to_ship → shipped
+                                                                                ↓
+                                                                          rolled_back
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Planned</strong></td>
+      <td>Release is defined but QA work has not started</td>
+    </tr>
+    <tr>
+      <td><strong>In Progress</strong></td>
+      <td>Active testing underway</td>
+    </tr>
+    <tr>
+      <td><strong>Ready for Validation</strong></td>
+      <td>Team believes testing is complete; awaiting formal validation</td>
+    </tr>
+    <tr>
+      <td><strong>Validating</strong></td>
+      <td>Formal validation in progress (e.g. UAT, sign-off)</td>
+    </tr>
+    <tr>
+      <td><strong>Ready to Ship</strong></td>
+      <td>Readiness threshold met; approved to deploy</td>
+    </tr>
+    <tr>
+      <td><strong>Shipped</strong></td>
+      <td>Deployed to production</td>
+    </tr>
+    <tr>
+      <td><strong>Rolled Back</strong></td>
+      <td>Shipped but subsequently rolled back</td>
+    </tr>
+  </tbody>
+</table>
+
+Status transitions are enforced — you cannot skip steps or move backwards except to **Rolled Back** from **Shipped**.
+
+## Creating a release
+
+1. Navigate to the **Releases** tab in your project
+2. Click **New Release**
+3. Enter a release name or version (e.g. `v2.4.0` or `Sprint 24`)
+4. Set the target date and environment
+5. Select the in-scope requirements from the RTM
+6. Click **Create**
+
+The release is created in **Planned** status. Move it to **In Progress** when testing begins.
+
+## Scoped readiness
+
+When you run a readiness assessment on a release, Qlitz calculates the readiness score using only the requirements scoped to that release. This isolates the release from unrelated work in the same project.
+
+To run an assessment:
+
+1. Open the release detail view
+2. Click **Run Assessment**
+3. Qlitz evaluates coverage, pass rates, and flakiness for the scoped requirements
+4. If the score meets the configured threshold, the release automatically advances to **Ready to Ship**
+
+## Linking artifacts
+
+You can link test runs, Insights reports, and Story narratives to a release:
+
+- **Link a run** — associates a specific test execution with the release, making its results available in the release detail view
+- **Link Insights** — attaches an analysis report to the release for audit purposes
+- **Link Story** — attaches a human-readable QA narrative (see [Story](/docs/v1/features/story))
+
+Linked artifacts are listed in the release detail view and are included in the release's readiness calculation where applicable.
+
+## Metrics delta
+
+Each release shows a metrics delta compared to the previous release for the same project:
+
+- Coverage change (percentage points gained or lost)
+- Pass rate change
+- Readiness score change
+- Number of requirements added or removed from scope
+
+The delta gives you a release-over-release view of quality trend without needing to manually compare reports.
+
+## The organisation releases hub
+
+In addition to the per-project Releases tab, Qlitz provides an organisation-level **Release Hub** accessible from the global sidebar. The hub shows all active releases across every project in one view, with filters for status, environment, and target date.
+
+This gives engineering leads and release managers visibility across the full portfolio without needing to open each project individually.
+
+## Next steps
+
+- [Readiness](/docs/v1/features/readiness) — understand how the readiness score is calculated
+- [Story](/docs/v1/features/story) — generate a narrative for a release
+- [History](/docs/v1/features/history) — link runs from the history log to a release

@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function VisionPage() {
   return (
-    <main className="min-h-screen bg-transparent text-white">
+    <main className="min-h-screen">
       {/* HERO */}
       <section className="pt-28 pb-20 px-6 text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
@@ -16,7 +16,7 @@ export default function VisionPage() {
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
           Qlitz exists to redefine how the world thinks about software quality — from a slow,
           reactive process to an intelligent, autonomous system that empowers engineering teams
           everywhere.
@@ -24,12 +24,12 @@ export default function VisionPage() {
       </section>
 
       {/* SECTION 1 */}
-      <section className="py-24 px-6 border-t border-white/10">
+      <section className="py-24 px-6 border-t border-slate-200">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
             Quality Should Be Autonomous
           </h2>
-          <p className="text-white/60 max-w-3xl mx-auto">
+          <p className="text-slate-600 max-w-3xl mx-auto">
             Software systems are becoming more complex, distributed, and dynamic. Traditional
             testing cannot keep up. Qlitz envisions a world where quality is continuously monitored,
             validated, and improved — without manual intervention.
@@ -38,26 +38,26 @@ export default function VisionPage() {
       </section>
 
       {/* SECTION 2 */}
-      <section className="py-24 px-6 border-t border-white/10">
+      <section className="py-24 px-6 border-t border-slate-200">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
           <div>
-            <h3 className="text-2xl font-bold mb-3">Intelligent</h3>
-            <p className="text-white/60">
+            <h3 className="text-2xl font-bold mb-3 text-slate-900">Intelligent</h3>
+            <p className="text-slate-600">
               Systems that understand behavior, detect anomalies, and predict failures before they
               happen.
             </p>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold mb-3">Adaptive</h3>
-            <p className="text-white/60">
+            <h3 className="text-2xl font-bold mb-3 text-slate-900">Adaptive</h3>
+            <p className="text-slate-600">
               Quality engines that evolve with your product, infrastructure, and user patterns.
             </p>
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold mb-3">Effortless</h3>
-            <p className="text-white/60">
+            <h3 className="text-2xl font-bold mb-3 text-slate-900">Effortless</h3>
+            <p className="text-slate-600">
               A future where engineering teams focus on innovation, not repetitive validation work.
             </p>
           </div>
@@ -65,29 +65,29 @@ export default function VisionPage() {
       </section>
 
       {/* SECTION 3 */}
-      <section className="py-24 px-6 border-t border-white/10">
+      <section className="py-24 px-6 border-t border-slate-200">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
             A Unified Quality Brain
           </h2>
-          <p className="text-white/60 max-w-3xl mx-auto mb-10">
+          <p className="text-slate-600 max-w-3xl mx-auto mb-10">
             Qlitz is building a central intelligence layer that understands your entire system —
             code, data, infrastructure, and user behavior — and ensures reliability across every
             dimension.
           </p>
 
           <div className="grid md:grid-cols-2 gap-10 text-left">
-            <div className="p-6 border border-white/10 rounded-xl bg-white/5">
-              <h4 className="text-xl font-semibold mb-3">Holistic Understanding</h4>
-              <p className="text-white/60">
+            <div className="p-6 border border-slate-200 rounded-xl bg-slate-50">
+              <h4 className="text-xl font-semibold mb-3 text-slate-900">Holistic Understanding</h4>
+              <p className="text-slate-600">
                 Quality is not just tests — it's architecture, performance, resilience, and user
                 experience.
               </p>
             </div>
 
-            <div className="p-6 border border-white/10 rounded-xl bg-white/5">
-              <h4 className="text-xl font-semibold mb-3">Continuous Evolution</h4>
-              <p className="text-white/60">
+            <div className="p-6 border border-slate-200 rounded-xl bg-slate-50">
+              <h4 className="text-xl font-semibold mb-3 text-slate-900">Continuous Evolution</h4>
+              <p className="text-slate-600">
                 As your product grows, Qlitz learns, adapts, and improves its validation
                 intelligence.
               </p>
@@ -97,11 +97,11 @@ export default function VisionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 border-t border-white/10 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      <section className="py-24 px-6 border-t border-slate-200 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
           The Future Is Autonomous Quality
         </h2>
-        <p className="text-white/60 max-w-xl mx-auto mb-10">
+        <p className="text-slate-600 max-w-xl mx-auto mb-10">
           Join us in shaping the next era of software engineering — where quality becomes a
           superpower, not a bottleneck.
         </p>
@@ -109,7 +109,7 @@ export default function VisionPage() {
         <Link
           href="/waitlist"
           prefetch
-          className="px-10 py-4 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] font-semibold hover:opacity-90 transition"
+          className="px-10 py-4 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white font-semibold hover:opacity-90 transition shadow-[0_0_22px_rgba(138,58,255,0.3)]"
         >
           Join the Waitlist
         </Link>

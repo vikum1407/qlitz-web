@@ -1,0 +1,52 @@
+export const metadata = {
+  title: 'Story — Qlitz Docs',
+  description: 'Story generates a plain-language QA narrative from your project data — ready to share with stakeholders who do not read test reports.',
+}
+
+# Story
+
+Story generates a plain-language narrative of your project's QA status. It translates test results, coverage data, and release readiness into a written summary that any stakeholder can read and understand — no test report interpretation required.
+
+## Why Story exists
+
+Test results are technical artifacts. A pass rate of 84%, 12 failing tests, and a readiness score of 71 are meaningful to a QA engineer but opaque to a product manager or engineering director asking "are we good to ship?"
+
+Story bridges that gap. It takes the same underlying data and produces a concise, human-readable narrative that answers the questions stakeholders actually ask.
+
+## What Story generates
+
+A Story report contains:
+
+**Executive summary**
+A two to three sentence overview of the project's current QA state — whether the suite is healthy, what the key risks are, and whether the project is on track for its next release.
+
+**Coverage narrative**
+A plain-language description of what is and is not covered, with specific call-outs for any Critical or High priority requirements that lack test coverage.
+
+**Recent run analysis**
+A summary of the most recent test run — what passed, what failed, and whether the failures represent genuine regressions or automation drift that Auto-Heal has addressed.
+
+**Release outlook**
+If the project has an active release in progress, Story includes a readiness assessment for that release — what is needed to reach Ready to Ship and how close the project currently is.
+
+**Trend commentary**
+A brief assessment of whether quality is improving or declining, based on pass rate and coverage trends over the last five runs.
+
+## Generating a Story
+
+1. Navigate to the **Story** tab in your project
+2. Click **Generate Story**
+3. Optionally select a specific run or release to focus the narrative on
+4. The story is generated and displayed in the viewer
+
+Stories can be copied as plain text or exported as a formatted document for inclusion in sprint reports, release notes, or stakeholder updates.
+
+## Story and releases
+
+When you generate a story scoped to a release, the output is automatically saved to that release's detail view. This means every release in Qlitz has a human-readable QA narrative alongside its technical readiness data — useful for release sign-off reviews and post-release retrospectives.
+
+## Next steps
+
+- [Release Management](/docs/v1/features/releases) — attach a story to a release
+- [Insights](/docs/v1/features/insights) — the analysis layer that informs the Story narrative
+- [Readiness](/docs/v1/features/readiness) — the readiness data that Story summarises

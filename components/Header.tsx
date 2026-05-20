@@ -13,6 +13,7 @@ const navItems = [
   { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/docs", label: "Docs" },
 ];
 
 export default function Header() {
@@ -41,7 +42,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full z-50 border-b border-white/10"
+      className="fixed top-0 left-0 w-full z-50 border-b border-slate-200/80"
     >
       <nav className="header-inner max-w-6xl mx-auto flex items-center justify-between py-4 px-4 transition-all">
 

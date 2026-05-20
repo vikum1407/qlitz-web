@@ -11,6 +11,7 @@ const navItems = [
   { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/docs", label: "Docs" },
 ];
 
 export default function MobileMenu() {
@@ -23,26 +24,26 @@ export default function MobileMenu() {
         className="md:hidden flex flex-col gap-1.5"
         onClick={() => setOpen(true)}
       >
-        <span className="w-6 h-0.5 bg-white"></span>
-        <span className="w-6 h-0.5 bg-white"></span>
-        <span className="w-6 h-0.5 bg-white"></span>
+        <span className="w-6 h-0.5 bg-slate-800"></span>
+        <span className="w-6 h-0.5 bg-slate-800"></span>
+        <span className="w-6 h-0.5 bg-slate-800"></span>
       </button>
 
       {open && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
           onClick={() => setOpen(false)}
         />
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#0A0A0F] border-l border-white/10 z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-64 bg-white border-l border-slate-200 z-50 transform transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex justify-end p-4">
           <button onClick={() => setOpen(false)}>
-            <span className="text-3xl text-white">&times;</span>
+            <span className="text-3xl text-slate-700">&times;</span>
           </button>
         </div>
 
@@ -56,8 +57,8 @@ export default function MobileMenu() {
                 onClick={() => setOpen(false)}
                 className={`transition ${
                   active
-                    ? "text-white font-semibold"
-                    : "text-white/80 hover:text-white"
+                    ? "text-slate-900 font-semibold"
+                    : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 {item.label}
@@ -68,7 +69,7 @@ export default function MobileMenu() {
           <Link
             href="/waitlist"
             onClick={() => setOpen(false)}
-            className="mt-4 px-5 py-3 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-center font-semibold shadow-[0_0_18px_rgba(138,58,255,0.35)] hover:opacity-90 transition"
+            className="mt-4 px-5 py-3 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white text-center font-semibold shadow-[0_0_18px_rgba(138,58,255,0.25)] hover:opacity-90 transition"
           >
             Join Waitlist
           </Link>

@@ -1,0 +1,64 @@
+export const metadata = {
+  title: 'Replay — Qlitz Docs',
+  description: 'Replay lets you visually re-watch any recorded test execution step by step to diagnose failures without re-running the test.',
+}
+
+# Replay
+
+Replay lets you watch any recorded test execution step by step — seeing exactly what the test saw when it ran. When a test fails and the error message is not enough, Replay gives you the full picture.
+
+## What Replay records
+
+When recording is enabled for a run, Qlitz captures:
+
+- A screenshot at each test step
+- The state of the DOM at key interaction points
+- Console output and network requests per step
+- Timing data — how long each step took to execute
+- The assertion that was evaluated and its result
+
+These artifacts are stitched together into a timeline you can scrub through in the Replay viewer.
+
+## Opening a replay
+
+1. Navigate to the **Replay** tab in your project
+2. Select a run from the run list on the left
+3. Select the test case you want to replay
+4. The Replay viewer opens with the full step timeline
+
+Alternatively, from the **History** tab, click any test case result to jump directly into its replay.
+
+## The Replay viewer
+
+The viewer is split into three panels:
+
+**Left — Step timeline**
+A chronological list of every step in the test. Each step shows its name, duration, and pass/fail status. Click any step to jump to it.
+
+**Centre — Screenshot panel**
+The screenshot captured at the selected step. If the step involved a user interaction (click, type, hover), the target element is highlighted with an overlay.
+
+**Right — Details panel**
+For the selected step: the assertion evaluated, the actual vs expected values if the step failed, console output at that moment, and any network requests made during the step.
+
+## Diagnosing failures with Replay
+
+The most effective way to use Replay for failure diagnosis:
+
+1. Jump to the first failing step in the timeline
+2. Compare the screenshot with what you expect the UI to look like at that point
+3. Check the assertion detail — is the element present but wrong, or missing entirely?
+4. Step back one step to see what the UI looked like immediately before the failure
+5. Check the network panel for any failed requests in the preceding steps
+
+This sequence resolves the majority of UI test failures without needing to re-run the test locally.
+
+## Replay and Auto-Heal
+
+When Auto-Heal generates a heal proposal, it links the proposal to the specific replay step where the selector failed to match. You can review the replay to see the exact state of the DOM when the drift was detected before approving the proposal.
+
+## Next steps
+
+- [Auto-Heal](/docs/v1/features/auto-heal) — repair selector drift identified during a replay
+- [History](/docs/v1/features/history) — find the run to replay from the full run log
+- [Tests](/docs/v1/features/tests) — enable recording when triggering a run

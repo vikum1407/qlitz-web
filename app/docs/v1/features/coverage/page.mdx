@@ -1,0 +1,49 @@
+export const metadata = {
+  title: 'Coverage — Qlitz Docs',
+  description: 'The Coverage tab gives you a clear, requirement-by-requirement breakdown of your test coverage.',
+}
+
+# Coverage
+
+The Coverage tab provides a requirement-by-requirement breakdown of how well your test suite covers the RTM. Coverage in Qlitz is objective — it is calculated from actual test results, not estimates.
+
+## How coverage is calculated
+
+Coverage is computed per requirement after each test run:
+
+- **Covered** — at least one linked test case passed in the most recent run
+- **Partial** — linked test cases exist, but one or more failed or were skipped
+- **Not Covered** — no linked test cases exist, or none have been executed
+
+These statuses roll up into two project-level metrics:
+
+- **Coverage %** — the percentage of requirements with at least one passing linked test
+- **Full Coverage %** — the percentage of requirements where all linked tests passed
+
+## The coverage view
+
+The Coverage tab displays requirements in a table with their current coverage status, linked test count, and last execution timestamp. You can filter by:
+
+- Coverage status (Covered, Partial, Not Covered)
+- Priority (Critical, High, Medium, Low)
+- Requirement status (Active, Draft, Deprecated)
+
+Requirements with no linked tests are shown first by default — these represent the highest-risk gaps in your suite.
+
+## Coverage trends
+
+Qlitz tracks coverage over time. The trend chart on the Coverage tab shows how your coverage percentage has changed across the last N runs. A declining trend is an early signal that new requirements are being added faster than tests are being written.
+
+## Coverage and release readiness
+
+Coverage data feeds directly into the Readiness score. A release cannot reach **Ready to Ship** status if critical requirements remain uncovered. You can scope coverage calculations to a specific release to see only the requirements relevant to that delivery window.
+
+## Coverage and the Heatmap
+
+Coverage tells you *which requirements* are covered. The Heatmap tells you *where in the application* those tests are concentrated. Use both views together to identify areas that are covered on paper but thin in practice.
+
+## Next steps
+
+- [Readiness](/docs/v1/features/readiness) — understand how coverage drives readiness scoring
+- [Heatmap](/docs/v1/features/heatmap) — visualise coverage geographically across the application
+- [RTM](/docs/v1/core-concepts/rtm) — manage the requirements that coverage is measured against

@@ -1,0 +1,127 @@
+export const metadata = {
+  title: 'RestAssured — Qlitz Docs',
+  description: 'Generate a complete RestAssured API test framework from the Qlitz Canvas for Java-based API automation.',
+}
+
+# RestAssured
+
+Qlitz generates a complete RestAssured API test framework for teams doing Java-based API automation. RestAssured provides a fluent DSL for making HTTP requests and validating responses, and the generated project includes a full request specification layer, response models, and test structure linked to your RTM requirements.
+
+## Supported languages
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Java</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+## Generated project structure
+
+```
+src/
+  main/
+    java/
+      config/
+        ApiConfig.java          ← base URL, auth, and global config
+        RequestSpecBuilder.java ← shared RestAssured request spec
+      models/
+        request/
+          *.java                ← request body models (POJOs)
+        response/
+          *.java                ← response body models (POJOs)
+      utils/
+        AuthHelper.java         ← authentication utilities
+        JsonHelper.java         ← response parsing utilities
+  test/
+    java/
+      base/
+        BaseTest.java           ← test lifecycle, spec setup
+      tests/
+        *.java                  ← test classes linked to RTM requirements
+    resources/
+      testng.xml                ← TestNG suite configuration
+      test-data/
+        *.json                  ← test data files
+pom.xml
+.env.example
+```
+
+## Request specification
+
+The generated `RequestSpecBuilder` creates a shared RestAssured `RequestSpecification` that all tests inherit — base URI, default headers, authentication, and logging configuration. Individual tests build on this spec rather than repeating boilerplate.
+
+```java
+// RequestSpecBuilder.java (generated)
+public class RequestSpecBuilder {
+  public static RequestSpecification getBaseSpec() {
+    return RestAssured.given()
+      .baseUri(ApiConfig.getBaseUrl())
+      .contentType(ContentType.JSON)
+      .accept(ContentType.JSON)
+      .log().ifValidationFails();
+  }
+}
+```
+
+## Test structure
+
+Each generated test class extends `BaseTest` and contains test methods linked to RTM requirements. The requirement ID is included as a comment and in the TestNG group annotation for traceability.
+
+```java
+// Example: AuthApiTests.java (generated)
+// REQ-001: User can authenticate with valid credentials
+public class AuthApiTests extends BaseTest {
+
+  @Test(groups = {"REQ-001"})
+  public void validCredentialsReturnsToken() {
+    LoginRequest body = new LoginRequest("user@example.com", "password");
+
+    given(spec)
+      .body(body)
+    .when()
+      .post("/auth/login")
+    .then()
+      .statusCode(200)
+      .body("token", notNullValue());
+  }
+}
+```
+
+## Response models
+
+Qlitz generates typed POJO models for request and response bodies based on your API configuration in the Canvas. Jackson annotations are included for JSON serialisation and deserialisation.
+
+## Running the generated framework
+
+```bash
+# Run all tests with Maven
+mvn test
+
+# Run a specific test class
+mvn test -Dtest=AuthApiTests
+
+# Run a specific TestNG group (maps to RTM requirement IDs)
+mvn test -Dgroups=REQ-001,REQ-002
+
+# Run against a specific environment
+mvn test -Dbase.url=https://api.staging.yourapp.com
+```
+
+## Combining with UI frameworks
+
+RestAssured is commonly used alongside a Qlitz-generated Selenium or Playwright framework in the same project — RestAssured handles API-layer tests and UI automation handles end-to-end user flows. Both frameworks push results back to the same Qlitz project, giving you unified coverage across API and UI layers in a single RTM.
+
+## Next steps
+
+- [Selenium](/docs/v1/framework-generation/selenium) — Java-native UI automation to pair with RestAssured
+- [Playwright](/docs/v1/framework-generation/playwright) — alternative for teams wanting multi-language API testing
+- [RTM](/docs/v1/core-concepts/rtm) — link API test cases to requirements for unified coverage

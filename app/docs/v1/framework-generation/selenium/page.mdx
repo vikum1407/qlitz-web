@@ -1,0 +1,138 @@
+export const metadata = {
+  title: 'Selenium — Qlitz Docs',
+  description: 'Generate a complete Selenium WebDriver automation framework from the Qlitz Canvas in Java, Python, or C#.',
+}
+
+# Selenium
+
+Qlitz generates a complete Selenium WebDriver automation framework for teams with existing Java, Python, or C# expertise. The generated project uses the Page Object Model pattern and includes a driver management layer, configuration utilities, and test runner setup.
+
+## Supported languages
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Java</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td>C#</td>
+      <td>✓</td>
+    </tr>
+  </tbody>
+</table>
+
+## Generated project structure (Java / Maven)
+
+```
+src/
+  main/
+    java/
+      pages/
+        BasePage.java           ← shared page object base class
+        *.java                  ← one page object per application area
+      utils/
+        DriverManager.java      ← WebDriver lifecycle management
+        ConfigReader.java       ← environment and config utilities
+        WaitHelper.java         ← explicit wait helpers
+      config/
+        EnvironmentConfig.java
+  test/
+    java/
+      tests/
+        *.java                  ← test classes linked to RTM requirements
+      base/
+        BaseTest.java           ← test lifecycle (setup/teardown)
+      runners/
+        TestRunner.java         ← TestNG or JUnit runner
+pom.xml                         ← Maven dependencies
+testng.xml                      ← TestNG suite configuration
+.env.example
+```
+
+## Generated project structure (Python)
+
+```
+pages/
+  base_page.py
+  *.py
+tests/
+  conftest.py                   ← pytest fixtures and driver setup
+  test_*.py                     ← test files linked to RTM requirements
+utils/
+  driver_manager.py
+  config_reader.py
+requirements.txt
+pytest.ini
+.env.example
+```
+
+## Driver management
+
+The generated `DriverManager` handles WebDriver initialisation, teardown, and browser selection. Browser choice is controlled via an environment variable, making it straightforward to switch between Chrome, Firefox, and Edge in CI without code changes.
+
+```java
+// DriverManager.java (generated)
+public class DriverManager {
+  private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+  public static WebDriver getDriver() {
+    if (driver.get() == null) {
+      initDriver(ConfigReader.getBrowser());
+    }
+    return driver.get();
+  }
+}
+```
+
+## Page objects
+
+Each generated page object extends `BasePage`, which wraps common WebDriver operations — finding elements, waiting for conditions, and taking screenshots. Individual page objects expose typed action methods for their application area.
+
+## Running the generated framework (Java)
+
+```bash
+# Run all tests with Maven
+mvn test
+
+# Run a specific test class
+mvn test -Dtest=LoginTests
+
+# Run against a specific browser
+mvn test -Dbrowser=firefox
+
+# Run against a specific environment
+mvn test -Dbase.url=https://staging.yourapp.com
+```
+
+## Running the generated framework (Python)
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run all tests
+pytest
+
+# Run with a specific browser
+BROWSER=firefox pytest
+
+# Run against a specific environment
+BASE_URL=https://staging.yourapp.com pytest
+```
+
+## Next steps
+
+- [Playwright](/docs/v1/framework-generation/playwright) — modern alternative with built-in auto-waiting and multi-language support
+- [RestAssured](/docs/v1/framework-generation/restassured) — Java-native API testing to complement Selenium UI tests
+- [Auto-Heal](/docs/v1/features/auto-heal) — automatically repair broken selectors

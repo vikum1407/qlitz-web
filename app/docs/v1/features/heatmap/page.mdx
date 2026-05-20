@@ -1,0 +1,72 @@
+export const metadata = {
+  title: 'Heatmap — Qlitz Docs',
+  description: 'The Heatmap visualises where test activity is concentrated across your application.',
+}
+
+# Heatmap
+
+The Heatmap visualises test activity across your application — showing at a glance where tests are concentrated and where coverage is thin.
+
+## What the Heatmap shows
+
+The Heatmap maps test execution data onto a grid representation of your application's surfaces (pages, components, or API endpoints). Each cell in the grid represents an area of the application, and its colour indicates the density and health of test coverage in that area:
+
+<table>
+  <thead>
+    <tr>
+      <th>Colour</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Deep green</strong></td>
+      <td>High test density, high pass rate</td>
+    </tr>
+    <tr>
+      <td><strong>Light green</strong></td>
+      <td>Covered, mostly passing</td>
+    </tr>
+    <tr>
+      <td><strong>Yellow</strong></td>
+      <td>Low density or mixed results</td>
+    </tr>
+    <tr>
+      <td><strong>Orange</strong></td>
+      <td>Covered but significant failures</td>
+    </tr>
+    <tr>
+      <td><strong>Red</strong></td>
+      <td>Failing tests concentrated here</td>
+    </tr>
+    <tr>
+      <td><strong>Grey</strong></td>
+      <td>No test activity</td>
+    </tr>
+  </tbody>
+</table>
+
+## How areas are mapped
+
+Qlitz derives heatmap cells from two sources:
+
+1. **URL patterns** — tests that interact with specific pages or routes are mapped to those routes
+2. **RTM requirement areas** — requirements can be tagged with an application area (e.g. "Checkout", "Auth", "Dashboard"), and their linked tests contribute to that area's heatmap cell
+
+The combination gives you both a technical view (which routes are tested) and a business view (which features are covered).
+
+## Reading the Heatmap
+
+The most valuable cells to investigate are not the red ones — those are already surfaced by the Tests and Insights tabs. The most valuable cells are the **grey** ones: areas of the application with no test activity at all.
+
+Grey cells on a heatmap represent untested risk. Cross-reference them with the RTM to identify whether those areas have requirements that simply lack test cases, or whether entire product areas have been missed from the test strategy.
+
+## Heatmap over time
+
+You can switch between **current run** and **historical average** views. The historical view smooths out single-run noise and gives you a stable picture of where your suite has consistently focused over time.
+
+## Next steps
+
+- [Coverage](/docs/v1/features/coverage) — requirement-level coverage to complement the heatmap
+- [Suggestions](/docs/v1/features/suggestions) — AI recommendations often reference heatmap cold spots
+- [Insights](/docs/v1/features/insights) — failure clustering visible in both Insights and the Heatmap

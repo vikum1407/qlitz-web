@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ------------------------------
    Base Theme Variables
 ------------------------------ */
@@ -25,14 +27,14 @@
 ------------------------------ */
 html,
 body {
-  background-color: #07091A !important;
-  /* Ambient glow matching logo's blue/purple palette */
+  background-color: #ffffff;
+  /* Subtle brand-colour ambient glow on white */
   background-image:
-    radial-gradient(ellipse 90% 45% at 50% 0%, rgba(58, 123, 255, 0.14) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 35% at 90% 10%, rgba(138, 58, 255, 0.09) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 25% at 10% 20%, rgba(0, 207, 255, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse 90% 45% at 50% 0%, rgba(58, 123, 255, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 35% at 90% 10%, rgba(138, 58, 255, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 25% at 10% 20%, rgba(0, 207, 255, 0.03) 0%, transparent 50%);
   background-attachment: fixed;
-  color: var(--foreground);
+  color: #0f172a;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -41,9 +43,11 @@ body {
    (Option B)
 ------------------------------ */
 
-/* Base header (visible + premium) */
-header {
-  background-color: rgba(0, 0, 0, 0.55) !important;
+/* Base header (visible + premium) — scoped to marketing site only */
+body > header,
+main ~ header,
+.site-chrome header {
+  background-color: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(14px);
   transition:
     background-color 0.25s ease,
@@ -51,10 +55,11 @@ header {
     transform 0.25s ease;
 }
 
-/* Shrink + darken on scroll */
+/* Shrink + deepen on scroll */
 .header-scrolled {
-  background-color: rgba(0, 0, 0, 0.78) !important;
+  background-color: rgba(255, 255, 255, 0.97) !important;
   backdrop-filter: blur(18px);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.07);
 }
 
 .header-scrolled .header-inner {
@@ -68,11 +73,11 @@ header {
 
 /* Nav link visibility */
 header a {
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(15, 23, 42, 0.8);
 }
 
 .header-scrolled a {
-  color: rgba(255, 255, 255, 1) !important;
+  color: rgba(15, 23, 42, 1) !important;
 }
 
 /* ------------------------------
@@ -82,7 +87,7 @@ header a {
 .nav-link {
   position: relative;
   padding-bottom: 0.15rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(15, 23, 42, 0.75);
   transition: color 0.2s ease;
 }
 
@@ -100,7 +105,7 @@ header a {
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .nav-link:hover::after {
@@ -108,7 +113,7 @@ header a {
 }
 
 .nav-link--active {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .nav-link--active::after {
@@ -155,6 +160,121 @@ header a {
 
 .fade-in-up-delay-3 {
   animation-delay: 0.24s;
+}
+
+/* ------------------------------
+   Docs — HTML table styles
+   !important needed to cut through body { text-white } inheritance
+------------------------------ */
+
+/* Reset base text color at the docs boundary so body text-white doesn't cascade in */
+#doc-content {
+  color: #1e293b;
+}
+
+html.dark #doc-content {
+  color: #e2e8f0;
+}
+
+#doc-content table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+#doc-content thead {
+  background-color: #f8fafc;
+}
+
+#doc-content th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569 !important;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+#doc-content td {
+  padding: 0.75rem 1rem;
+  color: #1e293b !important;
+  background-color: #ffffff;
+}
+
+#doc-content td strong {
+  color: #0f172a !important;
+}
+
+#doc-content td code {
+  color: #be123c !important;
+  background-color: #fff1f2;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.8em;
+}
+
+#doc-content tbody tr + tr td {
+  border-top: 1px solid #e2e8f0;
+}
+
+#doc-content tbody tr:hover td {
+  background-color: #f1f5f9 !important;
+}
+
+html.dark #doc-content table {
+  border-color: #1e293b;
+}
+
+html.dark #doc-content thead {
+  background-color: #1e293b;
+}
+
+html.dark #doc-content th {
+  color: #94a3b8 !important;
+  border-bottom-color: #334155;
+  background-color: #1e293b;
+}
+
+html.dark #doc-content td {
+  color: #e2e8f0 !important;
+  background-color: #0f172a;
+}
+
+html.dark #doc-content td strong {
+  color: #f1f5f9 !important;
+}
+
+html.dark #doc-content td code {
+  color: #f9a8d4 !important;
+  background-color: rgba(249, 168, 212, 0.1);
+}
+
+html.dark #doc-content tbody tr + tr td {
+  border-top-color: #1e293b;
+}
+
+html.dark #doc-content tbody tr:hover td {
+  background-color: #1e293b !important;
+}
+
+/* ------------------------------
+   Shiki syntax highlighting — dual-theme dark mode
+------------------------------ */
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
 /* ------------------------------

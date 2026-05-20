@@ -1,0 +1,78 @@
+export const metadata = {
+  title: 'Quick Start — Qlitz Docs',
+  description: 'Create your first Qlitz project and generate your first automation framework.',
+}
+
+# Quick Start
+
+Create your first project and generate a working automation framework in under 10 minutes.
+
+## Prerequisites
+
+- A Qlitz account or a self-hosted instance running locally
+- Node.js 18 or later (for Cypress or Playwright frameworks)
+- Java 11 or later (for RestAssured frameworks only)
+
+## Step 1: Create a project
+
+1. Open the Qlitz dashboard
+2. Click **New Project** in the left sidebar
+3. Enter a name and optional description for the application under test
+4. Click **Create**
+
+Your project is now active and you will land on the **Overview** tab.
+
+## Step 2: Add requirements to the RTM
+
+The RTM (Requirements Traceability Matrix) is the foundation of every project. All test coverage is measured against it.
+
+1. Navigate to the **RTM** tab
+2. Click **Add Requirement**
+3. Enter your first requirement — for example: *User can log in with valid credentials*
+4. Optionally add acceptance criteria and priority
+5. Repeat for each requirement in scope
+
+> You can also import requirements from a CSV file or paste them in bulk.
+
+## Step 3: Open the Qlitz Canvas
+
+The Canvas is the visual framework designer. It generates a complete, runnable automation framework based on your configuration.
+
+1. Navigate to the **Canvas** tab
+2. Select your **framework** — Cypress, Playwright, Selenium, WebdriverIO, or RestAssured
+3. Select your **language** (TypeScript, JavaScript, Java, Python, or C# — availability depends on framework)
+4. Set your base URL and any environment variables
+5. Click **Generate Framework**
+
+Qlitz produces a complete project — folder structure, page objects, configuration files, and test stubs linked to your RTM requirements.
+
+## Step 4: Download and run your framework
+
+1. Click **Download** to get the generated zip
+2. Extract it into your working directory
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run your tests:
+
+```bash
+npm test
+```
+
+## Step 5: View results in Qlitz
+
+After your test run completes, the generated framework pushes results back to Qlitz automatically. You will immediately see:
+
+- **Coverage** — which RTM requirements are now covered
+- **Heatmap** — which areas of the application have the most test activity
+- **Insights** — AI analysis of your first run
+- **Readiness** — an initial release readiness score
+
+## What's next
+
+- [Projects](/docs/v1/core-concepts/projects) — understand the project data model in depth
+- [Qlitz Canvas](/docs/v1/core-concepts/canvas) — deep dive into framework generation
+- [Auto-Heal](/docs/v1/features/auto-heal) — set up automatic test repair

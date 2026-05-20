@@ -1,0 +1,285 @@
+export const metadata = {
+  title: 'Frameworks API — Qlitz Docs',
+  description: 'Generate, retrieve, and download automation frameworks via the Qlitz REST API.',
+}
+
+# Frameworks API
+
+## Generate a framework
+
+```http
+POST /projects/:projectId/framework/generate
+```
+
+Triggers framework generation for the project using the provided configuration. Generation runs server-side and is typically complete within a few seconds.
+
+**Request body**
+
+```json
+{
+  "framework": "playwright",
+  "language": "typescript",
+  "baseUrl": "https://portal.yourapp.com",
+  "requirementIds": ["REQ-001", "REQ-002", "REQ-042"],
+  "environmentVariables": {
+    "TEST_USER": "qa@yourapp.com"
+  }
+}
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>framework</code></td>
+      <td>string</td>
+      <td>Yes</td>
+      <td>One of: <code>cypress</code>, <code>playwright</code>, <code>selenium</code>, <code>webdriverio</code>, <code>restassured</code></td>
+    </tr>
+    <tr>
+      <td><code>language</code></td>
+      <td>string</td>
+      <td>Yes</td>
+      <td>One of: <code>typescript</code>, <code>javascript</code>, <code>java</code>, <code>python</code>, <code>csharp</code></td>
+    </tr>
+    <tr>
+      <td><code>baseUrl</code></td>
+      <td>string</td>
+      <td>No</td>
+      <td>Overrides the project base URL for this generation</td>
+    </tr>
+    <tr>
+      <td><code>requirementIds</code></td>
+      <td>string[]</td>
+      <td>No</td>
+      <td>RTM requirement IDs to include as test stubs. Omit to include all active requirements</td>
+    </tr>
+    <tr>
+      <td><code>environmentVariables</code></td>
+      <td>object</td>
+      <td>No</td>
+      <td>Key-value pairs written to the generated <code>.env.example</code></td>
+    </tr>
+  </tbody>
+</table>
+
+**Framework and language combinations**
+
+<table>
+  <thead>
+    <tr>
+      <th>Framework</th>
+      <th>typescript</th>
+      <th>javascript</th>
+      <th>java</th>
+      <th>python</th>
+      <th>csharp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cypress</code></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code>playwright</code></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td><code>selenium</code></td>
+      <td>—</td>
+      <td>—</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+    </tr>
+    <tr>
+      <td><code>webdriverio</code></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code>restassured</code></td>
+      <td>—</td>
+      <td>—</td>
+      <td>✓</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+**Response** — `201 Created`
+
+```json
+{
+  "generationId": "gen_abc123",
+  "status": "completed",
+  "framework": "playwright",
+  "language": "typescript",
+  "generatedAt": "2026-05-20T09:00:00.000Z",
+  "downloadUrl": "/projects/clx123abc/framework/gen_abc123/download"
+}
+```
+
+---
+
+## List generations
+
+```http
+GET /projects/:projectId/framework
+```
+
+Returns the generation history for the project — all previous framework generations with their configuration and status.
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "generationId": "gen_abc123",
+      "status": "completed",
+      "framework": "playwright",
+      "language": "typescript",
+      "generatedAt": "2026-05-20T09:00:00.000Z"
+    },
+    {
+      "generationId": "gen_xyz789",
+      "status": "completed",
+      "framework": "cypress",
+      "language": "typescript",
+      "generatedAt": "2026-04-10T11:30:00.000Z"
+    }
+  ]
+}
+```
+
+---
+
+## Get a generation
+
+```http
+GET /projects/:projectId/framework/:generationId
+```
+
+Returns the full configuration and status for a specific generation.
+
+**Response**
+
+```json
+{
+  "generationId": "gen_abc123",
+  "status": "completed",
+  "framework": "playwright",
+  "language": "typescript",
+  "baseUrl": "https://portal.yourapp.com",
+  "requirementIds": ["REQ-001", "REQ-002", "REQ-042"],
+  "generatedAt": "2026-05-20T09:00:00.000Z",
+  "downloadUrl": "/projects/clx123abc/framework/gen_abc123/download"
+}
+```
+
+---
+
+## Download a generated framework
+
+```http
+GET /projects/:projectId/framework/:generationId/download
+```
+
+Returns the generated framework as a `.zip` archive. Use the `downloadUrl` from the generate or get response.
+
+**Response headers**
+
+```http
+Content-Type: application/zip
+Content-Disposition: attachment; filename="qlitz-playwright-typescript.zip"
+```
+
+**Example — download with curl**
+
+```bash
+curl -H "Authorization: Bearer <token>" \
+  https://your-qlitz-instance.com/projects/clx123abc/framework/gen_abc123/download \
+  -o framework.zip
+
+unzip framework.zip -d my-test-project
+```
+
+---
+
+## Generation status values
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>queued</code></td>
+      <td>Generation request received, waiting to start</td>
+    </tr>
+    <tr>
+      <td><code>in_progress</code></td>
+      <td>Framework is being built</td>
+    </tr>
+    <tr>
+      <td><code>completed</code></td>
+      <td>Archive ready for download</td>
+    </tr>
+    <tr>
+      <td><code>failed</code></td>
+      <td>Generation failed — check error message in the response</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## CI integration example
+
+Trigger a generation and download the result in a single CI step:
+
+```bash
+# 1. Trigger generation
+RESPONSE=$(curl -s -X POST \
+  -H "Authorization: Bearer $QLITZ_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"framework":"playwright","language":"typescript"}' \
+  https://your-qlitz-instance.com/projects/$PROJECT_ID/framework/generate)
+
+# 2. Extract download URL
+DOWNLOAD_URL=$(echo $RESPONSE | jq -r '.downloadUrl')
+
+# 3. Download the archive
+curl -H "Authorization: Bearer $QLITZ_TOKEN" \
+  https://your-qlitz-instance.com$DOWNLOAD_URL \
+  -o framework.zip
+```
+
+## Next steps
+
+- [Qlitz Canvas](/docs/v1/core-concepts/canvas) — visual framework generation in the dashboard
+- [Tests API](/docs/v1/api-reference/tests) — push results from your generated framework back to Qlitz

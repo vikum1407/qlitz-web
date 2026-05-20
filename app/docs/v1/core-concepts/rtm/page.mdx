@@ -1,0 +1,90 @@
+export const metadata = {
+  title: 'Requirements Traceability Matrix (RTM) — Qlitz Docs',
+  description: 'The RTM connects every test in Qlitz to a business requirement, making coverage objective and release readiness measurable.',
+}
+
+# Requirements Traceability Matrix (RTM)
+
+The Requirements Traceability Matrix (RTM) is the backbone of every Qlitz project. It maps business requirements to test cases, making test coverage objective rather than estimated.
+
+## Why traceability matters
+
+Without traceability, coverage is a guess. Teams know how many tests pass but not what those tests actually verify. The RTM answers the questions that matter:
+
+- Is requirement X covered by at least one test?
+- Which requirements have no automated coverage?
+- If a test fails, which requirement is at risk?
+- Is the application ready to release against the committed requirements?
+
+## Structure of the RTM
+
+Each entry in the RTM is a **Requirement** with the following fields:
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>Auto-generated unique identifier (e.g. <code>REQ-001</code>)</td>
+    </tr>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td>Short description of the requirement</td>
+    </tr>
+    <tr>
+      <td><strong>Acceptance Criteria</strong></td>
+      <td>What must be true for the requirement to be satisfied</td>
+    </tr>
+    <tr>
+      <td><strong>Priority</strong></td>
+      <td>Critical, High, Medium, or Low</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>Draft, Active, Deprecated</td>
+    </tr>
+    <tr>
+      <td><strong>Linked Tests</strong></td>
+      <td>Test cases mapped to this requirement</td>
+    </tr>
+    <tr>
+      <td><strong>Coverage Status</strong></td>
+      <td>Calculated from linked test results — Covered, Partial, or Not Covered</td>
+    </tr>
+  </tbody>
+</table>
+
+## Adding requirements
+
+Requirements can be added in three ways:
+
+**Manually** — click **Add Requirement** in the RTM tab and fill in the fields.
+
+**Bulk import** — paste requirements in plain text or upload a CSV. Qlitz parses titles and optional acceptance criteria automatically.
+
+**From the Canvas** — when you generate a framework, test stubs are linked back to RTM requirements. The RTM updates to reflect which requirements now have generated test cases.
+
+## Coverage calculation
+
+Coverage is calculated per requirement based on linked test results from the most recent test run:
+
+- **Covered** — at least one linked test passed in the latest run
+- **Partial** — linked tests exist but some failed or were skipped
+- **Not Covered** — no linked tests exist, or none have been executed
+
+This calculation flows directly into the **Coverage** tab, the **Readiness** score, and the **Release** readiness assessment.
+
+## RTM and releases
+
+When you create a release, Qlitz scopes the readiness calculation to the requirements marked as in-scope for that release window. This means a release can be assessed against a subset of requirements — for example, the requirements scheduled for a specific sprint.
+
+## Next steps
+
+- [Coverage](/docs/v1/features/coverage) — view and analyse your coverage breakdown
+- [Readiness](/docs/v1/features/readiness) — understand how RTM data drives readiness scoring
+- [Release Management](/docs/v1/features/releases) — scope requirements to a release
