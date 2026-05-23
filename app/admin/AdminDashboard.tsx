@@ -67,6 +67,7 @@ export function AdminDashboard() {
   const [period,        setPeriod]        = useState<Period>('week');
   const [data,          setData]          = useState<AnalyticsData | null>(null);
   const [loading,       setLoading]       = useState(false);
+  const [loginLoading,  setLoginLoading]  = useState(false);
   const [error,         setError]         = useState('');
   const [loginError,    setLoginError]    = useState('');
 
@@ -100,12 +101,25 @@ export function AdminDashboard() {
     if (authenticated && adminKey) fetchStats(adminKey, period);
   }, [authenticated, adminKey, period, fetchStats]);
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setLoginError('');
-    sessionStorage.setItem('qlitz_admin_key', inputKey);
-    setAdminKey(inputKey);
-    setAuthenticated(true);
+    setLoginLoading(true);
+    try {
+      const res = await fetch(`/api/admin/stats?period=today&key=${encodeURIComponent(inputKey)}`);
+      if (res.status === 401) {
+        setLoginError('Incorrect password.');
+      } else if (!res.ok) {
+        setLoginError('Server error. Please try again.');
+      } else {
+        sessionStorage.setItem('qlitz_admin_key', inputKey);
+        setAdminKey(inputKey);
+        setAuthenticated(true);
+      }
+    } catch {
+      setLoginError('Network error. Please try again.');
+    }
+    setLoginLoading(false);
   };
 
   const logout = () => {
@@ -141,8 +155,8 @@ export function AdminDashboard() {
               className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-[#3A7BFF] focus:ring-1 focus:ring-[#3A7BFF] outline-none transition"
             />
             {loginError && <p className="text-sm text-red-600">{loginError}</p>}
-            <button type="submit" className="w-full py-3 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white font-semibold hover:opacity-90 transition shadow-[0_0_18px_rgba(138,58,255,0.25)]">
-              Sign In
+            <button type="submit" disabled={loginLoading} className="w-full py-3 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white font-semibold hover:opacity-90 transition shadow-[0_0_18px_rgba(138,58,255,0.25)] disabled:opacity-60 disabled:cursor-not-allowed">
+              {loginLoading ? 'Signing in…' : 'Sign In'}
             </button>
           </form>
         </div>
