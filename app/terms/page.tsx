@@ -91,7 +91,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold text-slate-900 mb-3">9. Contact Us</h2>
             <p>
               For questions about these Terms of Service, contact us at:{" "}
-              <span className="text-[#3A7BFF] font-medium">contact@qlitz.dev</span>
+              <span className="text-[#3A7BFF] font-medium">info@qlitz.dev</span>
             </p>
           </div>
         </section>

@@ -34,7 +34,7 @@ export default function ContactPage() {
             </p>
 
             <div className="space-y-4 text-slate-600">
-              <p>📧 contact@qlitz.dev</p>
+              <p>📧 info@qlitz.dev</p>
               <p>🌍 Karlstad, Sweden</p>
             </div>
           </div>

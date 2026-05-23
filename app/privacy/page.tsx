@@ -98,7 +98,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-slate-900 mb-3">9. Contact Us</h2>
             <p>
               If you have questions about this Privacy Policy, you can contact us at:{" "}
-              <span className="text-[#3A7BFF] font-medium">contact@qlitz.dev</span>
+              <span className="text-[#3A7BFF] font-medium">info@qlitz.dev</span>
             </p>
           </div>
         </section>
