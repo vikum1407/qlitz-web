@@ -2,6 +2,7 @@ import "./globals.css";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { ConditionalSiteChrome } from "@/components/ConditionalSiteChrome";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ConditionalSiteChrome>
           {children}
         </ConditionalSiteChrome>
+        <Analytics />
       </body>
     </html>
   );

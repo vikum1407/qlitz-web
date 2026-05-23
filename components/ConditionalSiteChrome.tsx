@@ -4,13 +4,13 @@ import { usePathname } from 'next/navigation';
 import Header from '@/components/Header';
 import PageTransition from '@/components/PageTransition';
 import Year from '@/components/Year';
-import Link from 'next/link';
 
 export function ConditionalSiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isDocs = pathname.startsWith('/docs');
+  const isDocs  = pathname.startsWith('/docs');
+  const isAdmin = pathname.startsWith('/admin');
 
-  if (isDocs) {
+  if (isDocs || isAdmin) {
     return <>{children}</>;
   }
 
