@@ -40,36 +40,37 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen">
-      {/* HERO */}
-      <section className="pt-28 pb-16 px-6 text-center">
-        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-xs font-semibold text-blue-600 uppercase tracking-wide mb-6">
-          Thought Leadership
-        </div>
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-          <span className="bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] bg-clip-text text-transparent">
-            Insights
-          </span>
-        </h1>
-        <p className="text-lg text-slate-600 max-w-xl mx-auto">
-          Ideas about AI, the future of quality engineering, and what intelligent
-          automation really means for software teams.
-        </p>
-      </section>
+      <div className="max-w-3xl mx-auto px-6">
 
-      {/* POSTS */}
-      <section className="pb-24 px-6 border-t border-slate-200 pt-16">
-        <div className="max-w-3xl mx-auto">
+        {/* HERO — compact, inline with posts */}
+        <div className="pt-28 pb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-slate-200 mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-3 py-1 text-xs font-semibold text-blue-600 uppercase tracking-wide mb-3">
+              Thought Leadership
+            </div>
+            <h1 className="text-4xl font-extrabold bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] bg-clip-text text-transparent">
+              Insights
+            </h1>
+          </div>
+          <p className="text-sm text-slate-500 max-w-xs md:text-right leading-relaxed">
+            Ideas on AI, the future of QA, and intelligent automation for engineering teams.
+          </p>
+        </div>
+
+        {/* POSTS */}
+        <section className="pb-24">
           {posts.length === 0 ? (
             <p className="text-center text-slate-400 py-16">No posts yet. Check back soon.</p>
           ) : (
-            <div className="space-y-5">
+            <div className="space-y-4">
               {posts.map(post => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
           )}
-        </div>
-      </section>
+        </section>
+
+      </div>
     </main>
   );
 }
