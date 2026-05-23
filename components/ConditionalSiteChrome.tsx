@@ -38,6 +38,7 @@ export function ConditionalSiteChrome({ children }: { children: React.ReactNode 
             <a href="/vision" className="block hover:text-slate-900 transition">Vision</a>
             <a href="/approach" className="block hover:text-slate-900 transition">Approach</a>
             <a href="/docs" className="block hover:text-slate-900 transition">Docs</a>
+            <a href="/blog" className="block hover:text-slate-900 transition">Insights</a>
           </div>
 
           <div className="space-y-2">

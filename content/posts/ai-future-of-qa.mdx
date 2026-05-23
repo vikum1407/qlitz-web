@@ -1,0 +1,55 @@
+export const meta = {
+  title: "AI Is Rewriting the Rules of QA",
+  date: "2026-05-23",
+  description: "Traditional testing is reactive — we find bugs after they exist. AI changes that fundamentally. Here is how I see the next chapter of quality engineering unfolding."
+}
+
+Quality assurance has always been reactive. We write tests after the code is written. We find bugs after they exist. We report defects after users have already encountered them.
+
+That cycle is broken. And AI is the reason it finally has to change.
+
+## The Problem with "More Tests"
+
+The instinct in most engineering teams when quality suffers is to write more tests. More unit tests. More end-to-end tests. More regression coverage. And while that instinct is not wrong, it misses the fundamental issue: **tests describe what we expect, not what we don't know.**
+
+Every test suite is a snapshot of a team's understanding at the time it was written. The moment the codebase evolves, that snapshot begins to drift. Coverage numbers go up. Confidence goes up. But real-world reliability doesn't always follow.
+
+We've been measuring the wrong thing.
+
+## What Intelligent QA Actually Looks Like
+
+The shift I'm seeing — and building toward at Qlitz — is from *verification* to *understanding*.
+
+A verification mindset asks: "Did the code do what we told it to?"
+
+An understanding mindset asks: "Does the system behave correctly across all the ways users actually use it?"
+
+That second question is too large for a human-written test suite to answer alone. But it's exactly the kind of question AI models are well-suited for — pattern recognition at scale, anomaly detection, learning from real usage, and generating hypotheses about failure modes before they surface.
+
+## Three Shifts I Believe Are Coming
+
+**1. Tests will be generated, not written**
+
+Not because developers are lazy, but because the combinatorial space of inputs, states, and edge cases is too large for human authorship to cover meaningfully. AI will generate high-value tests from code structure, API contracts, and observed behavior — continuously, not just at release time.
+
+**2. Quality signals will come from production, not just CI**
+
+The most important quality data is what real users experience. Future QA systems will close the loop between production behavior and test generation. What breaks in production becomes a test case. What confuses users becomes a coverage gap to address.
+
+**3. QA will shift left — further than you think**
+
+"Shift left" has meant moving testing earlier in the pipeline. But AI enables it to go further: quality analysis at the design stage, before a single line of code is written. Understanding which architectural decisions carry the most risk. Flagging patterns that historically lead to defects.
+
+## Why This Matters Now
+
+Software is eating the world, and the expectations for reliability have never been higher. At the same time, teams are smaller, release cycles are faster, and the complexity of modern systems is extraordinary.
+
+Manual QA and manually-maintained test suites are not going to scale to meet that challenge. Something has to change.
+
+I believe the teams that win in the next five years will be the ones that treat quality as an intelligent, autonomous system — not a checklist.
+
+That is what we are building.
+
+---
+
+*This is the first in a series of posts about AI-native quality engineering. If this resonates with you, I would love to connect on [LinkedIn](https://www.linkedin.com/company/qlitz).*
