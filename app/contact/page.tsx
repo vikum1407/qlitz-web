@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactSection } from "./ContactSection";
 
 export const metadata = {
   title: "Contact",
@@ -22,56 +23,8 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* CONTACT + FORM */}
-      <section className="py-24 px-6 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
-
-          {/* CONTACT INFO */}
-          <div className="p-6 border border-slate-200 rounded-xl bg-slate-50">
-            <h3 className="text-2xl font-bold mb-4 text-slate-900">Get in Touch</h3>
-            <p className="text-slate-600 mb-6">
-              Reach out to our team and we'll get back to you as soon as possible.
-            </p>
-
-            <div className="space-y-4 text-slate-600">
-              <p>📧 info@qlitz.dev</p>
-              <p>🌍 Karlstad, Sweden</p>
-            </div>
-          </div>
-
-          {/* FORM */}
-          <div className="p-6 border border-slate-200 rounded-xl bg-slate-50">
-            <h3 className="text-2xl font-bold mb-4 text-slate-900">Send a Message</h3>
-
-            <form className="space-y-5">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-[#3A7BFF] focus:ring-1 focus:ring-[#3A7BFF] outline-none transition"
-              />
-
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-[#3A7BFF] focus:ring-1 focus:ring-[#3A7BFF] outline-none transition"
-              />
-
-              <textarea
-                placeholder="Your Message"
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-[#3A7BFF] focus:ring-1 focus:ring-[#3A7BFF] outline-none transition"
-              ></textarea>
-
-              <button
-                type="submit"
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white font-semibold hover:opacity-90 transition shadow-[0_0_18px_rgba(138,58,255,0.25)]"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+      {/* CONTACT GRID ↔ SUCCESS MESSAGE (client-controlled) */}
+      <ContactSection />
 
       {/* CTA */}
       <section className="py-24 px-6 border-t border-slate-200 text-center">
