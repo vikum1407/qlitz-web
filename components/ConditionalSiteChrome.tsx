@@ -28,7 +28,7 @@ export function ConditionalSiteChrome({ children }: { children: React.ReactNode 
           <div className="space-y-3">
             <p className="text-base font-semibold text-slate-900">Qlitz</p>
             <p className="text-xs text-slate-400">
-              AI‑powered quality automation for modern engineering teams.
+              AI-powered quality intelligence for modern engineering teams.
             </p>
           </div>
 
