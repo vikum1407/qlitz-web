@@ -211,23 +211,40 @@ export default function Home() {
             </motion.p>
           </motion.div>
 
-          {/* Column headers */}
-          <div className="grid grid-cols-2 gap-px mb-1">
-            <div className="px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">The Conventional Model</div>
-            <div className="px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#3A7BFF]">The Qlitz Model</div>
-          </div>
-
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewOpts}
-            className="rounded-xl border border-slate-200 overflow-hidden divide-y divide-slate-100"
+            className="rounded-2xl border border-slate-200 overflow-hidden shadow-sm"
           >
+            {/* Header row */}
+            <div className="grid grid-cols-2">
+              <div className="px-8 py-4 bg-slate-100 text-xs font-bold uppercase tracking-[0.18em] text-slate-500 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-slate-400 inline-block" />
+                The Conventional Model
+              </div>
+              <div className="px-8 py-4 bg-gradient-to-r from-[#3A7BFF]/10 to-[#8A3AFF]/10 text-xs font-bold uppercase tracking-[0.18em] text-[#3A7BFF] flex items-center gap-2 border-l border-blue-100">
+                <span className="w-2 h-2 rounded-full bg-[#3A7BFF] inline-block" />
+                The Qlitz Model
+              </div>
+            </div>
+
+            {/* Data rows */}
             {comparisonRows.map((row, i) => (
-              <motion.div key={i} variants={fadeLeft} className="grid grid-cols-2 gap-px bg-slate-100">
-                <div className="bg-white px-6 py-4 text-sm text-slate-400 leading-relaxed">{row.old}</div>
-                <div className="bg-white px-6 py-4 text-sm font-medium text-[#3A7BFF] leading-relaxed">{row.next}</div>
+              <motion.div
+                key={i}
+                variants={fadeLeft}
+                className="grid grid-cols-2 border-t border-slate-100"
+              >
+                <div className="px-8 py-5 text-sm text-slate-400 leading-relaxed bg-white flex items-start gap-3">
+                  <span className="mt-1 text-slate-300 flex-shrink-0">✕</span>
+                  {row.old}
+                </div>
+                <div className="px-8 py-5 text-sm font-medium text-slate-700 leading-relaxed bg-blue-50/40 border-l border-blue-100 flex items-start gap-3">
+                  <span className="mt-1 text-[#3A7BFF] flex-shrink-0">✓</span>
+                  <span className="text-slate-800">{row.next}</span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -301,7 +318,7 @@ export default function Home() {
             </Link>
             <Link
               href="/vision"
-              className="text-sm font-medium text-slate-600 hover:text-slate-900 underline underline-offset-4 transition"
+              className="px-8 py-3.5 rounded-lg border border-slate-300 text-slate-700 font-semibold hover:border-slate-400 hover:bg-white transition"
             >
               Read Our Vision
             </Link>
