@@ -10,7 +10,7 @@ const fadeUp: Variants = {
 
 const stagger: Variants = {
   hidden:  {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.13 } },
 };
 
 const viewOpts = { once: true, margin: '-80px' } as const;
@@ -19,41 +19,41 @@ const layers = [
   {
     num:   '01',
     title: 'Behavioural Intelligence',
-    body:  'Understanding how a system actually behaves, not just how it was designed to behave. This means analysing real execution patterns, identifying divergence from expected behaviour, and surfacing signals that indicate emerging risk before failure occurs. The goal is early awareness, not post-incident analysis.',
+    body:  'We analyse how a system actually behaves under real conditions, not how it was designed to behave. Early divergence signals surface before they become failures.',
   },
   {
     num:   '02',
     title: 'Structural Integrity',
-    body:  'Software architecture has quality properties that exist independently of any individual feature or test case. Complexity concentrations, coupling patterns, dependency risk, and change velocity all create systemic fragility that standard testing cannot detect. Qlitz analyses the structure of systems, not just their output.',
+    body:  'Architecture has quality properties that tests cannot see. Complexity, coupling, and change velocity create fragility that Qlitz identifies at the structural level.',
   },
   {
     num:   '03',
     title: 'Execution Confidence',
-    body:  'Validation at scale requires infrastructure that matches the sophistication of the systems being validated. Distributed execution, intelligent orchestration, and environment fidelity are not implementation details. They are the difference between a quality signal that can be trusted and one that cannot.',
+    body:  'Validation at scale needs infrastructure that matches the sophistication of the system being validated. Distributed execution and environment fidelity determine whether a quality signal can be trusted.',
   },
   {
     num:   '04',
     title: 'Continuous Signal',
-    body:  'Quality is not a point-in-time measurement. It is a continuous property of a living system. Qlitz is designed to provide a persistent, current, and trustworthy quality signal, one that engineering teams can rely on at any point in the delivery cycle, not just at the gate before release.',
+    body:  'Quality is a continuous property of a living system, not a gate before release. Qlitz provides a persistent, current quality signal at every point in the delivery cycle.',
   },
 ];
 
 const principles = [
   {
     title: 'Scalability is not an afterthought',
-    body:  'Quality infrastructure that cannot operate at the scale of modern distributed systems is not quality infrastructure for modern teams. Qlitz is architected for the volume, velocity, and variability of real engineering environments, not idealised conditions.',
+    body:  'Quality infrastructure that cannot operate at the scale of modern distributed systems is not quality infrastructure for modern teams. Qlitz is architected for real engineering environments, not idealised conditions.',
   },
   {
     title: 'Integration must be seamless',
-    body:  'A quality platform that sits outside the engineering workflow will always be treated as optional. Qlitz is designed to integrate at the points where engineering decisions are made: in the pipeline, in the development environment, in the delivery process.',
+    body:  'A quality platform outside the engineering workflow will always be treated as optional. Qlitz integrates where decisions are made: in the pipeline, in the IDE, in the delivery process.',
   },
   {
     title: 'Trust requires transparency',
-    body:  'Engineering teams cannot act on a quality signal they do not understand. Every insight Qlitz surfaces is grounded in observable evidence, not black-box scoring. Teams should always know why a risk is flagged, what the evidence is, and what the appropriate response looks like.',
+    body:  'Engineering teams cannot act on signals they do not understand. Every insight Qlitz surfaces is grounded in observable evidence, not black-box scoring.',
   },
   {
     title: 'Intelligence compounds over time',
-    body:  'A platform that requires the same configuration and maintenance investment indefinitely provides diminishing returns. Qlitz is designed to become more effective as it learns, building a model of system behaviour that improves with every deployment, every incident, every change.',
+    body:  'A platform that requires constant maintenance provides diminishing returns. Qlitz becomes more effective as it learns, building a richer model of system behaviour with every deployment.',
   },
 ];
 
@@ -81,8 +81,8 @@ export default function ApproachPage() {
           </motion.h1>
           <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Qlitz is not a testing tool with AI features added. It is a quality intelligence
-            platform designed from first principles, for the complexity, velocity, and consequence
-            of software engineering in 2026 and beyond.
+            platform designed from first principles, for the complexity and consequence of
+            software engineering in 2026 and beyond.
           </motion.p>
         </motion.div>
       </section>
@@ -94,23 +94,20 @@ export default function ApproachPage() {
             <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.22em] text-[#3A7BFF] font-semibold mb-4">
               Where We Start
             </motion.p>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 leading-snug">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-snug">
               Understanding systems deeply is more valuable than covering them broadly.
             </motion.h2>
-            {[
-              'The conventional approach to software quality optimises for coverage: how much of the codebase is exercised by tests, how many scenarios are validated, how many checks pass before a release. Coverage is measurable, reportable, and easy to track. It is also a poor proxy for actual reliability.',
-              'A system can have high coverage and still fail in production. Real failures do not follow the paths that were anticipated when tests were written. They emerge from the intersection of conditions, from edge cases in distributed systems, from load patterns nobody modelled, from the behaviour of third-party dependencies under stress.',
-              'Qlitz approaches quality differently. The primary question is not "how much have we tested?" It is "how well do we understand this system?"',
-            ].map((para, i) => (
-              <motion.p key={i} variants={fadeUp} className="leading-relaxed text-slate-600 mb-5">
-                {para}
-              </motion.p>
-            ))}
-
-            {/* Pull quote */}
+            <motion.p variants={fadeUp} className="leading-relaxed text-slate-600 mb-5">
+              The conventional approach to software quality optimises for coverage. It is measurable,
+              reportable, and a poor proxy for actual reliability.
+            </motion.p>
+            <motion.p variants={fadeUp} className="leading-relaxed text-slate-600 mb-8">
+              Systems fail in production despite high coverage. Real failures emerge from the intersection
+              of conditions that no test suite can fully anticipate.
+            </motion.p>
             <motion.blockquote
               variants={fadeUp}
-              className="mt-8 pl-6 border-l-4 border-[#3A7BFF] bg-blue-50/50 py-4 pr-4 rounded-r-xl"
+              className="pl-6 border-l-4 border-[#3A7BFF] bg-blue-50/50 py-4 pr-4 rounded-r-xl"
             >
               <p className="text-lg font-semibold text-slate-800 leading-relaxed">
                 Understanding, not volume, is the foundation on which genuine confidence is built.
@@ -131,8 +128,8 @@ export default function ApproachPage() {
               Quality intelligence operates across four dimensions.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-slate-600 max-w-2xl leading-relaxed">
-              Reliable software does not fail at a single point, and it cannot be protected at a single layer.
-              Qlitz is built around a multi-dimensional model of quality that spans the full engineering surface.
+              Reliable software cannot be protected at a single layer.
+              Qlitz is built around a multi-dimensional model that spans the full engineering surface.
             </motion.p>
           </motion.div>
 
@@ -181,34 +178,34 @@ export default function ApproachPage() {
             viewport={viewOpts}
             className="grid md:grid-cols-2 gap-6"
           >
-            {/* Left — old */}
             <motion.div variants={fadeUp} className="bg-white border border-slate-200 rounded-2xl p-8">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400 flex items-center gap-2 mb-6">
                 <span className="w-2 h-2 rounded-full bg-slate-300 inline-block" />
                 The Old Assumption
               </p>
-              {[
-                'Most quality tooling on the market today follows the same underlying model: define scenarios, automate execution, report results. The tools have become faster and more feature-rich, but the model has not changed.',
-                'The implicit assumption is still that humans can anticipate the conditions under which software will fail, and that writing tests for those conditions is sufficient.',
-                'That assumption breaks down at scale. It breaks down in distributed systems. It breaks down when release velocity outpaces the capacity to maintain test suites.',
-              ].map((para, i) => (
-                <p key={i} className="text-sm text-slate-400 leading-relaxed mb-4">{para}</p>
-              ))}
+              <p className="text-sm text-slate-400 leading-relaxed mb-4">
+                Most quality tooling follows the same model: define scenarios, automate execution, report results.
+                The tools are faster, but the assumption has not changed.
+              </p>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                That assumption breaks down at scale, in distributed systems, and when release velocity
+                outpaces the capacity to maintain test suites.
+              </p>
             </motion.div>
 
-            {/* Right — Qlitz */}
             <motion.div variants={fadeUp} className="bg-gradient-to-br from-blue-50/60 to-purple-50/40 border border-blue-100 rounded-2xl p-8">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#3A7BFF] flex items-center gap-2 mb-6">
                 <span className="w-2 h-2 rounded-full bg-[#3A7BFF] inline-block" />
                 The Qlitz Approach
               </p>
-              {[
-                'Qlitz replaces the assumption. Quality intelligence does not depend on humans pre-defining every failure mode.',
-                'It builds understanding from behaviour, learns from change, and provides confidence that is proportional to actual system knowledge, not test count.',
-                'The question shifts from "what did we test?" to "what do we understand?" The confidence that follows is grounded in evidence, not enumeration.',
-              ].map((para, i) => (
-                <p key={i} className="text-sm text-slate-700 leading-relaxed mb-4">{para}</p>
-              ))}
+              <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                Qlitz replaces the assumption. Quality intelligence does not depend on humans pre-defining
+                every failure mode.
+              </p>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                The question shifts from "what did we test?" to "what do we understand?"
+                The confidence that follows is grounded in evidence, not enumeration.
+              </p>
             </motion.div>
           </motion.div>
         </div>
@@ -254,19 +251,20 @@ export default function ApproachPage() {
             <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.22em] text-[#3A7BFF] font-semibold mb-4">
               The Right Fit
             </motion.p>
-            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 leading-snug">
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-snug">
               Built for teams where software quality is a strategic priority.
             </motion.h2>
-            {[
-              'Qlitz is not the right platform for every team. It is built for engineering organisations that have moved beyond viewing quality as a compliance exercise, and have started treating it as a competitive differentiator.',
-              'These are teams operating at a pace where manual quality processes have become a constraint. Teams managing distributed systems where the surface area of failure exceeds what test suites can cover. Teams where an undetected production incident has material consequences, not just technical ones.',
-            ].map((para, i) => (
-              <motion.p key={i} variants={fadeUp} className="leading-relaxed text-slate-600 mb-5">
-                {para}
-              </motion.p>
-            ))}
+            <motion.p variants={fadeUp} className="leading-relaxed text-slate-600 mb-5">
+              Qlitz is built for engineering organisations that treat quality as a competitive
+              differentiator, not a compliance exercise.
+            </motion.p>
+            <motion.p variants={fadeUp} className="leading-relaxed text-slate-600 mb-8">
+              These are teams where release velocity has outpaced manual processes, and where an
+              undetected production incident has consequences beyond the technical.
+            </motion.p>
             <motion.p variants={fadeUp} className="text-lg font-semibold text-slate-900 leading-relaxed">
-              If your organisation has reached the point where the old model of quality assurance is visibly insufficient, Qlitz is designed for exactly that moment.
+              If the old model of quality assurance is visibly insufficient for your organisation,
+              Qlitz is designed for exactly that moment.
             </motion.p>
           </motion.div>
         </div>
@@ -285,8 +283,8 @@ export default function ApproachPage() {
             A different approach to quality. Built for where software is going.
           </motion.h2>
           <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-10">
-            We are in early access. If your team is operating at the edge of what conventional quality
-            tooling can support, we want to hear from you.
+            We are in early access. If your team is operating at the edge of what conventional
+            quality tooling can support, we want to hear from you.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
