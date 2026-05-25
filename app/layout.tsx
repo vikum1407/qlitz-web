@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL("https://qlitz.dev"),
   title: {
-    default: "Qlitz — The Future of Software Quality",
+    default: "Qlitz: The Future of Software Quality",
     template: "%s | Qlitz",
   },
   description:
@@ -31,7 +31,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://qlitz.dev",
-    title: "Qlitz — The Future of Software Quality",
+    title: "Qlitz: The Future of Software Quality",
     description:
       "AI‑powered automation for modern engineering teams. Faster releases, higher quality.",
     siteName: "Qlitz",
@@ -40,13 +40,13 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Qlitz — The Future of Software Quality",
+        alt: "Qlitz: The Future of Software Quality",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qlitz — The Future of Software Quality",
+    title: "Qlitz: The Future of Software Quality",
     description:
       "AI‑powered automation for modern engineering teams. Faster releases, higher quality.",
     images: ["/og-image.png"],

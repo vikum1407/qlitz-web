@@ -19,17 +19,17 @@ const convictions = [
   {
     num:   '01',
     title: 'Quality is an engineering responsibility, not a quality assurance one.',
-    body:  'It must be embedded in every architecture decision and delivery process — not delegated to a separate function at the end of the cycle.',
+    body:  'It must be embedded in every architecture decision and delivery process, not delegated to a separate function at the end of the cycle.',
   },
   {
     num:   '02',
-    title: 'Confidence cannot be manufactured — it must be earned.',
+    title: 'Confidence cannot be manufactured. It must be earned.',
     body:  'Green builds and coverage numbers are signals. Genuine confidence comes from understanding how a system behaves under real conditions.',
   },
   {
     num:   '03',
     title: 'Modern software scale demands autonomous quality infrastructure.',
-    body:  'No team can maintain comprehensive understanding of a large, fast-moving distributed system through manual processes alone. Autonomous intelligence is not a luxury — it is the necessary infrastructure.',
+    body:  'No team can maintain comprehensive understanding of a large, fast-moving distributed system through manual processes alone. Autonomous intelligence is not a luxury, it is the necessary infrastructure.',
   },
   {
     num:   '04',
@@ -84,7 +84,7 @@ export default function AboutPage() {
               confidence quietly declines.
             </motion.p>
             <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-10">
-              The conventional response — more QA, more automation, more reviews — addresses the symptom.
+              The conventional response of more QA, more automation, and more reviews addresses the symptom.
               It does not fix the model. The model is structurally limited.
             </motion.p>
             <motion.blockquote
@@ -92,7 +92,7 @@ export default function AboutPage() {
               className="pl-6 border-l-4 border-[#3A7BFF] bg-blue-50/50 py-4 pr-4 rounded-r-xl"
             >
               <p className="text-lg font-semibold text-slate-800 leading-relaxed">
-                Qlitz exists because we believed there was a better model — and because we thought
+                Qlitz exists because we believed there was a better model, and because we thought
                 it was worth the hard work of building it.
               </p>
             </motion.blockquote>
@@ -117,7 +117,7 @@ export default function AboutPage() {
             </motion.p>
             <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed">
               We are working closely with a small number of teams who share our conviction that this
-              problem matters. That collaboration is not a temporary phase — it is how we intend to build.
+              problem matters. That collaboration is not a temporary phase. It is how we intend to build.
             </motion.p>
           </motion.div>
         </div>

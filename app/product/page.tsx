@@ -92,7 +92,7 @@ export default function ProductPage() {
               Enterprise‑Grade Reliability
             </h2>
             <p className="text-slate-600 mb-6">
-              Built for scale, security, and performance — Qlitz integrates seamlessly into modern
+              Built for scale, security, and performance. Qlitz integrates seamlessly into modern
               engineering ecosystems.
             </p>
             <ul className="space-y-3 text-slate-600">

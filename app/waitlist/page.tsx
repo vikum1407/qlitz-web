@@ -2,7 +2,7 @@ import { WaitlistForm } from './WaitlistForm';
 
 export const metadata = {
   title: "Join the Waitlist",
-  description: "Be among the first to access Qlitz — the autonomous quality engine for modern engineering teams."
+  description: "Be among the first to access Qlitz, the autonomous quality engine for modern engineering teams."
 };
 
 export default function WaitlistPage() {

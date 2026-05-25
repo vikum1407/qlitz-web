@@ -17,7 +17,7 @@ const viewOpts = { once: true, margin: '-80px' } as const;
 
 const eras = [
   { label: 'Manual',     desc: 'Human testers, scripted scenarios, linear validation.',   active: false },
-  { label: 'Automated',  desc: 'CI pipelines and coverage metrics — faster, not smarter.', active: false },
+  { label: 'Automated',  desc: 'CI pipelines and coverage metrics. Faster, not smarter.', active: false },
   { label: 'Autonomous', desc: 'Systems that understand, learn, anticipate, and act.',      active: true  },
 ];
 
@@ -25,17 +25,17 @@ const dimensions = [
   {
     icon: '◎',
     title: 'Self-aware systems',
-    body: 'Software that understands its own behaviour under real conditions — not just the conditions defined in a test suite. Systems that can distinguish between expected variance and genuine risk, and communicate that distinction clearly to the teams responsible for them.',
+    body: 'Software that understands its own behaviour under real conditions, not just the conditions defined in a test suite. Systems that can distinguish between expected variance and genuine risk, and communicate that distinction clearly to the teams responsible for them.',
   },
   {
     icon: '◈',
     title: 'Continuous confidence',
-    body: 'Engineering teams that can ship at any point in their cycle without a quality review bottleneck — because the quality signal is always present, always current, and always trustworthy. Releases that carry a confidence score, not just a green build status.',
+    body: 'Engineering teams that can ship at any point in their cycle without a quality review bottleneck, because the quality signal is always present, always current, and always trustworthy. Releases that carry a confidence score, not just a green build status.',
   },
   {
     icon: '◇',
     title: 'Intelligence that compounds',
-    body: 'A quality layer that gets more effective over time — not one that requires constant maintenance to remain relevant. As the product evolves, the intelligence evolves with it. Every deployment teaches the system more about what good looks like.',
+    body: 'A quality layer that gets more effective over time, not one that requires constant maintenance to remain relevant. As the product evolves, the intelligence evolves with it. Every deployment teaches the system more about what good looks like.',
   },
 ];
 
@@ -59,11 +59,11 @@ export default function VisionPage() {
               A world where software quality
             </span>
             <br />
-            <span className="text-slate-900">is not enforced — it is inherent.</span>
+            <span className="text-slate-900">is not enforced, it is inherent.</span>
           </motion.h1>
           <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             The most reliable systems in the world are not the most heavily tested. They are the
-            most deeply understood. Qlitz is building toward that standard — where quality emerges
+            most deeply understood. Qlitz is building toward that standard, where quality emerges
             from intelligence, not effort.
           </motion.p>
         </motion.div>
@@ -125,9 +125,9 @@ export default function VisionPage() {
             className="mt-16 max-w-3xl mx-auto space-y-5"
           >
             {[
-              'The first era was manual — human testers, scripted scenarios, and linear validation processes. It was slow, expensive, and fundamentally limited by human bandwidth.',
-              'The second era was automated — test frameworks, CI pipelines, and coverage metrics. It brought speed and repeatability, but not intelligence. Automation scaled the wrong model — faster execution of the same fundamental approach.',
-              'The third era is autonomous — systems that understand behaviour, learn from change, anticipate failure, and enforce reliability without requiring human intervention at every step.',
+              'The first era was manual: human testers, scripted scenarios, and linear validation processes. It was slow, expensive, and fundamentally limited by human bandwidth.',
+              'The second era was automated: test frameworks, CI pipelines, and coverage metrics. It brought speed and repeatability, but not intelligence. Automation scaled the wrong model. Faster execution of the same fundamental approach.',
+              'The third era is autonomous: systems that understand behaviour, learn from change, anticipate failure, and enforce reliability without requiring human intervention at every step.',
               'Qlitz is building for the third era. Not as an incremental improvement to what exists, but as a rethinking of what quality infrastructure should be.',
             ].map((para, i) => (
               <motion.p key={i} variants={fadeUp} className={`leading-relaxed text-slate-600 ${i === 3 ? 'font-semibold text-slate-900' : ''}`}>
@@ -146,11 +146,11 @@ export default function VisionPage() {
               The Central Premise
             </motion.p>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 leading-snug">
-              Quality should be a property of the system — not a phase in the process.
+              Quality should be a property of the system, not a phase in the process.
             </motion.h2>
             {[
-              'Today, most engineering organisations treat quality as something that happens between writing code and shipping it. It is a checkpoint, a review, a gate. The problem with gates is that they are reactive by design — they can only catch what has already been built incorrectly.',
-              'A system with quality as an inherent property operates differently. It understands its own behaviour. It surfaces anomalies before they become failures. It learns as the product evolves. It provides confidence continuously — not periodically.',
+              'Today, most engineering organisations treat quality as something that happens between writing code and shipping it. It is a checkpoint, a review, a gate. The problem with gates is that they are reactive by design. They can only catch what has already been built incorrectly.',
+              'A system with quality as an inherent property operates differently. It understands its own behaviour. It surfaces anomalies before they become failures. It learns as the product evolves. It provides confidence continuously, not periodically.',
             ].map((para, i) => (
               <motion.p key={i} variants={fadeUp} className="leading-relaxed text-slate-600 mb-5">
                 {para}
@@ -164,7 +164,7 @@ export default function VisionPage() {
             >
               <p className="text-lg font-semibold text-slate-800 leading-relaxed">
                 That is what Qlitz is building toward. An engineering environment where releasing
-                with confidence is the default — not the exception.
+                with confidence is the default, not the exception.
               </p>
             </motion.blockquote>
           </motion.div>
@@ -232,7 +232,7 @@ export default function VisionPage() {
             </motion.p>
 
             {[
-              'Modern cloud infrastructure provides the scale. Large-scale observability platforms provide the data. Advances in applied AI provide the reasoning capability. The missing piece is a platform purpose-built to bring these together in service of software quality — and to make that capability accessible to every engineering team, not just those with the resources to build it themselves.',
+              'Modern cloud infrastructure provides the scale. Large-scale observability platforms provide the data. Advances in applied AI provide the reasoning capability. The missing piece is a platform purpose-built to bring these together in service of software quality, and to make that capability accessible to every engineering team, not just those with the resources to build it themselves.',
               'That is the gap Qlitz exists to close.',
             ].map((para, i) => (
               <motion.p key={i} variants={fadeUp} className={`leading-relaxed mb-5 ${i === 1 ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>
@@ -259,9 +259,9 @@ export default function VisionPage() {
             Quality as the foundation of digital trust.
           </motion.h2>
           {[
-            'Software is no longer a feature of modern life — it is the infrastructure of it. Healthcare, finance, transportation, communication — every critical system now runs on code. The reliability of that code is not a product concern. It is a societal one.',
+            'Software is no longer a feature of modern life. It is the infrastructure of it. Healthcare, finance, transportation, communication. Every critical system now runs on code. The reliability of that code is not a product concern. It is a societal one.',
             'Engineering teams carry more responsibility than ever before. The tools they use to uphold that responsibility should match the gravity of the task.',
-            'Qlitz is building toward a future where every engineering team — regardless of size or resources — has access to quality intelligence that matches the complexity and consequence of the software they ship.',
+            'Qlitz is building toward a future where every engineering team, regardless of size or resources, has access to quality intelligence that matches the complexity and consequence of the software they ship.',
           ].map((para, i) => (
             <motion.p key={i} variants={fadeUp} className="leading-relaxed text-slate-600 mb-5 text-lg">
               {para}
@@ -286,7 +286,7 @@ export default function VisionPage() {
             Build the future of quality with us.
           </motion.h2>
           <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed mb-10">
-            We are working with engineering leaders who share this belief — that software quality
+            We are working with engineering leaders who share this belief. That software quality
             deserves a fundamentally better standard. If that resonates, join us.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">

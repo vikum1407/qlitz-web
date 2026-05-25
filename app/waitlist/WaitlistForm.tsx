@@ -42,7 +42,7 @@ export function WaitlistForm() {
         </div>
         <h3 className="text-2xl font-bold text-slate-900 mb-3">You're on the list!</h3>
         <p className="text-slate-500 mb-2">We'll reach out as soon as early access opens.</p>
-        <p className="text-slate-400 text-sm mb-8">Check your inbox — we've sent you a confirmation.</p>
+        <p className="text-slate-400 text-sm mb-8">Check your inbox. We've sent you a confirmation.</p>
         <Link
           href="/"
           className="px-8 py-3 rounded-lg bg-gradient-to-r from-[#3A7BFF] to-[#8A3AFF] text-white font-semibold hover:opacity-90 transition shadow-[0_0_18px_rgba(138,58,255,0.25)]"

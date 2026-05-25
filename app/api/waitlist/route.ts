@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
       resend.emails.send({
         from: 'Qlitz Waitlist <noreply@qlitz.dev>',
         to: notifyEmail,
-        subject: `New Waitlist Signup — ${name}`,
+        subject: `New Waitlist Signup: ${name}`,
         html: `
           <div style="font-family:Inter,sans-serif;max-width:520px;margin:0 auto;padding:32px 24px;background:#f8fafc;border-radius:12px;">
             <div style="background:linear-gradient(135deg,#3A7BFF,#8A3AFF);padding:24px;border-radius:10px;text-align:center;margin-bottom:24px;">

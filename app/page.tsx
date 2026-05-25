@@ -25,7 +25,7 @@ const viewOpts = { once: true, margin: '-80px' } as const;
 const stats = [
   {
     value: '$2.4T',
-    label: 'Estimated annual global cost of poor software quality — exceeding the GDP of most nations.',
+    label: 'Estimated annual global cost of poor software quality, exceeding the GDP of most nations.',
     source: 'NIST / CISQ',
   },
   {
@@ -57,12 +57,12 @@ const beliefs = [
   {
     num:   '02',
     title: 'Intelligence should replace volume, not add to it.',
-    body:  'More tests do not mean more confidence. What engineering teams need is deeper understanding of system behaviour — the kind that only emerges from analysing patterns, not counting assertions.',
+    body:  'More tests do not mean more confidence. What engineering teams need is deeper understanding of system behaviour. The kind that only emerges from analysing patterns, not counting assertions.',
   },
   {
     num:   '03',
     title: 'The next generation of software quality will be autonomous.',
-    body:  'Human expertise will always matter. But the scale, speed, and complexity of modern software demands that the quality layer itself be capable of reasoning, learning, and acting — not just reporting.',
+    body:  'Human expertise will always matter. But the scale, speed, and complexity of modern software demands that the quality layer itself be capable of reasoning, learning, and acting. Not just reporting.',
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Home() {
           <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Modern engineering teams ship faster, across more systems, with greater complexity
             than any previous generation. Qlitz is building the intelligence layer that ensures
-            reliability keeps pace — without slowing delivery.
+            reliability keeps pace, without slowing delivery.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -131,9 +131,9 @@ export default function Home() {
               The tools built for yesterday cannot scale to today.
             </motion.h2>
             {[
-              'For decades, software quality relied on a straightforward premise — write more tests, catch more bugs. That model worked when systems were smaller, release cycles were measured in quarters, and complexity was contained.',
+              'For decades, software quality relied on a straightforward premise: write more tests, catch more bugs. That model worked when systems were smaller, release cycles were measured in quarters, and complexity was contained.',
               'It no longer does.',
-              'AI-generated code, distributed architectures, microservices at scale, and continuous delivery pipelines have fundamentally changed what software is — and what it takes to trust it. The volume and velocity of software produced today exceeds what any manual oversight model can meaningfully validate.',
+              'AI-generated code, distributed architectures, microservices at scale, and continuous delivery pipelines have fundamentally changed what software is, and what it takes to trust it. The volume and velocity of software produced today exceeds what any manual oversight model can meaningfully validate.',
               'The industry is not facing a tooling gap. It is facing a structural shift in how quality must be understood, enforced, and measured. Qlitz is built for that shift.',
             ].map((para, i) => (
               <motion.p
