@@ -1,0 +1,49 @@
+export const meta = {
+  title: "AI-Generated Code Changes Everything About Software Quality",
+  date: "2026-05-15",
+  description: "When the volume of code produced exceeds what human review can process, the quality model must change. Most engineering teams are not ready for this.",
+  category: "Industry",
+  readTime: "7",
+}
+
+In 2024, GitHub reported that more than 40% of code written in Copilot-enabled environments was AI-generated. That number is rising. The implications for software quality are significant and underexplored. More code, written faster, by a process that does not understand the system it is modifying. The conventional QA model was not designed for this.
+
+## What the Conventional Model Assumed
+
+The conventional QA model rests on a specific assumption about code authorship. A developer writes code with intent. They understand the context, the constraints, and the likely failure modes. Tests are written to validate that intent. Code review catches gaps. The result is an imperfect but human-reasoned artefact.
+
+AI code generation changes the authorship model. A significant portion of code produced today is generated from natural language prompts, with the AI system having no persistent understanding of the codebase it is modifying. It produces plausible code. It does not produce reasoned code.
+
+The distinction matters for quality. Reasoned code has discoverable failure modes. You can ask the author what they were thinking. You can trace the logic. Plausible code passes tests because it satisfies the surface-level requirements of the prompt. Its failure modes are less predictable because the authorship process did not involve understanding the system.
+
+## The Volume Problem
+
+Beyond the authorship question, there is a volume problem that existing quality infrastructure was not designed for.
+
+Human developers produce code at a rate limited by cognition. Review processes, testing cadences, and deployment pipelines were calibrated to that rate. AI-assisted development breaks the calibration. Teams report order-of-magnitude increases in code volume with no proportional increase in review capacity or testing infrastructure.
+
+The result is that quality processes, already under strain in fast-moving engineering organisations, are being asked to handle significantly more output with the same resources. The instinct is to apply the existing model harder. The right response is to question whether the existing model scales.
+
+## What AI-Generated Code Does to Test Suites
+
+There is a subtler problem that has received less attention. When AI generates code, it often generates tests for that code at the same time. This seems like a productivity win. In quality terms, it is a risk.
+
+Tests written by the same process that wrote the code inherit the same blind spots. They test what the code does, not what it should do. If the AI misunderstood the intent of the original requirement, the tests will validate that misunderstanding. Coverage rises. The gap between the tested system and the intended system is invisible.
+
+Human-written tests are often valuable precisely because they represent a second perspective on the requirement. When both the code and the tests are generated from the same prompt, that second perspective is absent.
+
+## What Needs to Change
+
+The quality model for AI-assisted development needs to account for three things that the conventional model does not adequately address.
+
+First, it needs to work at a higher volume of code. Manual review and human-authored test suites do not scale to the output rates that AI-assisted teams can sustain.
+
+Second, it needs to operate on the system's actual behaviour, not just the code's surface properties. Behaviour-based quality signals, derived from real execution patterns, are less susceptible to the authorship quality issues that affect generated code.
+
+Third, it needs to treat the system as a dynamic entity, not a static artefact. AI-assisted codebases change faster than any previous generation of software. A quality model calibrated to a slower pace of change will lose accuracy steadily.
+
+The teams that will handle AI-generated code well are not the ones that apply more coverage metrics to more code. They are the ones that build quality infrastructure that understands system behaviour independent of how that system was authored.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*

@@ -22,9 +22,22 @@ export async function generateMetadata(
   };
 }
 
+const categoryStyle: Record<string, string> = {
+  Industry:    'bg-blue-50 text-blue-600 border-blue-100',
+  Engineering: 'bg-violet-50 text-violet-600 border-violet-100',
+  Leadership:  'bg-amber-50 text-amber-700 border-amber-100',
+  Vision:      'bg-emerald-50 text-emerald-700 border-emerald-100',
+};
+
 type PostModule = {
   default: React.ComponentType;
-  meta: { title: string; date: string; description: string };
+  meta: {
+    title: string;
+    date: string;
+    description: string;
+    category?: string;
+    readTime?: string;
+  };
 };
 
 export default async function BlogPostPage(
@@ -63,11 +76,18 @@ export default async function BlogPostPage(
           Back to Insights
         </Link>
 
-        {/* Date + read time */}
-        <div className="flex items-center gap-2 text-sm text-slate-400 mb-5">
-          <time dateTime={meta.date}>{formatDate(meta.date)}</time>
-          <span>·</span>
-          <span>{readTime} min read</span>
+        {/* Category + date + read time */}
+        <div className="flex flex-wrap items-center gap-3 mb-5">
+          {meta.category && (
+            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${categoryStyle[meta.category] ?? 'bg-slate-50 text-slate-600 border-slate-200'}`}>
+              {meta.category}
+            </span>
+          )}
+          <span className="text-sm text-slate-400 flex items-center gap-2">
+            <time dateTime={meta.date}>{formatDate(meta.date)}</time>
+            <span>·</span>
+            <span>{readTime} min read</span>
+          </span>
         </div>
 
         {/* Title */}

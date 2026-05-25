@@ -1,0 +1,45 @@
+export const meta = {
+  title: "The Real Cost of Treating QA as a Phase",
+  date: "2026-05-12",
+  description: "When quality is a gate at the end of delivery, the entire engineering organisation pays the price. The numbers are larger than most teams realise.",
+  category: "Engineering",
+  readTime: "5",
+}
+
+Quality assurance as a phase made sense when software was built in long cycles with clear handoff points. Modern delivery does not work that way. When a team ships multiple times a day, a quality gate at the end is not a safety mechanism. It is a bottleneck with a stamp of approval.
+
+## How Phase-Based QA Was Designed
+
+The quality-as-phase model emerged from waterfall delivery. Requirements were gathered. Code was written. Testing was performed. Defects were logged, fixed, and retested. The model had a logic to it: validation happens when the thing being validated is complete.
+
+In that context, a QA phase at the end of the cycle made sense. The team could test a whole version of the product against a defined set of requirements. The handoff was clean. The scope was bounded.
+
+Modern delivery has none of these properties. Code is merged continuously. Features are incomplete when they are first deployed to staging. Dependencies change under active development. A phase designed for a completed artefact is being applied to a moving target.
+
+## The Hidden Costs
+
+The most visible cost of QA-as-phase is the bottleneck. When testing is concentrated at the end of a delivery cycle, everything upstream is paced by the throughput of that phase. Teams that can ship daily are effectively shipping on a longer cadence determined by how fast the QA phase can process their output.
+
+The less visible costs are larger.
+
+Bugs found late are exponentially more expensive to fix than bugs found early. This is not a new insight, but its implications are often underestimated. A defect that surfaces in a QA phase after two weeks of development is entangled with two weeks of code changes. Isolating it, understanding it, and fixing it requires context that may no longer be fresh. A defect found at the point of authorship takes minutes to resolve.
+
+There is also the cost of what does not get caught. A QA phase has finite capacity. When development velocity is high, the phase becomes a triage exercise. Testers make prioritisation decisions about what to validate. Low-priority areas are deferred. Those areas are where production incidents accumulate.
+
+## The Cultural Cost
+
+The phase model creates a specific cultural dynamic that is worth naming. When quality is someone else's job, occurring at a distinct stage, the engineers writing the code relate to quality differently. Testing becomes something that happens to their code, not something they are responsible for.
+
+This is not a failure of individual engineers. It is a predictable outcome of a process design that separates ownership from accountability. When the test phase fails to catch something, the conversation focuses on the testing process. When the engineering process produces the defect in the first place, that connection is harder to trace.
+
+## What the Alternative Looks Like
+
+Continuous quality is not QA-as-phase with shorter intervals. It is a different model. Quality signals are generated continuously, from the point of code authorship through to production. Engineers receive feedback on the quality implications of their changes before those changes are merged, not after they are handed off.
+
+This requires quality infrastructure that is always present and always current. Not a phase that activates on a schedule, but a layer that is always observing, always analysing, and always surfacing signals to the people who can act on them.
+
+The cost of building that infrastructure is real. The cost of not building it, paid in delayed releases, production incidents, and engineering time spent on late-stage defect resolution, is larger.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*

@@ -1,0 +1,47 @@
+export const meta = {
+  title: "What Engineering Leaders Get Wrong About Scaling Quality",
+  date: "2026-05-10",
+  description: "Hiring more QA engineers is the most common response to a quality problem. It is also the least effective one at scale.",
+  category: "Leadership",
+  readTime: "6",
+}
+
+When a quality problem surfaces in a fast-growing engineering organisation, the instinct is to staff the solution. More testers, more reviewers, more process. It is a reasonable response. It is also a signal that the organisation is scaling the wrong model rather than questioning it.
+
+## Why the Staffing Response Feels Right
+
+The staffing response has a surface logic. Quality problems are visible. Testing is the mechanism for finding them. Testers do testing. Therefore, more testers should produce fewer problems.
+
+The reasoning is not wrong at small scale. A startup with three engineers and no dedicated QA function will genuinely benefit from adding quality-focused capacity. The constraint is human bandwidth, and adding human bandwidth addresses it.
+
+The problem arrives when the organisation has grown past the point where quality is primarily a bandwidth problem. At scale, quality is a systems problem. The issues are not that tests are not being run. They are that the right tests are not being written, that the test suite is not representing the right parts of the system, and that quality signals are arriving too late in the delivery process to be actionable.
+
+Adding more testers to that situation addresses the throughput of the QA function. It does not change the underlying model.
+
+## What Scaling the Wrong Model Looks Like
+
+The pattern is recognisable in post-incident reviews. An organisation has invested heavily in QA headcount. Coverage metrics are strong. The QA team is diligent and experienced. A significant production incident still occurs.
+
+The post-mortem identifies the specific test that should have been written. More tests are added to the suite. The QA team grows. Six months later, a different incident reveals a different gap.
+
+This cycle persists because the investment is in execution capacity, not in the model. Each incident is treated as a coverage failure: a specific scenario that was not tested. The deeper question, why the organisation's quality infrastructure systematically fails to surface these scenarios before production, is not asked.
+
+## The Model That Scales
+
+The quality model that scales is not defined by headcount. It is defined by how quality signals are generated, where they appear in the engineering workflow, and how much of the signal generation is autonomous.
+
+Human judgment in quality engineering is valuable and irreplaceable in specific places: understanding requirements, evaluating user experience, making prioritisation calls. It is not scalable as the primary mechanism for identifying risk in complex systems. The combinatorial space of failure modes in a modern distributed application exceeds what any team can enumerate and test for.
+
+Quality infrastructure that scales generates signals from system behaviour, not from human-authored test scenarios. It operates continuously, not at the end of a delivery cycle. It surfaces risk to engineers at the point where they can act on it, not to testers at the point where fixing it is expensive.
+
+## What Engineering Leaders Should Be Asking
+
+The questions that identify a scaling quality model are not about headcount or coverage. They are about where quality signals originate and when they arrive.
+
+Does the team receive quality feedback before code is merged, or after it is deployed? Is the test suite validating scenarios engineers thought to write, or scenarios the system's actual behaviour suggests are important? When a production incident occurs, does the quality infrastructure learn from it, or does it require a human to translate the incident into a new test case?
+
+The answers to those questions define the ceiling of a quality investment. Staffing can raise that ceiling temporarily. Changing the model is what removes it.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*

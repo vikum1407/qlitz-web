@@ -6,6 +6,7 @@ export interface PostMeta {
   title: string;
   date: string;
   description: string;
+  category: string;
   readTime: number;
 }
 
@@ -28,12 +29,14 @@ export function getAllPosts(): PostMeta[] {
     .map(file => {
       const slug = file.replace(/\.mdx$/, '');
       const content = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
+      const explicitReadTime = extract(content, 'readTime');
       return {
         slug,
         title: extract(content, 'title'),
         date: extract(content, 'date'),
         description: extract(content, 'description'),
-        readTime: estimateReadTime(content),
+        category: extract(content, 'category'),
+        readTime: explicitReadTime ? parseInt(explicitReadTime, 10) : estimateReadTime(content),
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

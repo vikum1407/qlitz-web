@@ -1,0 +1,43 @@
+export const meta = {
+  title: "Why High Test Coverage Does Not Mean High Confidence",
+  date: "2026-05-18",
+  description: "Coverage metrics are easy to measure and hard to trust. The gap between what they promise and what they deliver is where most production incidents live.",
+  category: "Engineering",
+  readTime: "5",
+}
+
+There is a moment familiar to most engineering leaders. A major incident occurs. The post-mortem begins. Someone checks the test coverage for the affected area. It is 87%. The room goes quiet. This is not an edge case. It is the rule.
+
+## What Coverage Actually Measures
+
+Test coverage measures which lines of code are executed by your test suite. It does not measure whether those lines behave correctly under the conditions your users create. It does not measure the interactions between services. It does not account for what happens when third-party dependencies behave unexpectedly, or when load patterns expose race conditions that single-threaded tests cannot find.
+
+Coverage is a measure of authorship. It reflects which paths a developer thought to test at the time they wrote the suite. As the system evolves, the coverage number often stays high while the correspondence between what is tested and what matters in production quietly drifts apart.
+
+## The Confidence Gap Is Structural
+
+The gap between coverage and confidence is not a tooling problem. It is a structural limitation of what coverage can represent.
+
+Consider a distributed system with ten services, each with 85% test coverage. The untested 15% of each service is not randomly distributed. It tends to concentrate in error handling paths, boundary conditions, and integration points, exactly the areas where production failures originate. Multiply that across ten services, add the untested interactions between them, and the confidence implied by "85% coverage" becomes difficult to defend.
+
+Engineering teams learn this lesson through incidents. A path that was technically covered fails because the test for it did not account for the state of upstream dependencies. A scenario that looked like an edge case in isolation turns out to be common under production load. Coverage said the system was tested. It was. The test was just asking the wrong question.
+
+## Why the Metric Persists
+
+Coverage survives as a primary metric partly because it is easy to measure and partly because there is not yet a widely adopted alternative. Engineering organisations that care about quality need something to report. Coverage is concrete, trackable, and appears in dashboards with satisfying percentages.
+
+There is also a selection bias in how teams experience the metric. When coverage goes up and incidents do not immediately follow, the metric gets credit. When incidents occur despite high coverage, the cause is attributed to the specific gap, not to a structural limitation of what coverage can tell you.
+
+## What Genuine Confidence Requires
+
+Genuine confidence in a software system comes from understanding how it actually behaves, not from the volume of assertions written about how it should behave.
+
+That understanding is built from analysis of real execution patterns under real conditions. It comes from knowing which components carry the most behavioural risk given their change velocity and coupling patterns. It comes from observing how the system behaves at the edges of its defined behaviour, not just within the scenarios a developer anticipated when writing tests.
+
+Coverage is a useful indicator. It is worth tracking. But treating it as a confidence metric leads organisations to optimise for the wrong thing, and to be surprised when the metric is high and confidence is not.
+
+The post-mortem where the coverage number is 87% does not have to be as common as it is.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
