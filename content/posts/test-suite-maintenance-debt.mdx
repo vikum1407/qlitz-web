@@ -1,0 +1,55 @@
+export const meta = {
+  title: "The Maintenance Debt Hidden in Every Test Suite",
+  date: "2026-06-15",
+  description: "The true cost of a test suite is not the time to write it but the time to keep it current. Most teams do not account for this.",
+  category: "Engineering",
+  readTime: "6",
+}
+
+The conversation about test suites almost always focuses on coverage. How much of the codebase is exercised. What percentage of critical paths are tested. Whether the gap in coverage is acceptable.
+
+Coverage is the wrong metric. The question that matters is not how much the test suite covers today, but what it will cost to keep it covering the right things tomorrow.
+
+## The Invisible Cost
+
+Every test written against a living system is a commitment. The test will need to change when the interface it covers changes. It will need to change when the behaviour it specifies is updated. It will need to change when the environment it depends on is replaced.
+
+These costs are not hypothetical. They are guaranteed. Software systems change continuously. Every change has a probability of touching the assumptions embedded in the existing test suite. Over time, those probabilities compound.
+
+What most engineering organisations track is the cost of writing tests. What most do not track is the cost of keeping them current. The two numbers are not comparable. For a system that evolves at speed, maintenance cost typically exceeds initial authoring cost within twelve to eighteen months.
+
+## How Suites Decay
+
+Test suite decay follows a predictable pattern. It begins with a change that breaks a test that no longer reflects the intended behaviour. The team has two options: update the test or disable it.
+
+Updating is correct. Disabling is faster. Under delivery pressure, the faster choice wins.
+
+Over time, the disabled tests accumulate. The active suite becomes a partial representation of the system, covering the parts that have remained stable while the parts that have changed are increasingly uncovered. The suite still runs. The coverage number still looks acceptable. The system it is supposedly covering is not the same system it was originally written for.
+
+## The Interface Dependency Problem
+
+Tests fail to stay current for a structural reason: they are written against interfaces that change.
+
+A test written against an API endpoint is correct at the time of writing. When the endpoint changes, the test becomes incorrect. In well-structured organisations, the test is updated alongside the endpoint. In practice, the test is updated when it breaks the pipeline, which may be days or weeks after the interface changed.
+
+The gap between when the interface changed and when the test was updated is a window of false confidence. The suite is running. Nothing is failing. The system has diverged from the behaviour the suite assumes.
+
+At scale, across a large codebase with many contributors and many interfaces, these windows multiply. The aggregate effect is a test suite that is nominally comprehensive but practically unreliable as a quality signal.
+
+## A Different Way to Measure
+
+A more honest measure of test suite health is not coverage but currency. How current is the suite relative to the system it covers. How long does it take for a change in system behaviour to be reflected in the tests. How many tests are disabled, skipped, or quarantined, and for how long.
+
+These metrics are less flattering than coverage percentages. They are also more useful. A team that knows its suite has a three-week lag on reflecting behavioural changes has accurate information about its quality signal. A team that only tracks coverage does not.
+
+## The Compounding Problem
+
+Maintenance debt in test suites compounds for the same reason technical debt compounds: deferred work does not stay static. An outdated test that is not updated becomes harder to update as the system continues to evolve. The gap between what the test expects and what the system does grows wider.
+
+Teams that defer test maintenance consistently end up in one of two places. They rewrite the suite from scratch at significant cost, losing the institutional knowledge embedded in the original tests. Or they continue operating with a suite they no longer trust, at which point the suite is providing the appearance of quality assurance without the substance.
+
+The second outcome is more common than the first. It is also the more dangerous one.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*

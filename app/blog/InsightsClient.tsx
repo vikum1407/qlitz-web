@@ -49,6 +49,22 @@ const articles: Article[] = [
     preview:  'Every major shift in software engineering follows the same arc. A model emerges that solves the problems of its time. It scales well, becomes standard practice, and eventually becomes the ceiling. The teams that recognise the ceiling early are the ones that define what comes next.',
   },
   {
+    slug:     'flaky-tests-system-signal',
+    category: 'Engineering',
+    title:    'Flaky Tests Are Not a Testing Problem',
+    subtitle: 'Flakiness is a signal about system behaviour, not test quality. Most teams fix the wrong thing.',
+    readTime: 5,
+    preview:  'The common response to flaky tests is to fix them or delete them. Retry logic is added. Timeouts are extended. The test is quarantined. None of these responses address what the flakiness is actually signalling.',
+  },
+  {
+    slug:     'test-suite-maintenance-debt',
+    category: 'Engineering',
+    title:    'The Maintenance Debt Hidden in Every Test Suite',
+    subtitle: 'The true cost of a test suite is not the time to write it but the time to keep it current. Most teams do not account for this.',
+    readTime: 6,
+    preview:  'The conversation about test suites almost always focuses on coverage. How much of the codebase is exercised. What percentage of critical paths are tested. Coverage is the wrong metric.',
+  },
+  {
     slug:     'test-coverage-confidence',
     category: 'Engineering',
     title:    'Why High Test Coverage Does Not Mean High Confidence',

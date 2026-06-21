@@ -1,0 +1,47 @@
+export const meta = {
+  title: "Flaky Tests Are Not a Testing Problem",
+  date: "2026-06-18",
+  description: "Flakiness is a signal about system behaviour, not test quality. Most teams fix the wrong thing.",
+  category: "Engineering",
+  readTime: "5",
+}
+
+The common response to flaky tests is to fix them or delete them. Retry logic is added. Timeouts are extended. The test is quarantined. None of these responses address what the flakiness is actually signalling.
+
+A flaky test is one that produces different results for the same code under the same conditions. The assumption embedded in most remediation strategies is that the problem is in the test. It rarely is.
+
+## What Flakiness Actually Signals
+
+Flakiness is a test reporting what it observes: a system that does not behave consistently. Tests do not flake arbitrarily. They flake because something in the environment, the timing, the state, or the system itself is non-deterministic.
+
+The sources split into a small number of categories. Race conditions in the application code. State leakage between tests. External dependencies with inconsistent response times. Infrastructure that behaves differently under load. These are not test problems. They are system problems that a test is surfacing.
+
+When a team adds retry logic to a flaky test, they are not fixing the problem. They are suppressing the signal and continuing to ship a system with non-deterministic behaviour.
+
+## The Quarantine Trap
+
+The standard practice in most engineering organisations is to quarantine flaky tests. They are moved out of the main suite, marked as known failures, and scheduled for later investigation.
+
+Later investigation rarely arrives. Quarantine is where tests go to retire. The flakiness that drove the quarantine decision remains in the system, now invisible to the pipeline.
+
+This matters because the test was written for a reason. It was written to catch a class of failure that someone considered worth catching. Quarantining it does not eliminate that class of failure. It eliminates the warning signal for that class of failure while leaving the underlying risk intact.
+
+## The Retry Illusion
+
+Retry logic is worse than quarantine in one specific respect: it makes the problem invisible while creating a false impression of stability.
+
+A test suite that passes on the second or third attempt looks green. The dashboard is green. The pipeline is green. The deployment proceeds. But a test that needs three attempts to pass is not a passing test. It is a test reporting that the system it covers has a reliability problem, and that reliability problem is being systematically masked.
+
+At scale, the cost compounds. A pipeline with significant retry overhead is slower. The slowness is attributed to infrastructure, not to the underlying system behaviour that is causing the retries. The root cause remains unexamined.
+
+## What the Right Response Looks Like
+
+The right response to a flaky test is to treat it as a bug report. The test is reporting something. The task is to understand what it is reporting, not to silence it.
+
+This requires a different diagnostic process. Instead of asking "why is this test flaky," ask "what does this test know about the system that we are choosing not to know." The answer is usually specific: a race condition in a particular interaction, a timing dependency introduced in a recent change, a resource contention pattern that only surfaces under concurrent load.
+
+Teams that treat flakiness as a diagnostic tool rather than a maintenance burden build more reliable systems. The tests are harder to dismiss. The signals are harder to ignore. The failures that reach production become correspondingly rarer.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
