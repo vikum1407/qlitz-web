@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'self-healing-tests-discipline',
+    category: 'Engineering',
+    title:    'Self-Healing Tests Are Not Magic. They Are Discipline.',
+    subtitle: 'Self-healing test automation gets sold as a black box that fixes itself. The teams getting real value from it treat it as an engineering discipline with rules, not magic.',
+    readTime: 5,
+    preview:  'Self-healing testing is usually pitched with the same promise: your tests stop breaking. That promise is real, but it is incomplete. Self-healing does not mean the system heals itself without judgment.',
+  },
+  {
     slug:     'third-era-software-quality',
     category: 'Industry',
     title:    'The Third Era of Software Quality Has Already Begun',

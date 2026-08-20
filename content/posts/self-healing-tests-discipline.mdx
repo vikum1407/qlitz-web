@@ -1,0 +1,55 @@
+export const meta = {
+  title: "Self-Healing Tests Are Not Magic. They Are Discipline.",
+  date: "2026-08-20",
+  description: "Self-healing test automation gets sold as a black box that fixes itself. The teams getting real value from it treat it as an engineering discipline with rules, not magic.",
+  category: "Engineering",
+  readTime: "5",
+}
+
+Self-healing testing is usually pitched with the same promise: your tests stop breaking. A selector changes, an element moves, a workflow gets restructured, and the test adapts on its own. No maintenance ticket, no broken pipeline, no engineer pulled off feature work to chase a locator that no longer exists.
+
+That promise is real, but it is incomplete. Self-healing does not mean the system heals itself without judgment. It means something narrower and more useful: the system distinguishes between changes that preserve intent and changes that break it, and only heals the first kind.
+
+## What "Self-Healing" Actually Means
+
+A test fails for one of two reasons. Either the system under test genuinely broke, or the system changed in a way that no longer matches how the test was written to look for it. A button got a new class name. A form field moved. An element that used to be identified by text is now identified by a data attribute.
+
+In the second case, the underlying behaviour is intact. The test is wrong, not the product. Self-healing is the capability to recognise that distinction automatically and re-anchor the test to the correct element, without a human rewriting a locator.
+
+That is a narrow, well-defined problem. It is not the same as a system that decides on its own whether a test should still be considered passing. Those are different claims, and the gap between them is where teams get burned.
+
+## The Trap of Treating It as Magic
+
+When self-healing is adopted as a black box, the failure mode is predictable. A test heals itself repeatedly across several releases. Each time, the pipeline stays green. Nobody looks closely, because the entire point of the feature was to remove that burden.
+
+Eventually, one of those "healed" changes was not cosmetic. A field that looked like a rename was actually a behavioural change, or a workflow that appeared reordered actually altered what the system does. The test kept passing because it kept finding something to point at, not because it kept verifying the right thing.
+
+This is the same failure mode as retry logic on flaky tests: the mechanism that was meant to remove noise ends up removing signal instead, and it does so silently. The team finds out in production, at the worst possible time to learn it.
+
+## The Discipline Underneath
+
+The teams that get durable value from self-healing tests treat it as a bounded capability with explicit rules, not an autonomous decision-maker. A small number of practices separate the two outcomes.
+
+Healing is scoped to structural attributes, not behavioural ones. A locator can heal. An assertion about what the system does should not silently rewrite itself to match new behaviour, because that is no longer maintenance, it is scope creep in what the test is allowed to decide on its own.
+
+Every healing event is logged and visible, not swallowed. A green pipeline that healed twelve times last week is telling you something different from a green pipeline that healed zero times, even though both show the same status. Teams that surface this distinction catch drift early. Teams that don't are trusting a number that has stopped meaning what they think it means.
+
+Healing has a confidence threshold, and low-confidence matches fail loudly instead of guessing. An element that has moved slightly is a safe heal. An element that has been replaced by something structurally different is not a heal, it is a new test waiting to be written, and the system should say so rather than pick the closest match and move on.
+
+## Where the Line Should Be
+
+The right mental model is closer to autopilot than to full autonomy. Autopilot handles the parts of the task that are mechanical and well-specified, and it hands control back the moment conditions fall outside what it was built to judge. It does not decide the destination. It does not improvise through genuine ambiguity.
+
+Self-healing tests should work the same way. They absorb the churn that comes from a UI evolving under normal development, which is most of what breaks tests in practice. They should not absorb the judgment calls about whether a behavioural change is intentional, because that judgment belongs to a person who understands what the product is supposed to do, not to a matching algorithm.
+
+Drawing that line requires the discipline to define, in advance, what counts as structural and what counts as behavioural for a given system. That definition is engineering work. It is not something a tool provides out of the box, and vendors that imply otherwise are selling the easy 80% of the problem as if it were the whole thing.
+
+## What This Means at Scale
+
+At small scale, the difference between disciplined and undisciplined self-healing is a minor annoyance. At the scale of hundreds of suites running continuously, it is the difference between a quality signal you can trust and a green dashboard that has quietly stopped meaning anything.
+
+The organisations getting this right are not the ones with the most aggressive healing thresholds. They are the ones that can answer, for any test that healed last week, exactly what changed and why the system was confident it was safe to heal. That answer is the actual product. The absence of a broken pipeline is just the visible side effect.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
