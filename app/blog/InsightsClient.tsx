@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'failure-explains-itself',
+    category: 'Vision',
+    title:    'What Changes When Every Failure Explains Itself',
+    subtitle: 'For decades, a test failure has meant a red mark and a name. The work of understanding what happened has always belonged to a person. That division of labour is ending.',
+    readTime: 5,
+    preview:  'A test fails. Historically, that failure has meant exactly one thing: a red mark next to a name, and an engineer whose next task is to find out why. That gap between failure and explanation is changing fastest right now.',
+  },
+  {
     slug:     'release-readiness-question',
     category: 'Leadership',
     title:    'Why Release Readiness Is a Question, Not a Checklist',
