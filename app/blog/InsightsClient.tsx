@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'release-readiness-question',
+    category: 'Leadership',
+    title:    'Why Release Readiness Is a Question, Not a Checklist',
+    subtitle: 'A checklist tells you whether every box was ticked. It does not tell you whether the release is actually safe. Those are not the same thing, and the gap between them is where incidents live.',
+    readTime: 5,
+    preview:  'Most release processes end with a checklist. Tests passed. Code reviewed. Staging verified. The checklist answers a narrow question: was every step completed. It does not answer whether the release is safe to ship right now.',
+  },
+  {
     slug:     'self-healing-tests-discipline',
     category: 'Engineering',
     title:    'Self-Healing Tests Are Not Magic. They Are Discipline.',
