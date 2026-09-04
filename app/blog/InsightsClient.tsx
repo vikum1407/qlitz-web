@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'replay-ai-debugging',
+    category: 'Engineering',
+    title:    'Replay Is What AI Debugging Should Have Looked Like All Along',
+    subtitle: 'Most teams debug a failing test by re-running it and hoping to catch it in the act. There is a better default: record the state once, and let engineers step through exactly what the test saw.',
+    readTime: 5,
+    preview:  'Ask most engineers how they debug a failing UI test, and the answer is some version of the same ritual: read the stack trace, guess at the cause, re-run the test locally, and watch it closely this time.',
+  },
+  {
     slug:     'failure-explains-itself',
     category: 'Vision',
     title:    'What Changes When Every Failure Explains Itself',

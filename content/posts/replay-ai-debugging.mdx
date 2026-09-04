@@ -1,0 +1,45 @@
+export const meta = {
+  title: "Replay Is What AI Debugging Should Have Looked Like All Along",
+  date: "2026-09-03",
+  description: "Most teams debug a failing test by re-running it and hoping to catch it in the act. There is a better default: record the state once, and let engineers step through exactly what the test saw.",
+  category: "Engineering",
+  readTime: "5",
+}
+
+Ask most engineers how they debug a failing UI test, and the answer is some version of the same ritual: read the stack trace, guess at the cause, re-run the test locally, and watch it closely this time to see what happens. Sometimes it fails the same way. Sometimes it passes, because the failure was timing-dependent and re-running changed the timing. Either way, the engineer has spent real time reconstructing a moment that already happened once, in CI, where nobody was watching.
+
+That ritual exists because the first failure did not leave enough behind to explain itself. A stack trace and an assertion message are a summary. They are not the evidence. The evidence, the actual state of the page at the moment things went wrong, was thrown away the instant the test process exited.
+
+## What Gets Thrown Away
+
+A browser-based test, while it runs, has access to an enormous amount of context: what the DOM looked like at each step, what the network was doing, what was printed to the console, how long each interaction took, and exactly which assertion was being evaluated when things diverged from expectation. All of that exists for a few hundred milliseconds and then disappears, because almost no test runner is built to keep it.
+
+What survives into the CI log is a fraction of that context: a red X, an error string, maybe a line number. Everything else, the part an engineer actually needs to understand what happened, has to be reconstructed by guessing and re-running.
+
+## Recording as the Default, Not the Exception
+
+The fix is not a smarter error message. It is not asking an AI to guess at a cause from a stack trace after the fact, which is still working from a summary instead of the evidence. The fix is capturing the full picture the first time, so there is never a need to reconstruct anything.
+
+This is what Qlitz's Replay is built to do. When recording is enabled on a run, every test step is captured in full: a screenshot at that moment, the DOM state at key interactions, console output, network requests, per-step timing, and the exact assertion being evaluated along with its actual and expected values. Nothing about this depends on catching the failure live. It is captured whether or not anything goes wrong, because the value is in having it available the one time something does.
+
+## What Diagnosis Looks Like With the Evidence in Hand
+
+With a full recording available, the diagnostic sequence changes shape entirely. Instead of re-running and hoping, an engineer opens the Replay viewer, jumps straight to the first failing step, and looks at what the assertion panel says: was the expected element present but wrong, or was it missing entirely? A glance at the screenshot answers questions that would otherwise take several re-runs to narrow down. Stepping back one frame shows what the page looked like immediately before things diverged. The network panel shows whether a request failed or simply arrived late.
+
+That sequence resolves the large majority of UI test failures without a single local re-run. The engineer is not debugging blind and hoping to reproduce a moment. They are looking directly at the moment, because it was never allowed to disappear.
+
+## Why This Is the Right Shape for AI-Assisted Debugging
+
+There has been a lot of energy recently around pointing AI tools at stack traces and asking them to explain failures. That is a real capability, but it inherits the same limitation as human guesswork: it is reasoning from a summary, not from evidence. An AI given a full step-by-step recording, complete with DOM state, network activity, and the precise assertion diff, has something categorically better to reason over than an error string.
+
+This is also why Replay is linked directly to Auto-Heal. When a heal proposal is generated for a selector that drifted, it points to the exact replay step where the drift was detected, so the state that triggered the automated fix is the same state an engineer can inspect and verify before approving it. The recording is not just a debugging convenience. It is the shared evidence that both the automation and the human are reasoning from.
+
+## The Habit Worth Building
+
+Teams that adopt recording as a default, rather than something switched on only after a mysterious failure, change their relationship with flaky and intermittent issues specifically. A test that fails once a week under load conditions nobody can reliably reproduce locally stops being a mystery, because the one time it happened, everything about that moment was captured.
+
+The habit is simple to state and easy to underrate: stop trying to catch bugs in the act, and start recording by default so there is nothing left to catch. The debugging work that used to take an afternoon of re-running and guessing increasingly takes the length of time it takes to scrub through a timeline.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
