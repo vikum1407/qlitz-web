@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'testing-like-its-2015',
+    category: 'Vision',
+    title:    "Why Are We Still Testing Software Like It's 2015?",
+    subtitle: 'Software architecture got dramatically more complex. The way most teams test it did not. Here is what changes when testing stops being instructions and starts being intelligence.',
+    readTime: 8,
+    preview:  'Today, a single product can involve web apps, mobile apps, APIs, microservices, event-driven architecture, containers, and AI-powered features. The complexity of software has increased dramatically. Test automation mostly has not.',
+  },
+  {
     slug:     'replay-ai-debugging',
     category: 'Engineering',
     title:    'Replay Is What AI Debugging Should Have Looked Like All Along',

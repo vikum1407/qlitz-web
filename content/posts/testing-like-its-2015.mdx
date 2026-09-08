@@ -1,0 +1,81 @@
+export const meta = {
+  title: "Why Are We Still Testing Software Like It's 2015?",
+  date: "2026-09-08",
+  description: "Software architecture got dramatically more complex. The way most teams test it did not. Here is what changes when testing stops being instructions and starts being intelligence.",
+  category: "Vision",
+  readTime: "8",
+}
+
+Software development has changed. Testing should have changed with it.
+
+Modern applications are no longer simple monolithic systems where a developer builds an application and a QA engineer manually verifies a few screens. Today, a single product can involve web applications, mobile applications, REST and GraphQL APIs, microservices, event-driven architectures, cloud infrastructure, databases and distributed data stores, third-party integrations, containers and Kubernetes, continuous delivery pipelines, AI-powered features, and multiple environments and configurations.
+
+The complexity of software has increased dramatically. Yet the fundamental approach to test automation in many organisations has remained almost unchanged.
+
+## The Traditional Automation Model
+
+A typical automation process still looks something like this: write, execute, fail, investigate, fix, repeat.
+
+A QA engineer identifies a scenario and writes an automated test. The test is executed locally or through a CI/CD pipeline. If it fails, the engineer examines the stack trace, screenshots, logs, network requests, and other available information.
+
+Then comes the investigation. Was it an application defect? A test defect? A timing issue? An environment problem? A network failure? A dependency failure? A changed API response? A data problem? Or simply a flaky test?
+
+The automation framework has successfully told us that something failed. But the engineer still has to figure out what happened and why. That is where the next generation of test automation needs to go.
+
+## Automation Is Not the Same as Intelligence
+
+There is an important distinction between automated testing and intelligent testing.
+
+Traditional automation is primarily instruction-based. We tell the system to open this page, click this button, enter this value, send this request, verify this response. The automation engine executes those instructions consistently and quickly. That is valuable. But it does not necessarily understand the application, the business behaviour, or the relationship between different failures.
+
+Imagine an e-commerce application. A customer places an order. Behind that single action, several things happen: UI, API gateway, order service, inventory service, payment service, event bus, delivery service, database.
+
+If the final order status is incorrect, the problem may not be in the UI at all. The root cause could be several services away. A traditional UI automation framework may simply report that the order was expected to be confirmed but is actually pending. That is useful. It is not enough. The engineer still has to investigate the entire chain by hand.
+
+## What If Tests Could Provide Evidence?
+
+A failed test should not just produce a red mark in a dashboard. It should help explain the failure.
+
+Imagine a test execution that automatically brings together browser actions, network requests, API responses, console errors, application logs, screenshots, traces, test data, service dependencies, performance information, and previous execution history. Instead of a single failure message, the system builds a complete picture of what happened: a test failed, the API request behind it failed, a downstream service returned a 503, a dependency became unavailable, a retry occurred, and the final transaction timed out.
+
+At that point the test is no longer simply reporting failure. It is providing evidence. That changes the role of automation, from a mechanism that tells you something is wrong to one that tells you why.
+
+## The Problem Is Bigger Than UI Automation
+
+For years, test automation discussions have often focused heavily on UI automation. Selenium, Cypress, Playwright, mobile automation. These tools are important. But modern quality engineering requires much more than UI validation.
+
+A complete testing strategy spans functional testing (does the application behave according to requirements), API testing (do services communicate correctly), integration testing (do multiple components work together), end-to-end testing (does the complete business journey work), performance testing (can the system handle expected and unexpected load), security testing (are vulnerabilities and unsafe behaviours detected), resilience testing (how does the system behave when dependencies fail), and data validation (is information correctly created, transformed, and persisted).
+
+The challenge is that these areas are frequently handled through different tools, frameworks, and processes. That creates fragmentation.
+
+## The Test Automation Toolchain Has Become Too Fragmented
+
+A modern QA engineer might use one tool for UI automation, another for API testing, another for performance testing, another for reporting, another for test management, another for CI/CD, another for monitoring, another for debugging, another for AI assistance.
+
+Individually, these tools can be excellent. Together, they create a complex ecosystem. More tools leads to more integrations, more configuration, more maintenance, more complexity. We have automated individual testing activities. We have not necessarily created an intelligent testing system.
+
+## What Should the Next Generation Look Like?
+
+The future should not be about replacing every existing testing tool. It should be about bringing testing capabilities together and adding intelligence around them.
+
+Imagine a platform teams move through a testing lifecycle like this: understand, generate, execute, observe, analyse, learn. The platform understands what needs to be tested. It helps generate meaningful scenarios. It executes tests across different testing layers. It captures what happened during execution. It analyses failures and the relationships between events. And over time, it uses historical information to make testing more effective.
+
+That is fundamentally different from simply running scripts.
+
+## From Test Automation to Intelligent Testing
+
+This is the direction we are exploring with Qlitz. The goal is not simply to create another automation framework. There are already many excellent frameworks. The bigger opportunity is to create a unified testing platform that brings different testing categories together while using intelligence to reduce the amount of repetitive work engineers need to perform.
+
+The vision is simple: testing should become easier to create, easier to execute, easier to understand, and easier to improve. The future of testing should not be "we have fifty thousand automated test cases." It should be "our testing system understands our software and continuously helps us find and understand risk."
+
+## Are We Ready to Leave 2015 Behind?
+
+We do not need to abandon everything that worked before. Selenium still has value. Playwright has value. API automation has value. Performance testing has value. CI/CD has value. Test frameworks have value.
+
+But the way we connect and intelligently use these capabilities can evolve. The next generation of testing is not necessarily about writing more automation. It is about making automation more aware, more connected, and more intelligent.
+
+At Qlitz, that is the problem we are interested in solving. Software has evolved. Testing should evolve with it.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
