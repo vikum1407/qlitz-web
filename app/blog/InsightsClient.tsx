@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'biggest-problem-test-automation',
+    category: 'Vision',
+    title:    "The Biggest Problem in Test Automation Isn't Automation",
+    subtitle: 'Automation suites rarely fail because a team didn’t test enough. They fail because nobody accounted for what it costs to keep the automation itself working. That cost has a name: the maintenance tax.',
+    readTime: 7,
+    preview:  'A team starts with 50 automated tests. Everything works well. Then the product grows, and every new test becomes another piece of automation that eventually needs maintenance of its own.',
+  },
+  {
     slug:     'testing-like-its-2015',
     category: 'Vision',
     title:    "Why Are We Still Testing Software Like It's 2015?",

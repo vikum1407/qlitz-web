@@ -1,0 +1,59 @@
+export const meta = {
+  title: "The Biggest Problem in Test Automation Isn't Automation",
+  date: "2026-09-11",
+  description: "Automation suites rarely fail because a team didn't test enough. They fail because nobody accounted for what it costs to keep the automation itself working. That cost has a name: the maintenance tax.",
+  category: "Vision",
+  readTime: "7",
+}
+
+Test automation has transformed software development. Teams can now execute thousands of tests automatically, integrate them into CI/CD pipelines, run them across multiple environments, and receive feedback within minutes.
+
+But there is another side to this success. Automation itself can become difficult to maintain. This is one of the biggest challenges facing modern QA and engineering teams.
+
+## When Automation Becomes the Problem
+
+Imagine a team starts with a small application. There are 50 automated tests. The framework is simple, test data is manageable, and the application does not change very often. Everything works well.
+
+Then the product grows. 50 tests become 500. 500 become 5,000. The application introduces new services, new APIs, new user journeys, and new integrations. The team adds more automation to keep up. But every new test creates another piece of automation that eventually needs maintenance.
+
+Now consider what happens when the application changes. A button moves. An API response changes. A service is renamed. A database structure evolves. Authentication changes. Test data expires. A third-party dependency becomes unavailable. A new browser version is introduced.
+
+Suddenly, the automation suite starts producing failures. But not every failure represents a product defect. Some are automation problems. Some are environment problems. Some are data problems. Some are dependency problems. And some are genuine application defects. The team now spends significant time maintaining and investigating the automation itself, rather than the product it was built to protect.
+
+## More Tests Doesn't Always Mean Better Testing
+
+It is easy to measure automation by numbers: a thousand automated tests, ten thousand automated tests, ninety percent automation coverage. These numbers can look impressive. They do not necessarily tell us how effective the testing actually is.
+
+A large test suite can still have duplicate scenarios, low-value tests, outdated test cases, flaky tests, poor test data, weak coverage in critical areas, failures that are difficult to understand, and high maintenance costs sitting quietly underneath a green dashboard. The goal should not be to create the largest possible collection of automated scripts. The goal should be to create testing that is useful, reliable, and maintainable.
+
+## The Maintenance Tax
+
+Every automated test has a lifecycle. It needs to be created, executed, monitored, updated, debugged, and maintained. As applications evolve, the automation must evolve with them. This is the maintenance tax, and the more fragmented the automation environment becomes, the harder that tax is to manage.
+
+A team might have UI automation for validating user journeys, API automation for validating backend services, performance tests for understanding system behaviour under load, integration tests for validating communication between components, CI/CD pipelines for executing everything automatically, reporting systems for communicating results, and monitoring tools for understanding runtime behaviour. Each capability has its own configuration, framework, and maintenance requirements.
+
+The challenge is no longer simply automating tests. The challenge is managing the entire testing ecosystem.
+
+## What If Automation Could Help Maintain Itself?
+
+This is where the next generation of test automation becomes interesting. What if a platform could understand changes in an application and help identify which tests may be affected? What if it could identify similar or duplicate test scenarios? What if it could analyse historical failures and recognise patterns? What if it could distinguish between a likely product failure and a likely automation or environment problem? What if test generation could consider existing coverage instead of simply creating more tests? What if engineers could visually understand how their testing architecture is connected?
+
+These capabilities would change the role of automation. Instead of automation simply executing instructions, it becomes a system that assists engineers throughout the entire testing lifecycle, not just at the moment a test is written.
+
+## Automation Should Evolve With the Application
+
+Modern applications are constantly changing. Testing platforms need to change with them. A testing platform should make it easier to build automation, reuse components, organise test architecture, generate test scenarios, execute different types of tests, analyse failures, understand coverage, integrate with CI/CD, connect testing with observability, and reduce repetitive maintenance.
+
+The objective is not to eliminate engineers. It is to eliminate unnecessary repetitive work so engineers can spend more time thinking about quality, risk, and behaviour, and less time re-fixing the same locator for the third time this quarter.
+
+## This Is One of the Problems Behind Qlitz
+
+At Qlitz, we are exploring a different approach to test automation. Instead of thinking about automation as a collection of scripts, we are interested in thinking about it as a testing platform, where different testing capabilities work together, where engineers can build and customise their testing architecture, where automation can be generated without hiding the underlying implementation, and where AI assists engineers without turning the framework into an unexplained black box.
+
+The question worth asking is not "how many tests did we automate." It is "how effectively can we test and maintain our software as it evolves." The future of test automation should not be about creating more scripts for engineers to maintain. It should be about creating better systems for testing software.
+
+More automation is not always better. Better automation is.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
