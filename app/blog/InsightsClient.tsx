@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'ai-generate-tests-understand',
+    category: 'Industry',
+    title:    'AI Can Generate Tests. But Can It Understand What Should Be Tested?',
+    subtitle: 'Generating a test is one capability. Understanding what actually needs to be tested is another. The gap between the two is where AI-assisted testing gets interesting.',
+    readTime: 7,
+    preview:  'Give an AI an API specification and it can generate hundreds of tests in minutes. Does that mean the application has been thoroughly tested? Not necessarily. Generating tests and understanding what should be tested are different problems.',
+  },
+  {
     slug:     'biggest-problem-test-automation',
     category: 'Vision',
     title:    "The Biggest Problem in Test Automation Isn't Automation",

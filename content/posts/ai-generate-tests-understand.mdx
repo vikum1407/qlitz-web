@@ -1,0 +1,61 @@
+export const meta = {
+  title: "AI Can Generate Tests. But Can It Understand What Should Be Tested?",
+  date: "2026-09-25",
+  description: "Generating a test is one capability. Understanding what actually needs to be tested is another. The gap between the two is where AI-assisted testing gets interesting.",
+  category: "Industry",
+  readTime: "7",
+}
+
+Artificial intelligence is changing the way software is developed. Code can be generated. Documentation can be created. Requirements can be analysed. And increasingly, AI can generate automated tests.
+
+This creates a real opportunity for software testing. It also raises a question worth sitting with: if AI can generate tests, does it actually understand what should be tested? There is a significant difference between the two. Generating tests is one problem. Understanding testing needs is another.
+
+## The Test Generation Revolution
+
+Give an AI a simple API specification, and it can identify endpoints, parameters, response codes, and data types. From that information, it can generate positive test cases, negative test cases, boundary-value scenarios, validation tests, authentication tests, and a wide range of input combinations. This can dramatically reduce the time required to build an initial test suite, and that is genuinely valuable.
+
+But what happens next? Suppose the AI generates 500 tests. Does that mean the application has been thoroughly tested? Not necessarily. It is entirely possible to have 500 automated tests and still miss the one scenario that matters most.
+
+## More Tests Does Not Mean Better Coverage
+
+Consider a banking application. An AI system might generate hundreds of tests for login, account details, transactions, search, profile management, and notifications. But perhaps the most important scenario is a narrower one: what happens when a money transfer succeeds in one service but fails in another.
+
+That scenario involves a chain: UI, API, authentication, transaction service, database, event system, notification service. The test is not simply about clicking a button. It is about understanding the business behaviour and the system dependencies underneath it. This is where intelligent testing becomes much more interesting than simple test generation.
+
+## What Should AI Understand?
+
+For AI to become genuinely useful in testing, it needs to work with more than test scripts. It should be able to reason over requirements (what the system is supposed to do), application behaviour (how the system actually behaves), APIs (what services and endpoints exist), architecture (how components are connected), test history (what has failed before), existing coverage (what is already being tested), recent changes (what has moved in the application), and risk (which areas would have the greatest impact if they failed).
+
+Combine those sources, and AI can move from "here are some tests" toward "here are the areas you should consider testing, and here is why."
+
+## From Test Generation to Test Intelligence
+
+This is where the conversation around AI-powered testing needs to evolve. The first generation of AI-assisted testing focuses heavily on generating test cases and generating test code. The next step should be a longer loop: understand, analyse, prioritise, generate, execute, learn.
+
+Imagine an AI system looking at an application's API definition, existing test suite, and recent changes, and surfacing something like: the payment service changed, but the current automated suite has limited coverage around failed payment states. That is far more valuable than another batch of generic tests. The AI is not adding volume. It is identifying a gap.
+
+## Humans Still Matter
+
+AI does not eliminate the need for experienced QA engineers. If anything, the opposite is true. AI can generate possibilities extremely quickly, but experienced engineers provide the context that makes those possibilities useful: business risk, customer behaviour, product priorities, architecture, historical defects, regulatory requirements, and real-world failure scenarios that never appear in a specification.
+
+The strongest model is not AI versus tester. It is AI plus tester. AI explores a huge testing space quickly. The engineer supplies judgment, context, and validation that the space alone cannot produce.
+
+## What About AI-Generated Code?
+
+There is another consideration worth naming directly. If AI generates a test framework, should the engineer simply accept the output? It should not. Generated automation needs to stay readable, understandable, reviewable, and maintainable. A test engineer should be able to look at generated code and understand what it is doing. AI should reduce engineering effort without creating a new black box that nobody on the team actually wants to maintain.
+
+## The Qlitz Perspective
+
+This is one of the ideas behind Qlitz. We are exploring how AI can become part of the testing lifecycle without making the testing process opaque. The goal is not "give us a prompt and generate some tests." The bigger question is how AI can help engineers understand what needs to be tested, build the right automation, identify gaps, and continuously improve testing over time — connecting information across the application, requirements, APIs, test architecture, test cases, execution, results, and coverage, and acting as an intelligence layer across that whole process rather than a generator bolted onto one step of it.
+
+## The Bigger Question
+
+AI has already demonstrated that it can generate test cases. That is no longer the interesting question. The more interesting ones are whether AI can understand application behaviour, identify meaningful testing gaps, prioritise scenarios based on risk, learn from previous failures, and help maintain automation as applications evolve. Eventually: can AI help decide what should be tested before anyone starts writing the test at all.
+
+That is where AI-powered testing becomes something larger than automated test generation. It becomes test intelligence, and it is a direction worth taking seriously.
+
+The future of AI in testing may not be about generating more tests. It may be about helping us understand which tests matter most.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
