@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'test-generation-to-intelligence',
+    category: 'Vision',
+    title:    'AI in Testing: From Test Generation to Test Intelligence',
+    subtitle: 'Test generation is the easy part. The harder, more valuable problem is building a system that understands what to test, why, and what changed since last time.',
+    readTime: 9,
+    preview:  'Give an AI a requirement or API spec and it can generate test scenarios fast. That is only the beginning. The bigger opportunity is the move from test generation to test intelligence.',
+  },
+  {
     slug:     'ai-generate-tests-understand',
     category: 'Industry',
     title:    'AI Can Generate Tests. But Can It Understand What Should Be Tested?',

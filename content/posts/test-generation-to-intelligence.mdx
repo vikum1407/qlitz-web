@@ -1,0 +1,75 @@
+export const meta = {
+  title: "AI in Testing: From Test Generation to Test Intelligence",
+  date: "2026-09-26",
+  description: "Test generation is the easy part. The harder, more valuable problem is building a system that understands what to test, why, and what changed since last time.",
+  category: "Vision",
+  readTime: "9",
+}
+
+Artificial intelligence is quickly becoming part of the software testing landscape. One of the most visible applications is AI-powered test generation. Give an AI a requirement, an API specification, a user story, or a piece of application behaviour, and it can generate test scenarios and even automation code. This is already changing how engineers approach test creation.
+
+But test generation is only the beginning. The bigger opportunity is the move from test generation to test intelligence.
+
+## The First Step: Generating Tests
+
+AI can help engineers create tests much faster. Given an API specification, an AI system can identify available endpoints, required and optional parameters, expected response codes, data types, and validation rules, and use that to generate positive scenarios, negative scenarios, and boundary conditions as automated test cases. This can significantly reduce repetitive work.
+
+There is an important limitation underneath that value, though. Generating tests does not necessarily mean understanding what should be tested. An AI system can generate hundreds of valid test cases while still missing the one business scenario that actually matters. That is where the next stage begins.
+
+## From Test Generation to Test Intelligence
+
+Test intelligence is a broader concept. Instead of asking only "can AI create a test," the more useful question is "can AI help us understand what should be tested, why it should be tested, and what we should do next." That reframes the role of AI: from a tool for generating scripts to a participant across the complete testing lifecycle — understand, analyse, plan, generate, execute, observe, analyse again, improve. Each stage is its own opportunity for intelligence, not just the first one.
+
+## Understanding the Application
+
+Before generating tests, an intelligent testing system can analyse the information already available about an application: requirements, user stories, API specifications, application structure, existing test cases, execution history, dependencies, recent changes, production incidents, and known defects. The more context available, the better the system understands the testing landscape. Instead of generating tests from a single input in isolation, it can combine signal from multiple sources at once.
+
+## Understanding Existing Coverage
+
+Imagine a team already has thousands of automated tests, and a new feature is introduced. The obvious response is to write more tests. An intelligent system asks a different question first: what is already covered, what has changed, which existing tests are related to this functionality, which scenarios are still missing, and are there duplicate or low-value tests sitting in the suite already. That question is what prevents one of the most common failure modes in test automation — continuously adding tests without ever understanding the overall shape of coverage.
+
+## Identifying Testing Gaps
+
+This is where AI becomes genuinely useful rather than just fast. Consider an application with a payment workflow. The existing suite covers successful payments, invalid card numbers, expired cards, and authentication failures. What it may not cover is a payment that succeeds while the confirmation event fails, a payment that processes while the order service never receives the transaction event, or a payment service that times out after the transaction has already gone through.
+
+These scenarios rarely show up in an individual requirement. They only become visible once you understand how multiple components interact with each other. An intelligent testing system that analyses architecture, existing tests, and previous failures together can surface exactly these blind spots — the ones no single specification was ever going to mention on its own.
+
+## Prioritising Tests
+
+Not every test carries the same weight. A login test and a critical financial transaction test might both be automated, but their business impact is not remotely comparable. AI can help teams prioritise based on risk (what happens if this fails), change frequency (how often this component changes), failure history (has this area failed before), business importance, and current coverage depth. That shifts the testing conversation away from "how many tests do we have" and toward "are we testing the areas that matter most."
+
+## Learning From Test Failures
+
+Test execution produces an enormous amount of information: pass and fail results, error messages, logs, screenshots, traces, network activity, API responses, performance data, environment details. Over time this becomes a real testing history, and AI can analyse that history for patterns — a test that fails repeatedly after deployments, a group of tests that fails whenever a specific service is unavailable, failures that only occur in one environment, tests that fail intermittently and are likely flaky, failures that tend to appear together. Treating every failure as an isolated event throws away most of what that history actually knows.
+
+## From Failure Detection to Failure Understanding
+
+Traditional automation is very good at answering one question: did the test pass. Engineering teams need answers to harder ones. Why did it fail. Is this a product defect. Is the test itself broken. Is the environment unstable. Is a dependency unavailable. Has this happened before. What changed right before the failure occurred.
+
+This is where AI-assisted analysis becomes more valuable than test generation ever was on its own. The automation executes the test. The intelligence layer is what interprets the result.
+
+## Human Plus AI
+
+None of this removes the engineer from the process — if anything, it makes their judgment more central, not less. AI can process large amounts of information quickly. Engineers understand business context, customer behaviour, product priorities, architecture, risk, regulatory requirements, and the kind of historical and real-world knowledge that never makes it into a spec. The strongest model is human expertise plus AI analysis plus automation: AI surfaces possibilities and insights, engineers review, validate, and decide.
+
+## The Importance of Transparency
+
+One principle matters more than any specific capability as AI moves deeper into testing: it should not become a black box. If AI generates a test, engineers should be able to understand what was generated. If AI identifies a gap, it should show its reasoning or supporting evidence. If AI analyses a failure, engineers should be able to go inspect the underlying data themselves. AI should make testing easier to understand, not harder to trust.
+
+## Where Qlitz Fits
+
+This is one of the ideas behind Qlitz. The goal is not to build another AI tool that generates test scripts. It is to explore how AI becomes an intelligence layer across the entire testing lifecycle — connecting the application itself, its requirements and APIs, the test architecture built around them, test generation, test execution, the results and evidence that execution produces, coverage and risk, and the recommendations that should follow from all of it. The objective is making these stages work together, instead of treating them as separate tools that happen to sit next to each other.
+
+## The Evolution
+
+The shift has a shape. Manual execution gave way to test automation and automated execution. AI-assisted testing added help generating and maintaining tests. Test intelligence is the layer where AI starts to help understand what, why, and where to test. The stage after that — intelligent testing platforms, where testing continuously adapts based on application behaviour, coverage, history, and risk — is still being worked out in practice. But the direction is no longer ambiguous.
+
+## The Bigger Question
+
+AI has already demonstrated that it can generate test cases. That is no longer the interesting question. The harder ones are whether AI can understand testing itself: identify meaningful gaps, understand relationships between application components, learn from previous failures, prioritise based on risk, and help engineers understand why something failed. Ultimately, whether AI can help make better testing decisions, not just execute more of them.
+
+That is the transition from test generation to test intelligence, and it may turn out to be one of the more consequential changes in software testing over the next few years. The future is not simply about generating more tests. It is about making the entire testing process more intelligent.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
