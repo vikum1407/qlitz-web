@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'ai-test-automation-lifecycle',
+    category: 'Engineering',
+    title:    'What Happens When AI Becomes Part of the Test Automation Lifecycle?',
+    subtitle: 'Most AI-in-testing conversations stop at test generation. The more interesting question is what changes when AI sits inside every stage of the lifecycle, not just the first one.',
+    readTime: 10,
+    preview:  'Ask AI to generate test cases or automation code, and that is useful. But what happens if AI is not simply used to write tests, but becomes part of the entire test automation lifecycle?',
+  },
+  {
     slug:     'test-generation-to-intelligence',
     category: 'Vision',
     title:    'AI in Testing: From Test Generation to Test Intelligence',
