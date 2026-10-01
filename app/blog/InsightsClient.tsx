@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'ai-generated-tests-vs-quality',
+    category: 'Industry',
+    title:    'AI-Generated Tests Are Easy. AI-Generated Quality Is Not.',
+    subtitle: 'AI has made it trivial to generate tests. It has not made it any easier to know whether those tests actually improve the product. Those are different problems, and conflating them is expensive.',
+    readTime: 9,
+    preview:  'Give an AI a specification and it can produce dozens of test cases in seconds. That is useful. Now ask a harder question: what important scenario did we not test?',
+  },
+  {
     slug:     'ai-test-automation-lifecycle',
     category: 'Engineering',
     title:    'What Happens When AI Becomes Part of the Test Automation Lifecycle?',

@@ -1,0 +1,75 @@
+export const meta = {
+  title: "AI-Generated Tests Are Easy. AI-Generated Quality Is Not.",
+  date: "2026-10-01",
+  description: "AI has made it trivial to generate tests. It has not made it any easier to know whether those tests actually improve the product. Those are different problems, and conflating them is expensive.",
+  category: "Industry",
+  readTime: "9",
+}
+
+Artificial intelligence has made test generation dramatically easier. Give it a requirement, an API specification, a user journey, or an application description, and it can quickly produce test scenarios and, in many cases, complete automation code. That is genuinely impressive. It also raises a question worth sitting with: does generating more tests actually produce better software quality? Not necessarily, because test generation and quality engineering are not the same thing.
+
+## The Easy Part: Generate a Test
+
+Imagine an API for creating customer accounts. Hand the specification to an AI system, and it can generate tests for valid customer data, missing fields, invalid email addresses, invalid phone numbers, duplicate accounts, boundary values, authentication failures, invalid request formats, and the range of HTTP responses the endpoint might return. Within seconds, you have dozens or hundreds of test cases. That saves real time and increases the speed at which automation gets created.
+
+Now ask a different question: what important scenario did we not test? That is where the real work actually begins.
+
+## A Test Can Be Correct and Still Be Low Value
+
+A generated test can be technically perfect. The automation executes successfully, the assertions are valid, the test passes consistently, and it can still provide very little value, because it may be validating something that was never particularly important in the first place. Meanwhile, a critical business scenario sits completely untested.
+
+An e-commerce system might have hundreds of automated tests covering product search, filters, login, registration, the shopping cart, and product details. Everything looks impressive on a dashboard. But there may be insufficient coverage for what happens when a payment succeeds but order creation fails, a scenario with far greater business impact than dozens of ordinary UI checks combined. This is the gap between test quantity and test quality, and it does not close on its own just because generation got faster.
+
+## Quality Requires Context
+
+A machine can generate test combinations. Meaningful testing requires context that goes beyond combinations: what can fail (the possible failure modes), what is likely to fail (technical complexity and historical behaviour), what matters if it fails (business and customer impact), and what should be tested first (risk and priority). Answering those four questions requires a broader understanding of the application than any single specification provides.
+
+## The Difference Between Coverage and Confidence
+
+A team might say they have ninety percent automation coverage. But what does that actually mean? Ninety percent of the code executed? Ninety percent of requirements with tests? Ninety percent of user journeys automated? Ninety percent of APIs covered? Coverage metrics are useful, but coverage alone does not guarantee confidence. It is entirely possible to have high coverage and still miss the critical failure scenarios that matter most. A better testing strategy considers coverage alongside risk, business impact, recent change, and history together, which produces a far more honest picture of quality than any single percentage.
+
+## AI Can Generate Possibilities. Engineers Provide Context.
+
+This is where AI becomes genuinely interesting rather than just fast. It is extremely good at exploring possibilities: generating variations, identifying patterns, processing large amounts of information, analysing existing test suites, comparing requirements against implementation, and suggesting edge cases a human might not think to try. Experienced engineers bring something different: business priorities, customer expectations, system architecture, historical defects, real-world usage, operational risk, and product constraints that never show up in a spec.
+
+The opportunity is not choosing between AI and engineers. It is combining them. AI expands the exploration space. Engineers provide the context and judgment that decides what in that space is actually worth testing.
+
+## What Would AI-Generated Quality Look Like?
+
+Instead of asking AI to generate a hundred tests for a feature, imagine asking it to analyse the feature, its dependencies, existing tests, and recent changes, identify the highest-risk scenarios that are currently under-tested, and then propose automation for those specific scenarios. That is a very different request. The first produces test cases. The second attempts to produce testing intelligence.
+
+## AI Could Analyse More Than Requirements
+
+An AI-powered testing platform with access to requirements, application information, API definitions, existing tests, test results, defect history, recent application changes, and the architecture describing how components depend on each other has something to work with that no individual source provides on its own. With all of that together, it becomes possible to surface relationships between parts of the system that are nearly impossible to see when each source is considered in isolation.
+
+## From More Tests to Better Decisions
+
+This changes the objective. Instead of generate, generate, generate, the sequence becomes understand, analyse, prioritise, generate, validate. The AI is not simply producing more automation. It is helping determine where automation is actually valuable.
+
+A payment service changes significantly in the latest release. The existing test suite has strong coverage for successful payments, but failure-handling scenarios involving downstream services have limited coverage. That single insight is more useful than another fifty generic payment tests, because it points at the specific place the next incident is most likely to come from.
+
+## The Danger of AI-Generated Noise
+
+There is another problem worth naming directly. AI makes it extremely easy to create tests, which means teams can just as easily create too many of them. More tests mean more execution time, more maintenance, more test data, more infrastructure, more failures to investigate, more potential flakiness, and more technical debt accumulating underneath a suite that looks healthier than it is. If the generated tests are not valuable, AI can actually increase the testing burden rather than reduce it. The goal should not be maximum test generation. It should be maximum useful testing value, and those two things diverge faster than most teams expect once generation stops being the bottleneck.
+
+## Human Review Still Matters
+
+AI-generated tests should not automatically become production automation. They need review. Does this test represent real behaviour? Is the scenario actually valuable? Is the expected result correct? Is it duplicated elsewhere in the suite? Is the data realistic? Is the assertion meaningful? Does the test belong at the UI, API, or integration level? What risk does it actually address? AI can accelerate the process of getting to that review. It does not replace the judgment the review requires.
+
+## Where Qlitz Fits
+
+This is one of the principles we are exploring with Qlitz. We do not see AI as simply a machine for producing test scripts. The bigger opportunity is connecting AI to the broader testing lifecycle — the application, its requirements, existing test coverage, recent changes, risk and testing gaps, AI recommendations grounded in all of that, generation, execution, results, and continuous improvement feeding back into the next cycle. That reframes the question from "how many tests can AI generate" to "how can AI help us make better testing decisions."
+
+## The Future Isn't About More Tests
+
+AI has already made test generation faster. The next challenge is making testing more meaningful. Success should not be measured by the number of generated test cases. It should be measured by whether the right risks are covered, whether important scenarios are tested, whether testing gaps are visible, whether engineers can actually understand the generated automation, and whether the testing strategy can adapt as the application changes. These are harder problems than generation ever was. They are also far more interesting ones.
+
+## AI Can Generate Tests. But Quality Is a System.
+
+Software quality does not come from the number of automated scripts a team has accumulated. It comes from understanding the product, identifying risk, designing meaningful tests, collecting evidence, learning from failures, and continuously improving the testing strategy as a whole. AI can contribute to every one of those areas. Simply generating tests is only the beginning.
+
+AI-generated tests are easy. AI-generated quality is not. The real opportunity is building systems where AI helps engineers move from test generation to better testing decisions, and that is the direction we are exploring with Qlitz.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
