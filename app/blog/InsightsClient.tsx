@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'ai-find-testing-gaps',
+    category: 'Industry',
+    title:    'Can AI Find Testing Gaps That Humans Miss?',
+    subtitle: 'A test suite can run thousands of green checks and still miss the one scenario that actually matters. Here is what it would take for AI to help find that gap before production does.',
+    readTime: 9,
+    preview:  'A test suite can contain thousands of automated tests and still have significant gaps. Those gaps are not always obvious. They can exist between requirements, between services, between user journeys.',
+  },
+  {
     slug:     'ai-generated-tests-vs-quality',
     category: 'Industry',
     title:    'AI-Generated Tests Are Easy. AI-Generated Quality Is Not.',

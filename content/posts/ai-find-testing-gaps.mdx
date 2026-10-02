@@ -1,0 +1,71 @@
+export const meta = {
+  title: "Can AI Find Testing Gaps That Humans Miss?",
+  date: "2026-10-02",
+  description: "A test suite can run thousands of green checks and still miss the one scenario that actually matters. Here is what it would take for AI to help find that gap before production does.",
+  category: "Industry",
+  readTime: "9",
+}
+
+One of the hardest questions in software testing is not "what tests do we have." It is "what are we not testing." A test suite can contain thousands of automated tests and still have significant gaps. Those gaps are not always obvious. They can exist between requirements, between services, between user journeys, between different system states, or simply in scenarios nobody thought about when the tests were written. That raises a real possibility worth examining: can AI help identify testing gaps that humans might miss?
+
+## The Problem With Looking Only at Existing Tests
+
+Imagine an application with 5,000 automated tests. A dashboard shows 5,000 tests, a 95% pass rate, and high automation coverage. That sounds reassuring. None of those numbers directly answer what is not covered.
+
+A payment workflow might have extensive coverage for successful payments, invalid cards, expired cards, missing information, and authentication failures, and still say nothing about what happens when the payment succeeds but the order service fails immediately afterward, when the payment service times out after the transaction has already been processed, or when a retry causes the same transaction to be processed twice. These scenarios are difficult to spot when the only thing in front of you is a list of individual test cases.
+
+## Humans Have Blind Spots
+
+Experienced QA engineers are extremely good at identifying risk. They also have limits, and as applications grow, the number of possible interactions grows faster than any one person can track by hand. A modern application might chain through UI, API gateway, authentication, order service, payment service, inventory service, an event bus, a notification service, and a database. Each component can have its own tests and still hide a failure that only exists in the space between two of them. A service can work perfectly in isolation while the interaction between it and its neighbour is wrong. That is exactly where testing gaps go to hide.
+
+## AI Can Look Across the Testing Landscape
+
+One real advantage AI has here is the ability to hold a lot of information at once. Instead of looking only at individual test cases, an AI-powered system can analyse requirements, existing tests, application architecture, API definitions, recent application changes, historical failures, past defects, and patterns in test results together, in the same pass. New relationships tend to become visible only once those sources are considered together rather than one at a time.
+
+## The Difference Between "Covered" and "Actually Tested"
+
+This distinction matters more than it sounds. Suppose a requirement states that a user can cancel an order before shipment, and the test suite contains a straightforward create-order, cancel-order, verify-cancellation flow. At first glance, the requirement looks covered. But what if payment has already been processed? What if shipment preparation has already started? What if inventory has already been reserved? What if the cancellation happens twice? What if the request times out? What if the order service succeeds but the notification fails? What if the user loses connection mid-cancellation?
+
+The original test covers the basic workflow. It does not cover the behavioural space around that workflow, and AI can help expand exactly that kind of thinking by surfacing the states nobody enumerated the first time.
+
+## AI Could Compare What Should Happen With What Is Tested
+
+Give an AI system the requirements, the application information, and the existing test suite, and it can ask a more useful set of questions: what behaviour is expected, what behaviour is currently tested, and which expected behaviours have weak or missing coverage. That comparison produces something like a testing gap map — strong coverage on successful and failed payments, limited coverage on timeouts, missing coverage on duplicate transactions, and a flagged area of high attention around payment and order-state inconsistency after a failure. The point is not for AI to declare that something is definitely broken. It is to highlight the areas that deserve a human's attention next.
+
+## AI Doesn't Need to Replace Testers
+
+This distinction matters. AI finding a potential gap is not the same as AI making the final call. The useful workflow looks like this: AI identifies a potential gap, an engineer reviews the evidence behind it, the engineer decides whether the scenario actually matters, and a test gets created if it does. That keeps human expertise at the centre of the process. AI becomes an additional layer of analysis, not a replacement for the judgment that decides what to do with it.
+
+## Finding Hidden Relationships
+
+AI can also surface relationships that are not obvious from any single test. Suppose several unrelated tests fail after a change to one API — one fails in the UI, another in an API test, a third in an integration test, a fourth in an end-to-end workflow. Looked at individually, these look like four unrelated problems. An AI system can recognise that all four trace back to the same underlying change. That reveals something more useful than "we need another test." It reveals a missing understanding of a system dependency that nobody had mapped out.
+
+## Application Changes Create New Testing Risks
+
+Modern applications change constantly. New code deploys, APIs evolve, services get replaced, features get modified, dependencies change. A test suite that was sufficient last month may not provide the same confidence today. After a change, an AI-powered testing system can analyse what changed, which components are affected, which tests cover those components, what scenarios are no longer covered, and what new risks the change introduced. That moves testing closer to a continuous process instead of a periodic one.
+
+## From Test Coverage to Risk Coverage
+
+Traditional coverage metrics are useful, but they do not tell the whole story. The more useful question is which risks are covered. A system can have high code coverage and still have poor coverage of payment failures, data corruption, authorization boundaries, service outages, retry behaviour, concurrent operations, and recovery scenarios. AI can help connect technical coverage with behavioural and risk-based coverage, which makes test planning a meaningfully different conversation than one built on a single coverage percentage.
+
+## The Challenge: AI Can Also Be Wrong
+
+AI is not a perfect testing oracle. It can misunderstand requirements, generate irrelevant scenarios, flag false positives, and overlook business context that was never written down anywhere it could read. That is exactly why AI-generated recommendations should not automatically become testing decisions. The engineer still has to evaluate whether the scenario matters, whether the risk is real, whether it is already covered elsewhere, and what the expected behaviour actually is. AI helps discover possibilities. Humans still provide the context and judgment that turns a possibility into a decision.
+
+## From Test Generation to Gap Discovery
+
+This is another step in the evolution of AI-powered testing. The first question was whether AI could generate a test. Then whether it could generate better tests. The more interesting question now is whether AI can identify what is not being tested at all. Discovering a missing test before a defect reaches production is worth considerably more than generating another automated scenario that nobody needed.
+
+## Where Qlitz Fits
+
+This is one of the areas we are exploring with Qlitz: moving beyond simply generating test cases, toward connecting requirements, the application, its architecture, existing tests, execution history, application changes, and coverage into a single analysis that surfaces potential testing gaps with the evidence behind them. The goal is not to tell engineers "here is the one test you must write." It is to say "here are the areas where your current testing may be incomplete, and here is the evidence that led us here." That distinction, between a command and an informed suggestion, is most of what makes this kind of system trustworthy enough to actually use.
+
+## The Future of Test Intelligence
+
+The most interesting role for AI in testing may not be generating thousands of test cases. It may be helping teams see things they did not think to look for in the first place — another set of eyes across requirements, code, APIs, architecture, test cases, results, defects, and application changes. Not replacing human testers, not making the final quality decision, but helping expose the blind spots that only become visible once enough context is held at the same time.
+
+Good testing finds problems. Intelligent testing also looks for what might be missing. That is where AI could become a genuinely useful addition to modern software testing, rather than just a faster way to produce more of the same.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*
