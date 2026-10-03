@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'human-plus-ai-testing',
+    category: 'Leadership',
+    title:    'The Future of Test Automation Is Human + AI',
+    subtitle: 'AI can generate, analyse, and recommend faster than any team can manually. None of that decides what matters. Here is the model that keeps judgment where it belongs.',
+    readTime: 8,
+    preview:  'An AI might identify 50 possible scenarios for a payment feature. A QA engineer might say scenario 17 is technically interesting, but scenario 42 is far more important. That is not test generation. That is engineering judgment.',
+  },
+  {
     slug:     'ai-find-testing-gaps',
     category: 'Industry',
     title:    'Can AI Find Testing Gaps That Humans Miss?',
