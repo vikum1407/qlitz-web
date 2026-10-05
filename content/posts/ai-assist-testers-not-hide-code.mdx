@@ -1,0 +1,79 @@
+export const meta = {
+  title: "AI Should Assist Testers, Not Hide the Code From Them",
+  date: "2026-10-05",
+  description: "AI can now generate an entire automation framework in minutes. The question that matters is whether the tester can still understand it afterwards, because that determines whether it will be maintainable at all.",
+  category: "Engineering",
+  readTime: "9",
+}
+
+AI can now generate test cases, automation scripts, framework components, and assertions. It can produce large portions of an automation framework from a simple description. That is powerful. But as AI becomes more involved in software testing, there is a question we should be asking directly: can the tester still understand what the AI created? If the answer is no, we may be solving one problem while quietly creating another.
+
+## The Attraction of AI-Generated Automation
+
+Imagine telling an AI to create a Playwright framework for an application, with a page object model, fixtures, reporting, retries, and CI/CD support. Within a short time it might produce project structure, configuration, page objects, test files, fixtures, utility functions, environment handling, reporting, and pipeline configuration. What previously took hours or days can be produced far faster.
+
+Then the real work begins. Someone has to maintain it, debug it, extend it, investigate its failures, and understand why a particular design decision was made. That someone is usually the test engineer.
+
+## The Black Box Problem
+
+Picture an engineer opening an AI-generated framework with hundreds of files. The tests run. The pipeline is green. Everything looks fine. Then a test starts failing, and the engineer tries to understand the framework. The structure is unfamiliar. There are layers of generated abstractions, helper functions that are not obvious, and utilities the engineer never wrote. The AI produced a working framework, but the engineer does not fully understand it.
+
+Now the team has a new problem: AI-generated technical debt. It does not show up in the pipeline. It shows up later, when someone needs to change something and realises nobody can confidently do it.
+
+## Working Code Is Not the Same as Good Engineering
+
+AI can generate code that works. Working code and maintainable engineering are not always the same thing. A good automation framework should be readable, so engineers can understand it. It should be predictable, behaving consistently. It should be maintainable, so changes are straightforward. It should be debuggable, so failures are easy to investigate. It should be extensible, so engineers can add functionality. And it should be reviewable, so the team can evaluate what the code is actually doing. AI-generated automation should meet exactly the same standards as anything a human wrote.
+
+## AI Should Accelerate Engineers
+
+The goal of AI should not be "the engineer no longer needs to understand the code." It should be "the engineer can create and understand the solution faster." That is a major difference.
+
+Consider two approaches. In the first, the request is "generate my entire test framework, I don't care how it works." That may produce a quick result, but the team becomes dependent on output it cannot explain. In the second, the request is "help me build a maintainable framework, explain the architecture, generate the components, and keep everything understandable." Now AI is functioning as an engineering assistant, and the engineer stays in control of the decisions that matter.
+
+## A Workflow Where Understanding Stays Human
+
+A strong AI-assisted workflow looks something like this. The engineer defines requirements. AI proposes an architecture. The engineer reviews that architecture before anything is built. AI generates the framework components, and the engineer reviews the generated code. AI explains or improves specific areas where needed, and the engineer customises the framework to fit how the team actually works. Only then does automation execute.
+
+That creates genuine collaboration. AI handles the repetitive work. Humans keep control over the engineering decisions.
+
+## Generated Code Should Be Educational
+
+Keeping AI-generated code understandable has another benefit: it helps engineers learn. Imagine a junior QA engineer asking AI for a Playwright framework. Instead of thousands of lines of unexplained code, the output could arrive as a clear structure: tests, pages, fixtures, utils, config, and reports. The engineer can see why each layer exists, how the components interact, where to modify a page object, how fixtures provide test data, and how configuration controls different environments.
+
+At that point the AI is not simply producing automation. It is helping the engineer understand automation architecture, which is a skill they keep long after the generated code has changed.
+
+## Framework Generation Should Not Mean Framework Lock-In
+
+Every organisation has different requirements. One team may prefer the page object model. Another may use the screenplay pattern. Another may need a factory-based architecture, or specific reporting and CI/CD integration. AI-generated frameworks should not force engineers into a single rigid structure. The engineer should be able to choose and customise the architecture. AI can help build it, but the engineering team should own it.
+
+## What About Non-Technical Users?
+
+AI also makes automation more accessible to people without extensive programming experience, and that is genuinely valuable. But accessibility should not come at the cost of transparency. A user might visually configure a flow: application, login, search, checkout, payment. The platform can generate the automation from that. The underlying implementation should still be available to technical users, which gives the product two layers: a simple experience for creating automation, and transparent code for the engineers who will maintain it.
+
+## AI Should Explain, Not Just Generate
+
+There is a meaningful difference between "generate this test" and "generate this test and explain why you designed it this way." The second is far more useful. AI could explain that an API test includes a boundary-value scenario because the field accepts values between one and one hundred, or that a test sits at the API level rather than the UI level because the behaviour can be validated without browser interaction. At that point AI is helping the engineer understand the testing strategy, not just handing them its output.
+
+## Transparency Matters More as AI Gets More Powerful
+
+The more capable AI becomes, the more important transparency gets. If AI is generating tests, frameworks, test data, assertions, testing strategies, and failure analysis, engineers need ways to inspect and understand every one of those outputs. Otherwise testing becomes dependent on an intelligence layer nobody fully controls. That is not a healthy engineering model, regardless of how accurate the output happens to be today.
+
+## Where Qlitz Fits
+
+This principle is central to how we are thinking about Qlitz. We do not want AI to become a black box that hides automation from testers. We want AI to help engineers build automation faster while keeping the implementation understandable. The working model is simple: AI generates, the engineer understands, the engineer customises, automation executes, and AI assists with analysis. That gives engineers the benefits of AI without giving up control of the system they are responsible for.
+
+## The Future of AI-Assisted Testing
+
+AI will likely become increasingly capable of generating sophisticated automation, and that is not something to resist. But we should be careful about what we optimise for. The goal should not be "how much code can AI generate." It should be "how much engineering effort can AI remove while keeping the solution understandable."
+
+That is a much better goal, because test automation is not disposable code. Good automation becomes part of the engineering infrastructure of a product. It lives for years. People maintain it, debug it, extend it, and depend on it. The people responsible for that automation need to be able to understand it.
+
+## AI Should Make Engineers Stronger
+
+The best AI-assisted testing system should not leave an engineer saying "I don't know how this works, AI created it." It should leave them saying "AI helped me create this faster, and I understand exactly how it works." That is the difference between AI dependency and AI assistance, and it will matter more with every year AI takes a larger share of software testing.
+
+AI should help testers build better automation. It should not hide the automation from them.
+
+---
+
+*Written by the Qlitz team. Follow us on [LinkedIn](https://www.linkedin.com/company/qlitz) for more perspectives on the future of software quality.*

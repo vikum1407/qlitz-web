@@ -41,6 +41,14 @@ function CategoryPill({ category }: { category: string }) {
 
 const articles: Article[] = [
   {
+    slug:     'ai-assist-testers-not-hide-code',
+    category: 'Engineering',
+    title:    'AI Should Assist Testers, Not Hide the Code From Them',
+    subtitle: 'AI can now generate an entire automation framework in minutes. The question that matters is whether the tester can still understand it afterwards, because that determines whether it will be maintainable at all.',
+    readTime: 9,
+    preview:  'AI can generate test cases, automation scripts, framework components, and assertions. But as AI becomes more involved in testing, there is a question we should be asking directly: can the tester still understand what the AI created?',
+  },
+  {
     slug:     'human-plus-ai-testing',
     category: 'Leadership',
     title:    'The Future of Test Automation Is Human + AI',
